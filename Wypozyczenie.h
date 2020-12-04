@@ -1,10 +1,11 @@
 #ifndef WYPOZYCZENIE_H
 #define WYPOZYCZENIE_H
-//sadasdasdasd
+
 class Wypozyczenie
 {
 
 private:
+	Data Data_od;
 	Data Data_do;
 	string Numer_rejestracyjny;
 	boolean Zakonczone;
