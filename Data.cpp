@@ -6,11 +6,9 @@ void Data::zmien_date()
 	cout << "dzien: ";
 	cin >> dzien;
 	cout << "miesiac: ";
-	cin >> dzien;
+	cin >> miesiac;
 	cout << "rok: ";
-	cin >> dzien;
+	cin >> rok;
 	cout << "godzina: ";
-	cin >> dzien;
-
-	cout << "Data zostala zmieniona!" << endl;
+	cin >> godzina;
 }
