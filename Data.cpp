@@ -11,4 +11,6 @@ void Data::zmien_date()
 	cin >> rok;
 	cout << "godzina: ";
 	cin >> godzina;
+
+	cout << "Data zostala zmieniona." << endl;
 }
