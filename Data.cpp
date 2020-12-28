@@ -12,5 +12,5 @@ void Data::zmien_date()
 	cout << "godzina: ";
 	cin >> godzina;
 
-	cout << "Data zostala zmieniona." << endl;
+	cout << "Data zostala zmieniona!" << endl;
 }
