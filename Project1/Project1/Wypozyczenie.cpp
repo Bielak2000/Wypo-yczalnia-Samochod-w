@@ -3,6 +3,11 @@
 
 using namespace std;
 
+/*Wypozyczenie::Wypozyczenie()
+{
+
+}*/
+
 bool Wypozyczenie::zmien_okres()
 {
 	// TODO - implement Wypozyczenie::zmien_okres
@@ -27,7 +32,7 @@ void Wypozyczenie::dodaj_auto(string nr)
 	throw "Not yet implemented";
 }
 
-void Wypozyczenie::dane_klienta(Osoba klient)
+void Wypozyczenie::pesel_klienta(string nr)
 {
 	// TODO - implement Wypozyczenie::dane_klienta
 	throw "Not yet implemented";

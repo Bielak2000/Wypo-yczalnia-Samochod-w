@@ -12,6 +12,8 @@ class Klient : Osoba
 
 
 public:
+	//Klient();
+
 	bool wypozycz(string nr);
 
 	void zarzadzaj_wypozyczeniem();

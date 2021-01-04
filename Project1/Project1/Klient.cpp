@@ -4,6 +4,11 @@
 
 using namespace std;
 
+/*Klient::Klient()
+{
+
+}*/
+
 bool Klient::wypozycz(string nr)
 {
 	// TODO - implement Klient::wypozycz

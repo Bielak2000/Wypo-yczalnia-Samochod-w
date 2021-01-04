@@ -9,15 +9,17 @@ using namespace std;
 class Wypozyczenie
 {
 
-private:
+public:
 	Data Data_od;
 	Data Data_do;
 	string Numer_rejestracyjny;
-	bool Zakonczone;
-	Osoba klient;
-	Data termin_platnosci;
+	bool Zakonczone = 0;
+	string pesel;
+	Data termin_platnosci = Data_do;
 
 public:
+	//Wypozyczenie();
+
 	bool zmien_okres();
 
 	void zakoncz_wypozyczenie();
@@ -26,7 +28,7 @@ public:
 
 	void dodaj_auto(string nr);
 
-	void dane_klienta(Osoba klient);
+	void pesel_klienta(string nr_pesel);
 
 	void podaj_termin();
 
