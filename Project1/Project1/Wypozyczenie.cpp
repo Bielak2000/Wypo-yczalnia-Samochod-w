@@ -34,8 +34,7 @@ void Wypozyczenie::dodaj_auto(string nr)
 
 void Wypozyczenie::pesel_klienta(string nr)
 {
-	// TODO - implement Wypozyczenie::dane_klienta
-	throw "Not yet implemented";
+	pesel = nr;
 }
 
 void Wypozyczenie::podaj_termin()
