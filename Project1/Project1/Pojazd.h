@@ -7,7 +7,7 @@ using namespace std;
 class Pojazd
 {
 
-private:
+public:
 	string Numer_rejestracyjny;
 	string Rodzaj;
 	string Marka;
@@ -15,13 +15,10 @@ private:
 	int Rok;
 	string Silnik;
 	string Przebieg;
-	string Kolor;
-	bool Uszkodzony;
-	bool Wypozyczenie;
 	bool Dostepny;
 	int Cena_za_godzine;
 	int Liczba_wypozyczen;
-	static int liczba_pojazdow;
+	//static int liczba_pojazdow;
 
 public:
 	void wyswietl_dane();
