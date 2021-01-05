@@ -1,5 +1,13 @@
 #include "Pojazd.h"
 
+
+int Pojazd::liczba_pojazdow = 0;
+
+Pojazd::Pojazd()
+{
+	Pojazd::liczba_pojazdow++;
+}
+
 void Pojazd::wyswietl_dane()
 {
 	// TODO - implement Pojazd::wyswietl_dane

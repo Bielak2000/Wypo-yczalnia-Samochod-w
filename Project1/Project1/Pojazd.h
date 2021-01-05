@@ -18,9 +18,11 @@ public:
 	bool Dostepny;
 	int Cena_za_godzine;
 	int Liczba_wypozyczen;
-	//static int liczba_pojazdow;
+	static int liczba_pojazdow;
 
 public:
+	Pojazd();
+
 	void wyswietl_dane();
 
 	void zmien_przebieg(string km);
