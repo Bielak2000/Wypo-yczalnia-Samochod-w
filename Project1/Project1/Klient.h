@@ -7,12 +7,12 @@
 
 using namespace std;
 
-class Klient : Osoba
+class Klient : public Osoba
 {
 
 
 public:
-	//Klient();
+	Klient(string Im, string Naz, string Pes, string Addr, string Numer);
 
 	bool wypozycz(string nr);
 

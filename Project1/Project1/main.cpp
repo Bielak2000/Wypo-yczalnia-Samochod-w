@@ -71,7 +71,7 @@ int main()
 		if (wybor1 == 1)
 		{
 			string nr_rej;
-			Klient k1;
+			Klient k1("Julek","Starski","123","Liliowa 15","123123");
 			cout << "Podaj numer rejestracyjny samochodu ktory chcesz wypozyczyc: ";
 			cin >> nr_rej;
 			k1.wypozycz(nr_rej);

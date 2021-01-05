@@ -4,10 +4,14 @@
 
 using namespace std;
 
-/*Klient::Klient()
+Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer)
 {
-
-}*/
+	this->Imie = Im;
+	this->Nazwisko = Naz;
+	this->Pesel = Pes;
+	this->Adres = Addr;
+	this->Numer_telefonu = Numer;
+}
 
 bool Klient::wypozycz(string nr)
 {
