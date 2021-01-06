@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestWypozyczenie", "TestWyp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestPeselKlienta", "TestPeselKlienta\TestPeselKlienta.vcxproj", "{63858B16-4A90-4E77-9AB8-0B6ABDD34761}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest_DaneOsoby", "DaneOsoby\DaneOsoby.vcxproj", "{0620A843-E03A-4AE6-B976-B8FE82F6A745}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{63858B16-4A90-4E77-9AB8-0B6ABDD34761}.Release|x64.Build.0 = Release|x64
 		{63858B16-4A90-4E77-9AB8-0B6ABDD34761}.Release|x86.ActiveCfg = Release|Win32
 		{63858B16-4A90-4E77-9AB8-0B6ABDD34761}.Release|x86.Build.0 = Release|Win32
+		{0620A843-E03A-4AE6-B976-B8FE82F6A745}.Debug|x64.ActiveCfg = Debug|x64
+		{0620A843-E03A-4AE6-B976-B8FE82F6A745}.Debug|x64.Build.0 = Debug|x64
+		{0620A843-E03A-4AE6-B976-B8FE82F6A745}.Debug|x86.ActiveCfg = Debug|Win32
+		{0620A843-E03A-4AE6-B976-B8FE82F6A745}.Debug|x86.Build.0 = Debug|Win32
+		{0620A843-E03A-4AE6-B976-B8FE82F6A745}.Release|x64.ActiveCfg = Release|x64
+		{0620A843-E03A-4AE6-B976-B8FE82F6A745}.Release|x64.Build.0 = Release|x64
+		{0620A843-E03A-4AE6-B976-B8FE82F6A745}.Release|x86.ActiveCfg = Release|Win32
+		{0620A843-E03A-4AE6-B976-B8FE82F6A745}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

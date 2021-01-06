@@ -7,7 +7,7 @@ using namespace std;
 class Osoba
 {
 
-private:
+public:
 	string Imie;
 	string Nazwisko;
 	string Pesel;
@@ -15,6 +15,9 @@ private:
 	string Numer_telefonu;
 
 public:
+
+	//Osoba(string Im, string Naz, string Pes, string Addr, string Numer);
+
 	void wyswietl_dane();
 
 	void zmien_dane();
