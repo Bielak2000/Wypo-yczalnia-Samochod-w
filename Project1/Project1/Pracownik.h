@@ -11,8 +11,8 @@ class Pracownik : public Osoba
 
 public:
 
-	const string LOGIN;
-	const string HASLO;
+	string Login;
+	string Haslo;
 
 	void zatwierdz_wypozyczenie(Wypozyczenie w);
 

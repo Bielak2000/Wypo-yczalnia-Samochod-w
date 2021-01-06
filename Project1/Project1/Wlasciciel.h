@@ -9,6 +9,8 @@ class Wlasciciel : public Pracownik
 {
 public:
 
+	Wlasciciel();
+
 	void dodaj_pojazd();
 
 	void zmien_cene(string nr_rej);

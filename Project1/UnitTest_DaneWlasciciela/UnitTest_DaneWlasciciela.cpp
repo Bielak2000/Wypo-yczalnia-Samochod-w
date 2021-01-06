@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "CppUnitTest.h"
 #include "../Project1/Wlasciciel.h"
+#include "../Project1/Wlasciciel.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -27,8 +28,8 @@ namespace UnitTestDaneWlasciciela
 			Assert::AreEqual(w.Pesel, pesel);
 			Assert::AreEqual(w.Adres, adres);
 			Assert::AreEqual(w.Numer_telefonu, numer);
-			Assert::AreEqual(w.LOGIN, login);
-			Assert::AreEqual(w.HASLO, haslo);
+			Assert::AreEqual(w.Login, login);
+			Assert::AreEqual(w.Haslo, haslo);
 		}
 	};
 }

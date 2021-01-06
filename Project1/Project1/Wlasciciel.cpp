@@ -1,5 +1,16 @@
 #include "Wlasciciel.h"
 
+Wlasciciel::Wlasciciel()
+{
+	this->Imie = "Jan";
+	this->Nazwisko = "Nowak";
+	this->Pesel = "92839284782";
+	this->Adres = "Warszawa, ul. Szkolna 5";
+	this->Numer_telefonu = "983290139";
+	this->Haslo = "LAB01";
+	this->Login = "JanNowak";
+}
+
 void Wlasciciel::dodaj_pojazd()
 {
 	// TODO - implement Wlasciciel::dodaj_pojazd
