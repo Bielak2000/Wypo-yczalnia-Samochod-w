@@ -5,12 +5,10 @@
 
 using namespace std;
 
-class Wlasciciel : Pracownik
+class Wlasciciel : public Pracownik
 {
-	const string login;
-	const string haslo;
-
 public:
+
 	void dodaj_pojazd();
 
 	void zmien_cene(string nr_rej);
