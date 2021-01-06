@@ -1,20 +1,22 @@
 #ifndef PRACOWNIK_H
 #define PRACOWNIK_H
 #include "Osoba.h"
+#include "Wypozyczenie.h"
 #include <iostream>
 
 using namespace std;
 
 class Pracownik : Osoba
 {
-
+	const string login;
+	const string haslo;
 
 public:
-	bool zatwierdz_wypozyczenie(string nr, string pesel);
+	void zatwierdz_wypozyczenie(Wypozyczenie w);
 
-	bool zatwierdz_zwrot(string nr, string pesel);
+	void zatwierdz_zwrot(Wypozyczenie w);
 
-	void zarzadzaj_wypozyczeniem(string pesel, string nr);
+	void zatwierdz_zmiany(Wypozyczenie w);
 };
 
 #endif

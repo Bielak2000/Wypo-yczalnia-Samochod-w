@@ -7,7 +7,8 @@ using namespace std;
 
 class Wlasciciel : Pracownik
 {
-
+	const string login;
+	const string haslo;
 
 public:
 	void dodaj_pojazd();
