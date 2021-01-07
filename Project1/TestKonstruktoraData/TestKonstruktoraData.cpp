@@ -2,26 +2,27 @@
 #include "CppUnitTest.h"
 #include "../Project1/Data.h"
 #include "../Project1/Data.cpp"
-
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace TestZmienDate
+namespace TestKonstruktoraData
 {
-	TEST_CLASS(TestZmienDate)
+	TEST_CLASS(TestKonstruktoraData)
 	{
 	public:
-
-		TEST_METHOD(ZmienDane)
+		
+		TEST_METHOD(KonstruktorData)
 		{
 			int d = 10;
 			int m = 10;
 			int r = 2020;
 			int g = 15;
+
 			Data d(d, m, r, g);
-			Assert::AreEqual(10, d.dzien);
-			Assert::AreEqual(10, d.miesiac);
-			Assert::AreEqual(2020, d.rok);
-			Assert::AreEqual(15, d.godzina);
+
+			Assert::AreEqual(d.dzien, d);
+			Assert::AreEqual(d.miesiac, m);
+			Assert::AreEqual(d.rok, r);
+			Assert::AreEqual(d.godzina, g);
 		}
 	};
 }

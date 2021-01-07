@@ -1,0 +1,3 @@
+﻿  TestZmienDate.cpp
+D:\GitHub\Project1\TestZmienDate\TestZmienDate.cpp(16,1): error C2440: "inicjowanie": nie można konwertować z "initializer list" na "Data"
+D:\GitHub\Project1\TestZmienDate\TestZmienDate.cpp(16,1): message : Żaden konstruktor nie mógł przyjąć typu źródłowego lub rozpoznanie przeciążenia konstruktora było niejednoznaczne
