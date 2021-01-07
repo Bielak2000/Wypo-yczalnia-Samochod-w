@@ -25,10 +25,12 @@ void Klient::zarzadzaj_wypozyczeniem()
 	throw "Not yet implemented";
 }
 
-void Klient::wyswietl_oferte()
+void Klient::wyswietl_oferte(Pojazd* tablica_pojazdow)
 {
-	// TODO - implement Klient::wyswietl_oferte
-	throw "Not yet implemented";
+	for (int i = 0; i < tablica_pojazdow[0].liczba_pojazdow; i++)
+	{
+		tablica_pojazdow[i].liczba_pojazdow;
+	}
 }
 
 void Klient::dokonaj_platnosci(Wypozyczenie w)

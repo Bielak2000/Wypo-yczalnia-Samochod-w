@@ -3,6 +3,14 @@
 
 using namespace std;
 
+Data::Data(int d, int m, int r, int g)
+{
+	dzien = d;
+	miesiac = m;
+	rok = r;
+	godzina = g;
+}
+
 void Data::zmien_date()
 {
 	cout << "Podaj nowa date w formacie liczbowym: " << endl;
