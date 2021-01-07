@@ -2,7 +2,9 @@
 #include "CppUnitTest.h"
 #include "../Project1/Data.h"
 #include "../Project1/Data.cpp"
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace std;
 
 namespace TestKonstruktoraData
 {
@@ -17,12 +19,13 @@ namespace TestKonstruktoraData
 			int r = 2020;
 			int g = 15;
 
-			Data d(d, m, r, g);
+			Data D(d, m, r, g);
 
-			Assert::AreEqual(d.dzien, d);
-			Assert::AreEqual(d.miesiac, m);
-			Assert::AreEqual(d.rok, r);
-			Assert::AreEqual(d.godzina, g);
+			Assert::AreEqual(D.dzien, d);
+			Assert::AreEqual(D.miesiac, m);
+			Assert::AreEqual(D.rok, r);
+			Assert::AreEqual(D.godzina, g);
+
 		}
 	};
 }
