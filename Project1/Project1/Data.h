@@ -12,7 +12,7 @@ public:
 
 public:
 	Data(int d, int m, int r, int g);
-	void zmien_date(int d1, int m1, int r1, int g1);
+	void zmien_date();
 };
 
 #endif

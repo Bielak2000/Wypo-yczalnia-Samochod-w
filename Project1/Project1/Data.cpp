@@ -11,10 +11,17 @@ Data::Data(int d, int m, int r, int g)
 	godzina = g;
 }
 
-void Data::zmien_date(int d1, int m1, int r1, int g1)
+void Data::zmien_date()
 {
-	dzien = d1;
-	miesiac = m1;
-	rok = r1;
-	godzina = g1;
+	cout << "Podaj nowa date w formacie liczbowym: " << endl;
+	cout << "dzien: ";
+	cin >> dzien;
+	cout << "miesiac: ";
+	cin >> miesiac;
+	cout << "rok: ";
+	cin >> rok;
+	cout << "godzina: ";
+	cin >> godzina;
+
+	cout << "Data zostala zmieniona!" << endl;
 }
