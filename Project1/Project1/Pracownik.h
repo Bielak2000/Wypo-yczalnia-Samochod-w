@@ -6,12 +6,14 @@
 
 using namespace std;
 
-class Pracownik : Osoba
+class Pracownik : public Osoba
 {
-	const string login;
-	const string haslo;
 
 public:
+
+	string Login;
+	string Haslo;
+
 	void zatwierdz_wypozyczenie(Wypozyczenie w);
 
 	void zatwierdz_zwrot(Wypozyczenie w);

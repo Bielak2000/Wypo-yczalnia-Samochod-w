@@ -1,2 +1,9 @@
+<<<<<<< HEAD
 ﻿  TestWypozyczenie.cpp
   TestWypozyczenie.vcxproj -> D:\GitHub\Project1\x64\Debug\TestWypozyczenie.dll
+=======
+﻿  pch.cpp
+  TestWypozyczenie.cpp
+     Trwa tworzenie biblioteki C:\Users\admin\Desktop\doda folder\studia\semestr 3\Inżynieria oprogramowania\git\Project1\x64\Debug\TestWypozyczenie.lib i obiektu C:\Users\admin\Desktop\doda folder\studia\semestr 3\Inżynieria oprogramowania\git\Project1\x64\Debug\TestWypozyczenie.exp
+  TestWypozyczenie.vcxproj -> C:\Users\admin\Desktop\doda folder\studia\semestr 3\Inżynieria oprogramowania\git\Project1\x64\Debug\TestWypozyczenie.dll
+>>>>>>> master

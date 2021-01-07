@@ -1,5 +1,0 @@
-﻿  TestPeselKlienta.cpp
-D:\GitHub\Project1\TestPeselKlienta\TestPeselKlienta.cpp(17): error C2280: „Wypozyczenie::Wypozyczenie(void)”: próba odwania do usuniętej funkcji
-D:\GitHub\Project1\Project1\Wypozyczenie.h(44): message : w tym miejscu kompilator wygenerował „Wypozyczenie::Wypozyczenie”
-D:\GitHub\Project1\Project1\Wypozyczenie.h(44,1): message : „Wypozyczenie::Wypozyczenie(void)”: Funkcja została niejawnie usunięta, ponieważ element składowa danych „Wypozyczenie::Data_od” albo nie ma odpowiedniego elementu domyślny konstruktor, albo rozpoznanie przeciążenia było niejednoznaczne
-D:\GitHub\Project1\Project1\Wypozyczenie.h(13): message : zobacz deklarację „Wypozyczenie::Data_od”
