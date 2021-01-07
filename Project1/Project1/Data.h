@@ -4,7 +4,7 @@
 class Data
 {
 
-private:
+public:
 	int dzien;
 	int miesiac;
 	int rok;

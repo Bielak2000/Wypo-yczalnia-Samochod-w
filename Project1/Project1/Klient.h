@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Osoba.h"
 #include "Wypozyczenie.h"
+#include "Pojazd.h"
 
 
 using namespace std;
@@ -18,7 +19,7 @@ public:
 
 	void zarzadzaj_wypozyczeniem();
 
-	void wyswietl_oferte();
+	void wyswietl_oferte(Pojazd* tablica_pojazdow);
 
 	void dokonaj_platnosci(Wypozyczenie w);
 
