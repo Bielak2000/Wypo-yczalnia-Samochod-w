@@ -17,11 +17,11 @@ namespace TestZmienDate
 			int m = 10;
 			int r = 2020;
 			int g = 15;
-			Data d(d, m, r, g);
-			Assert::AreEqual(10, d.dzien);
-			Assert::AreEqual(10, d.miesiac);
-			Assert::AreEqual(2020, d.rok);
-			Assert::AreEqual(15, d.godzina);
+			Data D(d, m, r, g);
+			Assert::AreEqual(10, D.dzien);
+			Assert::AreEqual(10, D.miesiac);
+			Assert::AreEqual(2020, D.rok);
+			Assert::AreEqual(15, D.godzina);
 		}
 	};
 }
