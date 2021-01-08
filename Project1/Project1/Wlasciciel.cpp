@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Wlasciciel::Wlasciciel()
+/*Wlasciciel::Wlasciciel()
 {
 	this->Imie = "Jan";
 	this->Nazwisko = "Nowak";
@@ -12,7 +12,7 @@ Wlasciciel::Wlasciciel()
 	this->Numer_telefonu = "983290139";
 	this->Haslo = "LAB01";
 	this->Login = "JanNowak";
-}
+}*/
 
 void Wlasciciel::dodaj_pojazd()
 {

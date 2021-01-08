@@ -2,8 +2,8 @@
 #include <iostream>
 
 using namespace std;
-
-/*Wypozyczenie::Wypozyczenie()
+/*
+Wypozyczenie::Wypozyczenie()
 {
 
 }*/
