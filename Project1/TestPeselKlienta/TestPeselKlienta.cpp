@@ -2,6 +2,8 @@
 #include "CppUnitTest.h"
 #include "../Project1/Wypozyczenie.h"
 #include "../Project1/Wypozyczenie.cpp"
+#include "../Project1/Data.h"
+#include "../Project1/Data.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

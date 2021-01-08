@@ -12,25 +12,27 @@
 
 using namespace std;
 
-int main()
+Pojazd* wczytaj_z_pliku(int& n)
 {
 	//pobranie danych z pliku 
 	string linia;//zmienna przehcowuja linie z pliku
 	ifstream plik;//zmienna obslugujaca plik 
 	plik.open("Pojazdy.txt");//otwieramy nasz plik z przelewami
 	//sprawdzamy czy udalo sie otowrzyc plik, jesli nie to wychodzimy z programu
+	Pojazd* pojazdy = NULL;
 	if (plik.good())
 	{
 		cout << "Udalo sie otworzyc plik!" << endl;
-		int liczba_pojazdow=0;
+		int liczba_pojazdow = 0;
 		while (getline(plik, linia))
 		{
 			liczba_pojazdow++;
 		}
 		plik.clear();
 		plik.seekg(0);
+		n = liczba_pojazdow;
 
-		Pojazd* pojazdy = new Pojazd[liczba_pojazdow];//utowrzenie tablicy elementow ktorymi sa obiekty strukutry dane o rozmiarze 10000
+		pojazdy = new Pojazd[liczba_pojazdow];//utowrzenie tablicy elementow ktorymi sa obiekty strukutry dane o rozmiarze 10000
 		//do naszej tablicy przepisuje dane wartosci z pliku
 		for (int i = 0; i < liczba_pojazdow; i++)
 		{
@@ -48,8 +50,15 @@ int main()
 		}
 	}
 	plik.close();
-	//Wlasciciel w;
-	//w.dodaj_pojazd();
+	return pojazdy;
+}
+
+int main()
+{
+	int n;
+	Pojazd* pojazdy = wczytaj_z_pliku(n);
+
+
 	int wybor;
 	cout << "Witaj w naszej wypozyczalni samochdow!" << endl;
 	cout << "Kim jestes?";

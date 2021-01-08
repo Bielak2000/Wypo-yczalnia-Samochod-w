@@ -11,7 +11,7 @@ public:
 	int godzina;
 
 public:
-	Data(int d, int m, int r, int g);
+	Data(int d=0, int m=0, int r=0, int g=0);
 	void zmien_date();
 };
 

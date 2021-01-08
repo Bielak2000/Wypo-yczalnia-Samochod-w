@@ -2,11 +2,8 @@
 #include <iostream>
 
 using namespace std;
-/*
-Wypozyczenie::Wypozyczenie()
-{
 
-}*/
+Wypozyczenie::Wypozyczenie(){}
 
 bool Wypozyczenie::zmien_okres()
 {

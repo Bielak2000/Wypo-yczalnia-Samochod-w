@@ -2,6 +2,8 @@
 #include "CppUnitTest.h"
 #include "../Project1/Wlasciciel.h"
 #include "../Project1/Wlasciciel.cpp"
+#include "../Project1/Pracownik.h"
+#include "../Project1/Pracownik.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -13,7 +15,7 @@ namespace UnitTestDaneWlasciciela
 		
 		TEST_METHOD(Dane_Wlasciciela_sprawdzPoprawnosc)
 		{
-			/*string imie = "Jan";
+			string imie = "Jan";
 			string nazw = "Nowak";
 			string pesel = "92839284782";
 			string adres = "Warszawa, ul. Szkolna 5";
@@ -29,7 +31,7 @@ namespace UnitTestDaneWlasciciela
 			Assert::AreEqual(w.Adres, adres);
 			Assert::AreEqual(w.Numer_telefonu, numer);
 			Assert::AreEqual(w.Login, login);
-			Assert::AreEqual(w.Haslo, haslo);*/
+			Assert::AreEqual(w.Haslo, haslo);
 		}
 	};
 }
