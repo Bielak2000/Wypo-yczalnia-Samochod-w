@@ -61,7 +61,6 @@ int main()
 
 	int wybor;
 	cout << "Witaj w naszej wypozyczalni samochdow!" << endl;
-	cout << "Kim jestes?";
 
 	cout << "Kim jestes?" << endl;
 	cout << "1.Klientem." << endl;
@@ -80,11 +79,8 @@ int main()
 
 		if (wybor1 == 1)
 		{
-			string nr_rej;
-			Klient k1("Julek","Starski","123","Liliowa 15","123123");
-			cout << "Podaj numer rejestracyjny samochodu ktory chcesz wypozyczyc: ";
-			cin >> nr_rej;
-			k1.wypozycz(nr_rej);
+			Klient k1;
+			k1.wyswietl_oferte(pojazdy);
 		}
 
 

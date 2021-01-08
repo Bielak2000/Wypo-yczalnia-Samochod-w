@@ -12,12 +12,24 @@ Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer)
 	this->Adres = Addr;
 	this->Numer_telefonu = Numer;
 }
-
-bool Klient::wypozycz(string nr)
+/*
+bool Klient::wypozycz()
 {
-	// TODO - implement Klient::wypozycz
-	throw "Not yet implemented";
-}
+	cout << "Podaj imie: ";
+	cin >> Imie;
+	cout << "Podaj nazwisko: ";
+	cin >> Nazwisko;
+	cout << "Podaj pesel: ";
+	cin >> Pesel;
+	cout << "Podaj adres: ";
+	cin >> Adres;
+	cout << "Podaj telefon kontaktowy: ";
+	cin >> Numer_telefonu;
+	cout << "Podaj : ";
+	cin >> Imie;
+
+
+}*/
 
 void Klient::zarzadzaj_wypozyczeniem()
 {
@@ -29,7 +41,8 @@ void Klient::wyswietl_oferte(Pojazd* tablica_pojazdow)
 {
 	for (int i = 0; i < tablica_pojazdow[0].liczba_pojazdow; i++)
 	{
-		tablica_pojazdow[i].liczba_pojazdow;
+		tablica_pojazdow[i].wyswietl_dane();
+		cout << endl;
 	}
 }
 
