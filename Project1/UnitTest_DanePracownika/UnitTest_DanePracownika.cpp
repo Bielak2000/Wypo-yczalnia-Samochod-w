@@ -18,18 +18,16 @@ namespace UnitTestDanePracownika
 			string pesel = "99999999999";
 			string adres = "Pracownikowo, ul. pracownicza 2";
 			string numer = "983290139";
-			string haslo = "pracowniczka123";
-			string login = "PracownikMiesiaca";
 
-			Pracownik w(string imie, string nazw, string pesel, string adres, string numer);
+			Pracownik p(imie, nazw, pesel, adres, numer);
 
-			Assert::AreEqual(w.Imie, imie);
-			Assert::AreEqual(w.Nazwisko, nazw);
-			Assert::AreEqual(w.Pesel, pesel);
-			Assert::AreEqual(w.Adres, adres);
-			Assert::AreEqual(w.Numer_telefonu, numer);
-			Assert::AreEqual(w.Login, imie+nazw);
-			Assert::AreEqual(w.Haslo, pesel);
+			Assert::AreEqual(p.Imie, imie);
+			Assert::AreEqual(p.Nazwisko, nazw);
+			Assert::AreEqual(p.Pesel, pesel);
+			Assert::AreEqual(p.Adres, adres);
+			Assert::AreEqual(p.Numer_telefonu, numer);
+			Assert::AreEqual(p.Login, imie+nazw);
+			Assert::AreEqual(p.Haslo, pesel);
 		}
 	};
 }

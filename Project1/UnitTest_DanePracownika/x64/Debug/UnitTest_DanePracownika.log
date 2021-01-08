@@ -1,2 +1,2 @@
 ﻿  UnitTest_DanePracownika.cpp
-D:\AProjekty\Wypozyczalnia-Samochodow\Project1\UnitTest_DanePracownika\UnitTest_DanePracownika.cpp(26,1): error C2228: po lewej ".Imie" musi być typ struct/union
+  UnitTest_DanePracownika.vcxproj -> D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\UnitTest_DanePracownika.dll
