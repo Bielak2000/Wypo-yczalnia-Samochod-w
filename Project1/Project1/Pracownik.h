@@ -14,6 +14,8 @@ public:
 	string Login;
 	string Haslo;
 
+	Pracownik(string Im, string Naz, string Pes, string Addr, string Numer);
+
 	void zatwierdz_wypozyczenie(Wypozyczenie w);
 
 	void zatwierdz_zwrot(Wypozyczenie w);
