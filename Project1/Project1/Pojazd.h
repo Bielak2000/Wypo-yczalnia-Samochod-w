@@ -31,17 +31,11 @@ public:
 
 	bool sprawdz_dostepnosc(string nr);
 
-	void usun_uszkodzenia();
-
 	void zmien_cene(int cena);
 
 	void wypozycz();
 
-	int sprawdz_uszkodzenia();
-
 	void zmien_dostepnosc();
-
-	void napraw();
 };
 
 #endif
