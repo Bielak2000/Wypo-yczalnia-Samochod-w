@@ -1,5 +1,2 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (UnitTest_DaneOsoby.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  pch.cpp
-  DaneKlienta.cpp
-     Trwa tworzenie biblioteki C:\Users\admin\Desktop\doda folder\studia\semestr 3\Inżynieria oprogramowania\git\Project1\x64\Debug\UnitTest_DaneKlienta.lib i obiektu C:\Users\admin\Desktop\doda folder\studia\semestr 3\Inżynieria oprogramowania\git\Project1\x64\Debug\UnitTest_DaneKlienta.exp
-  DaneOsoby.vcxproj -> C:\Users\admin\Desktop\doda folder\studia\semestr 3\Inżynieria oprogramowania\git\Project1\x64\Debug\UnitTest_DaneKlienta.dll
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(467,5): warning MSB8028: Katalog pośredni (x64\Debug\) zawiera pliki udostępnione z innego projektu (UnitTest_DaneOsoby.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
+  DaneOsoby.vcxproj -> D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\UnitTest_DaneKlienta.dll

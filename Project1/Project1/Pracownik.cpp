@@ -4,6 +4,10 @@
 
 using namespace std;
 
+Pracownik::Pracownik(string Im, string Naz, string Pes, string Addr, string Numer) {
+	throw "Not yet implemented";
+}
+
 void Pracownik::zatwierdz_wypozyczenie(Wypozyczenie w)
 {
 	// TODO - implement Pracownik::zatwierdz_wypozyczenie

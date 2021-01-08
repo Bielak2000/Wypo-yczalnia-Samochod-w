@@ -48,8 +48,8 @@ int main()
 		}
 	}
 	plik.close();
-	Wlasciciel w;
-	w.dodaj_pojazd();
+//	Wlasciciel w;
+	//w.dodaj_pojazd();
 	int wybor;
 	cout << "Witaj w naszej wypozyczalni samochdow!" << endl;
 	cout << "Kim jestes?";

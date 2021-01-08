@@ -9,7 +9,7 @@ class Wlasciciel : public Pracownik
 {
 public:
 
-	Wlasciciel();
+	//Wlasciciel();
 
 	void dodaj_pojazd();
 
