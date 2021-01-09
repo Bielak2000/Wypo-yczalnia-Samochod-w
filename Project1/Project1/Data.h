@@ -4,7 +4,7 @@
 class Data
 {
 
-public:
+private:
 	int dzien;
 	int miesiac;
 	int rok;
@@ -13,6 +13,10 @@ public:
 public:
 	Data(int d=0, int m=0, int r=0, int g=0);
 	void zmien_date();
+	int get_dzien();
+	int get_miesiac();
+	int get_rok();
+	int get_godzina();
 };
 
 #endif

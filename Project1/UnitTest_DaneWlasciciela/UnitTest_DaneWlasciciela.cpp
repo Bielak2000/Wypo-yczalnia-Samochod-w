@@ -4,6 +4,12 @@
 #include "../Project1/Wlasciciel.cpp"
 #include "../Project1/Pracownik.h"
 #include "../Project1/Pracownik.cpp"
+#include "../Project1/Osoba.h"
+#include "../Project1/Osoba.cpp"
+#include "../Project1/Data.h"
+#include "../Project1/Data.cpp"
+#include "../Project1/Wypozyczenie.h"
+#include "../Project1/Wypozyczenie.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -25,13 +31,13 @@ namespace UnitTestDaneWlasciciela
 
 			Wlasciciel w;
 
-			Assert::AreEqual(w.Imie, im);
-			Assert::AreEqual(w.Nazwisko, nazw);
-			Assert::AreEqual(w.Pesel, pes);
-			Assert::AreEqual(w.Adres, adr);
-			Assert::AreEqual(w.Numer_telefonu, numer);
-			Assert::AreEqual(w.Login, log);
-			Assert::AreEqual(w.Haslo, has);
+			Assert::AreEqual(w.get_imie(), im);
+			Assert::AreEqual(w.get_nazwisko(), nazw);
+			Assert::AreEqual(w.get_pesel(), pes);
+			Assert::AreEqual(w.get_adres(), adr);
+			Assert::AreEqual(w.get_numer_telefonu(), numer);
+			Assert::AreEqual(w.get_login_wlasciciela(), log);
+			Assert::AreEqual(w.get_haslo_wlasciciela(), has);
 		}
 	};
 }

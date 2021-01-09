@@ -9,7 +9,7 @@ using namespace std;
 class Wypozyczenie
 {
 
-public:
+private:
 	Data Data_od;
 	Data Data_do;
 	string Numer_rejestracyjny;
@@ -41,6 +41,16 @@ public:
 	void zmien_termin_platnosci(Data d);
 
 	Data zwroc_date_rozpoczecia();
+
+	string get_numer_rejestracyjny();
+
+	string get_pesel();
+
+	Data get_data_od();
+
+	Data get_data_do();
+
+	Data get_termin_platnosci();
 };
 
 #endif

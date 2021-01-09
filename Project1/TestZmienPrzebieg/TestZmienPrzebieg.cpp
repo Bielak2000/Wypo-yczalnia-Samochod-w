@@ -14,10 +14,10 @@ namespace TestZmienPrzebieg
 		TEST_METHOD(TestZmienPrzebiegWPojazd)
 		{
 			Pojazd p;
-			p.Przebieg = "22012";
+			p.set_przebieg("22012");
 			string km = "26000";
 			p.zmien_przebieg(km);
-			Assert::AreEqual(p.Przebieg, km);
+			Assert::AreEqual(p.get_przebieg(), km);
 		}
 	};
 }

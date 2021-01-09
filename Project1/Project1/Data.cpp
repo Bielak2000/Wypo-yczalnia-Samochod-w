@@ -25,3 +25,23 @@ void Data::zmien_date()
 
 	cout << "Data zostala zmieniona!" << endl;
 }
+
+
+int Data::get_dzien()
+{
+	return Data::dzien;
+}
+
+int Data::get_miesiac()
+{
+	return Data::miesiac;
+}
+
+int Data::get_rok()
+{
+	return Data::rok;
+}
+int Data::get_godzina()
+{
+	return Data::godzina;
+}

@@ -2,6 +2,12 @@
 #include "CppUnitTest.h"
 #include "../Project1/Pracownik.h"
 #include "../Project1/Pracownik.cpp"
+#include "../Project1/Osoba.h"
+#include "../Project1/Osoba.cpp"
+#include "../Project1/Data.h"
+#include "../Project1/Data.cpp"
+#include "../Project1/Wypozyczenie.h"
+#include "../Project1/Wypozyczenie.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -21,13 +27,13 @@ namespace UnitTestDanePracownika
 
 			Pracownik p(imie, nazw, pesel, adres, numer);
 
-			Assert::AreEqual(p.Imie, imie);
-			Assert::AreEqual(p.Nazwisko, nazw);
-			Assert::AreEqual(p.Pesel, pesel);
-			Assert::AreEqual(p.Adres, adres);
-			Assert::AreEqual(p.Numer_telefonu, numer);
-			Assert::AreEqual(p.Login, imie + nazw);
-			Assert::AreEqual(p.Haslo, pesel);
+			Assert::AreEqual(p.get_imie(), imie);
+			Assert::AreEqual(p.get_nazwisko(), nazw);
+			Assert::AreEqual(p.Osoba::get_pesel(), pesel);
+			Assert::AreEqual(p.get_adres(), adres);
+			Assert::AreEqual(p.get_numer_telefonu(), numer);
+			Assert::AreEqual(p.get_login(), imie + nazw);
+			Assert::AreEqual(p.get_haslo(), pesel);
 		}
 	};
 }

@@ -65,3 +65,13 @@ void Wlasciciel::zarzadzaj_dzialalnoscia()
 	// TODO - implement Wlasciciel::zarzadzaj_dzialalnoscia
 	throw "Not yet implemented";
 }
+
+string Wlasciciel::get_login_wlasciciela()
+{
+	return Wlasciciel::Login;
+}
+
+string Wlasciciel::get_haslo_wlasciciela()
+{
+	return Wlasciciel::Haslo;
+}
