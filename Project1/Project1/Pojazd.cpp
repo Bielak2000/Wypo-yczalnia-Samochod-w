@@ -45,8 +45,7 @@ bool Pojazd::sprawdz_dostepnosc(string nr)
 
 void Pojazd::zmien_cene(int cena)
 {
-	// TODO - implement Pojazd::zmien_cene
-	throw "Not yet implemented";
+	Cena_za_godzine = cena;
 }
 
 void Pojazd::wypozycz()

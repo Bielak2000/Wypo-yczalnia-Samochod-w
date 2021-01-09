@@ -18,7 +18,6 @@ namespace TestZmienCene
 			int nowa_cena = 150;
 			p.zmien_cene(nowa_cena);
 			Assert::AreEqual(p.Cena_za_godzine, nowa_cena);
-
 		}
 	};
 }
