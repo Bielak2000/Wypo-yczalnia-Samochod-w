@@ -69,3 +69,29 @@ Data Wypozyczenie::zwroc_date_rozpoczecia()
 	// TODO - implement Wypozyczenie::zwroc_date_rozpoczecia
 	throw "Not yet implemented";
 }
+
+string Wypozyczenie::get_numer_rejestracyjny()
+{
+	return Wypozyczenie::Numer_rejestracyjny;
+}
+
+string Wypozyczenie::get_pesel()
+{
+	return Wypozyczenie::pesel;
+}
+
+Data Wypozyczenie::get_data_od()
+{
+	return Wypozyczenie::Data_od;
+}
+
+Data Wypozyczenie::get_data_do()
+{
+	return Wypozyczenie::Data_do;
+}
+
+Data Wypozyczenie::get_termin_platnosci()
+{
+	return Wypozyczenie::termin_platnosci;
+}
+

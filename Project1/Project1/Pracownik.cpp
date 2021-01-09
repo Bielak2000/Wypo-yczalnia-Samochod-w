@@ -19,11 +19,11 @@ void Pracownik::zatwierdz_wypozyczenie(Wypozyczenie w)
 {
 	ofstream plik;
 	plik.open("Wypozyczenia.txt");
-	plik << w.Numer_rejestracyjny << " ";
-	plik << w.pesel << " ";
-	plik << w.Data_do.dzien << " " << w.Data_do.miesiac << " " << w.Data_do.rok << " " << w.Data_do.godzina << "  ";
-	plik << w.Data_od.dzien << " " << w.Data_od.miesiac << " " << w.Data_od.rok << " " << w.Data_od.godzina << "  ";
-	plik << w.termin_platnosci.dzien << " " << w.termin_platnosci.miesiac << " " << w.termin_platnosci.rok << " " << w.termin_platnosci.godzina << endl;;
+	plik << w.get_numer_rejestracyjny() << " ";
+	plik << w.get_pesel() << " ";
+	plik << w.get_data_do().get_dzien() << " " << w.get_data_do().get_miesiac() << " " << w.get_data_do().get_rok() << " " << w.get_data_do().get_godzina() << "  ";
+	plik << w.get_data_od().get_dzien() << " " << w.get_data_od().get_miesiac() << " " << w.get_data_od().get_rok() << " " << w.get_data_od().get_godzina() << "  ";
+	plik << w.get_termin_platnosci().get_dzien() << " " << w.get_termin_platnosci().get_miesiac() << " " << w.get_termin_platnosci().get_rok() << " " << w.get_termin_platnosci().get_godzina() << endl;;
 
 	cout << "Wypozyczenie zatwierdzono!" << endl;
 	plik.close();
@@ -39,4 +39,14 @@ void Pracownik::zatwierdz_zmiany(Wypozyczenie w)
 {
 	// TODO - implement Pracownik::zarzadzaj_wypozyczeniem
 	throw "Not yet implemented";
+}
+
+string Pracownik::get_login()
+{
+	return Pracownik::Login;
+}
+
+string Pracownik::get_haslo()
+{
+	return Pracownik::Haslo;
 }

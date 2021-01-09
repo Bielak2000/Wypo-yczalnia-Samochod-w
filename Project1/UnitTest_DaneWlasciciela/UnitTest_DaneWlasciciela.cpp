@@ -4,6 +4,12 @@
 #include "../Project1/Wlasciciel.cpp"
 #include "../Project1/Pracownik.h"
 #include "../Project1/Pracownik.cpp"
+#include "../Project1/Osoba.h"
+#include "../Project1/Osoba.cpp"
+#include "../Project1/Data.h"
+#include "../Project1/Data.cpp"
+#include "../Project1/Wypozyczenie.h"
+#include "../Project1/Wypozyczenie.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -15,23 +21,23 @@ namespace UnitTestDaneWlasciciela
 		
 		TEST_METHOD(Dane_Wlasciciela_sprawdzPoprawnosc)
 		{
-			string imie = "Jan";
+			string im = "Jan";
 			string nazw = "Nowak";
-			string pesel = "92839284782";
-			string adres = "Warszawa, ul. Szkolna 5";
+			string pes = "92839284782";
+			string adr = "Warszawa, ul. Szkolna 5";
 			string numer = "983290139";
-			string haslo = "LAB01";
-			string login = "JanNowak";
+			string has = "LAB01";
+			string log = "JanNowak";
 
 			Wlasciciel w;
 
-			Assert::AreEqual(w.Imie, imie);
-			Assert::AreEqual(w.Nazwisko, nazw);
-			Assert::AreEqual(w.Pesel, pesel);
-			Assert::AreEqual(w.Adres, adres);
-			Assert::AreEqual(w.Numer_telefonu, numer);
-			Assert::AreEqual(w.Login, login);
-			Assert::AreEqual(w.Haslo, haslo);
+			Assert::AreEqual(w.get_imie(), im);
+			Assert::AreEqual(w.get_nazwisko(), nazw);
+			Assert::AreEqual(w.get_pesel(), pes);
+			Assert::AreEqual(w.get_adres(), adr);
+			Assert::AreEqual(w.get_numer_telefonu(), numer);
+			Assert::AreEqual(w.get_login_wlasciciela(), log);
+			Assert::AreEqual(w.get_haslo_wlasciciela(), has);
 		}
 	};
 }

@@ -21,10 +21,10 @@ namespace TestKonstruktoraData
 
 			Data D(d, m, r, g);
 
-			Assert::AreEqual(D.dzien, d);
-			Assert::AreEqual(D.miesiac, m);
-			Assert::AreEqual(D.rok, r);
-			Assert::AreEqual(D.godzina, g);
+			Assert::AreEqual(D.get_dzien(), d);
+			Assert::AreEqual(D.get_miesiac(), m);
+			Assert::AreEqual(D.get_rok(), r);
+			Assert::AreEqual(D.get_godzina(), g);
 
 		}
 	};

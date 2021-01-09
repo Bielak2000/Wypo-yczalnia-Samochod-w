@@ -8,12 +8,11 @@ using namespace std;
 
 class Pracownik : public Osoba
 {
-
-public:
-
+protected:
 	string Login;
 	string Haslo;
 
+public:
 	Pracownik(string Im=0, string Naz=0, string Pes=0, string Addr=0, string Numer=0);
 
 	void zatwierdz_wypozyczenie(Wypozyczenie w);
@@ -21,6 +20,10 @@ public:
 	void zatwierdz_zwrot(Wypozyczenie w);
 
 	void zatwierdz_zmiany(Wypozyczenie w);
+
+	string get_login();
+
+	string get_haslo();
 };
 
 #endif

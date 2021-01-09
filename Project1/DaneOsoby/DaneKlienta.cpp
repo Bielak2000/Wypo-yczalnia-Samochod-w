@@ -4,6 +4,8 @@
 #include "../Project1/Klient.cpp"
 #include "../Project1/Pojazd.h"
 #include "../Project1/Pojazd.cpp"
+#include "../Project1/Osoba.h"
+#include "../Project1/Osoba.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
@@ -24,11 +26,11 @@ namespace DaneKlienta
 
 			Klient p(imie,nazw,pesel,adres,numer);
 
-			Assert::AreEqual(p.Imie,imie);
-			Assert::AreEqual(p.Nazwisko,nazw);
-			Assert::AreEqual(p.Pesel, pesel);
-			Assert::AreEqual(p.Adres, adres);
-			Assert::AreEqual(p.Numer_telefonu, numer);
+			Assert::AreEqual(p.get_imie(),imie);
+			Assert::AreEqual(p.get_nazwisko(),nazw);
+			Assert::AreEqual(p.get_pesel(), pesel);
+			Assert::AreEqual(p.get_adres(), adres);
+			Assert::AreEqual(p.get_numer_telefonu(), numer);
 		}
 	};
 }

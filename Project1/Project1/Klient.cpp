@@ -39,7 +39,7 @@ void Klient::zarzadzaj_wypozyczeniem()
 
 void Klient::wyswietl_oferte(Pojazd* tablica_pojazdow)
 {
-	for (int i = 0; i < tablica_pojazdow[0].liczba_pojazdow; i++)
+	for (int i = 0; i < tablica_pojazdow[0].get_liczba_pojazdow(); i++)
 	{
 		tablica_pojazdow[i].wyswietl_dane();
 		cout << endl;
