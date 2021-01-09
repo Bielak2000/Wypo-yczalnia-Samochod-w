@@ -31,8 +31,16 @@ void Pojazd::zmien_przebieg(string km)
 
 bool Pojazd::sprawdz_dostepnosc(string nr)
 {
-	// TODO - implement Pojazd::sprawdz_dostepnosc
-	throw "Not yet implemented";
+	if (Dostepny == 1)
+	{
+		cout << "Pojazd jest dostepny." << endl;
+		return true;
+	}
+	else
+	{
+		cout << "Pojazd jest niedostepny." << endl;
+		return false;
+	}
 }
 
 void Pojazd::zmien_cene(int cena)
