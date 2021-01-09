@@ -26,8 +26,7 @@ void Pojazd::wyswietl_dane()
 
 void Pojazd::zmien_przebieg(string km)
 {
-	// TODO - implement Pojazd::zmien_przebieg
-	throw "Not yet implemented";
+	Przebieg = km;
 }
 
 bool Pojazd::sprawdz_dostepnosc(string nr)

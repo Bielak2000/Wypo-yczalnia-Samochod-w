@@ -15,23 +15,23 @@ namespace UnitTestDaneWlasciciela
 		
 		TEST_METHOD(Dane_Wlasciciela_sprawdzPoprawnosc)
 		{
-			string imie = "Jan";
+			string im = "Jan";
 			string nazw = "Nowak";
-			string pesel = "92839284782";
-			string adres = "Warszawa, ul. Szkolna 5";
+			string pes = "92839284782";
+			string adr = "Warszawa, ul. Szkolna 5";
 			string numer = "983290139";
-			string haslo = "LAB01";
-			string login = "JanNowak";
+			string has = "LAB01";
+			string log = "JanNowak";
 
 			Wlasciciel w;
 
-			Assert::AreEqual(w.Imie, imie);
+			Assert::AreEqual(w.Imie, im);
 			Assert::AreEqual(w.Nazwisko, nazw);
-			Assert::AreEqual(w.Pesel, pesel);
-			Assert::AreEqual(w.Adres, adres);
+			Assert::AreEqual(w.Pesel, pes);
+			Assert::AreEqual(w.Adres, adr);
 			Assert::AreEqual(w.Numer_telefonu, numer);
-			Assert::AreEqual(w.Login, login);
-			Assert::AreEqual(w.Haslo, haslo);
+			Assert::AreEqual(w.Login, log);
+			Assert::AreEqual(w.Haslo, has);
 		}
 	};
 }
