@@ -3,14 +3,4 @@
 ./*/.vs
 /.vs
 /.vs/*
-Project1/DaneOsoby/x64/Debug/*
-Project1/Project1/x64/Debug*
-Project1/TestPeselKlienta/x64/Debug/*
-Project1/x64/Debug*
-Project1.sln
-Project1/TestKonstruktorData/x64/Debug/*
-Project1/TestWypozyczenie/x64/Debug/*
-Project1/TestZmienDate/x64/Debug/*
-Project1/UnitTest_DaneKlienta/x64/Debug/*
-Project1/UnitTest_DanePracownika/x64/Debug/*
-Project1/UnitTest_DaneWlasciciela/x64/Debug/*
+**/Debug/
