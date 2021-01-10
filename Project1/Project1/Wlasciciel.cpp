@@ -35,9 +35,9 @@ void Wlasciciel::dodaj_pojazd()
 		cin >> Rok;
 		cout << "Silnik: ";
 		cin >> Silnik;
-		cout << "Przebieg: ";
+		cout << "Przebieg[w km]: ";
 		cin >> Przebieg;
-		cout << "Cena za godzine: ";
+		cout << "Cena za godzine[w zl]: ";
 		cin >> Cena_za_godzine;
 		plik << "\n" << Numer_rejestracyjny << " " << Rodzaj << " " << Marka << " " << Model << " " <<
 			Rok << " " << Silnik << " " << Przebieg << " " << Cena_za_godzine << " 1";

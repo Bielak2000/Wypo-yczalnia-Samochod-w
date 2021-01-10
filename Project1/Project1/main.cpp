@@ -12,52 +12,12 @@
 
 using namespace std;
 
-Pojazd* wczytaj_z_pliku(int& n)
-{
-	//pobranie danych z pliku 
-	string linia;//zmienna przehcowuja linie z pliku
-	ifstream plik;//zmienna obslugujaca plik 
-	plik.open("Pojazdy.txt");//otwieramy nasz plik z przelewami
-	//sprawdzamy czy udalo sie otowrzyc plik, jesli nie to wychodzimy z programu
-	Pojazd* pojazdy = NULL;
-	if (plik.good())
-	{
-		cout << "Udalo sie otworzyc plik!" << endl;
-		int liczba_pojazdow = 0;
-		while (getline(plik, linia))
-		{
-			liczba_pojazdow++;
-		}
-		plik.clear();
-		plik.seekg(0);
-		n = liczba_pojazdow;
 
-		pojazdy = new Pojazd[liczba_pojazdow];//utowrzenie tablicy elementow ktorymi sa obiekty strukutry dane o rozmiarze 10000
-		//do naszej tablicy przepisuje dane wartosci z pliku
-		for (int i = 0; i < liczba_pojazdow; i++)
-		{
-			getline(plik, linia);
-			istringstream iss(linia);
-			iss >> pojazdy[i].Numer_rejestracyjny;
-			iss >> pojazdy[i].Rodzaj;
-			iss >> pojazdy[i].Marka;
-			iss >> pojazdy[i].Model;
-			iss >> pojazdy[i].Rok;
-			iss >> pojazdy[i].Silnik;
-			iss >> pojazdy[i].Przebieg;
-			iss >> pojazdy[i].Cena_za_godzine;
-			iss >> pojazdy[i].Dostepny;
-		}
-	}
-	plik.close();
-	return pojazdy;
-}
 
 int main()
 {
 	int n;
-	Pojazd* pojazdy = wczytaj_z_pliku(n);
-
+	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);
 
 	int wybor;
 	cout << "Witaj w naszej wypozyczalni samochdow!" << endl;
