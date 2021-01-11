@@ -18,9 +18,9 @@ void Pojazd::wyswietl_dane()
 	cout << ", silnik: " << Silnik;
 	cout << ", przebieg: " << Przebieg;
 	if (Dostepny == 1)
-		cout << "Dostepny: TAK";
+		cout << ", dostepny: TAK";
 	else
-		cout << "Dostepny: NIE";
+		cout << ", dostepny: NIE";
 	cout << ", cena za godzine: " << Cena_za_godzine << ".";
 }
 

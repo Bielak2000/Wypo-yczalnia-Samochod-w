@@ -19,10 +19,6 @@ public:
 	bool mozliwosc_odroczenia();
 
 	void dokonaj_platnosci();
-
-	void zaplac_karta();
-
-	void zaplac_gotowka();
 };
 
 #endif
