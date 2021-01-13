@@ -113,7 +113,7 @@ void Pojazd::aktualizuj_plik()
 	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);	//wczytujemy pojazdy
 
 	for (int i = 0; i < n; i++)
-		if (pojazdy[i].get_Numer_rejestracyjny() == this->Numer_rejestracyjny) 
+		if (pojazdy[i].get_numer_rejestracyjny() == this->Numer_rejestracyjny) 
 		{
 			jest = i;	//jesli pojazd jest juz w pliku to zapisujemy jego indeks w "jest"
 			break;
@@ -168,9 +168,44 @@ void Pojazd::aktualizuj_plik()
 	}
 }
 
-string Pojazd::get_Numer_rejestracyjny()
+string Pojazd::get_numer_rejestracyjny()
 {
 	return Pojazd::Numer_rejestracyjny;
+}
+
+string Pojazd::get_rodzaj()
+{
+	return Pojazd::Rodzaj;
+}
+
+string Pojazd::get_marka()
+{
+	return Pojazd::Marka;
+}
+
+string Pojazd::get_model()
+{
+	return Pojazd::Model;
+}
+
+int Pojazd::get_rok() 
+{
+	return Pojazd::Rok;
+}
+
+string Pojazd::get_silnik()
+{
+	return Pojazd::Silnik;
+}
+
+string Pojazd::get_przebieg()
+{
+	return Pojazd::Przebieg;
+}
+
+bool Pojazd::get_dostepnosc()
+{
+	return Pojazd::Dostepny;
 }
 
 int Pojazd::get_liczba_pojazdow()
@@ -188,10 +223,7 @@ void Pojazd::set_cena_za_godzine(int cena)
 	Cena_za_godzine = cena;
 }
 
-string Pojazd::get_przebieg()
-{
-	return Pojazd::Przebieg;
-}
+
 
 void Pojazd::set_przebieg(string km)
 {
@@ -219,47 +251,6 @@ void Pojazd::set_przebieg();
 void Pojazd::set_cena_za_godzine();
 
 void Pojazd::set_dostepny();
-
-
-string Pojazd::get_numer_rejestracyjny()
-{
-	return Pojazd::Numer_rejestracyjny;
-}
-
-string Pojazd::get_rodzaj()
-{
-	return Pojazd::Rodzaj;
-}
-
-string Pojazd::get_marka()
-{
-	return Pojazd::Marka;
-}
-
-string Pojazd::get_model()
-{
-	return Pojazd::Model;
-}
-
-int Pojazd::get_rok()
-{
-	return Pojazd::Rok;
-}
-
-string Pojazd::get_silnik()
-{
-	return Pojazd::Silnik;
-}
-
-string Pojazd::get_przebieg()
-{
-	return Pojazd::Przebieg;
-}
-
-int Pojazd::get_cena_za_godzine()
-{
-	return Pojazd::Cena_za_godzine;
-}
 
 bool Pojazd::get_dostepny()
 {

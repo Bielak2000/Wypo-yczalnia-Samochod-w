@@ -45,15 +45,21 @@ public:
 
 	void aktualizuj_plik();
 
-	string get_Numer_rejestracyjny();
-
+	string get_numer_rejestracyjny();
+	string get_rodzaj();
+	string get_marka();
+	string get_model();
+	int get_rok();
+	string get_silnik();
+	string get_przebieg();
+	bool get_dostepnosc();
+	int get_cena_za_godzine();
 	int get_liczba_pojazdow();
 
-	int get_cena_za_godzine();
 
 	void set_cena_za_godzine(int cena);
 
-	string get_przebieg();
+	
 
 	void set_przebieg(string km);
 
