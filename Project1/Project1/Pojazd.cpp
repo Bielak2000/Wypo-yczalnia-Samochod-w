@@ -11,7 +11,17 @@ Pojazd::Pojazd()
 Pojazd::Pojazd(string n, string rodz, string mar, string mod,
 	int r, string sil, string przeb, int cen_godz, bool dost)
 {
-	throw "Not yet implemented";
+	this->Numer_rejestracyjny = n;
+	this->Rodzaj = rodz;
+	this->Marka = mar;
+	this->Model = mod;
+	this->Rok = r;
+	this->Silnik = sil;
+	this->Przebieg = przeb;
+	this->Cena_za_godzine = cen_godz;
+	this->Dostepny = dost;
+
+	this->liczba_pojazdow++;
 }
 
 void Pojazd::wyswietl_dane()

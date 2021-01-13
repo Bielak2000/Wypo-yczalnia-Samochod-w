@@ -30,7 +30,7 @@ namespace UnitTestDanePojazdu
 			Assert::AreEqual(p1.get_marka(), mar);
 			Assert::AreEqual(p1.get_rok(), r);
 			Assert::AreEqual(p1.get_silnik(), sil);
-			Assert::AreEqual(p1.get_przebieg(), sil);
+			Assert::AreEqual(p1.get_przebieg(), przeb);
 			Assert::AreEqual(p1.get_cena_za_godzine(), cen);
 			Assert::AreEqual(p1.get_dostepnosc(), dost);
 		}
