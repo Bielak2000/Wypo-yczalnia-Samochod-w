@@ -1,6 +1,8 @@
 #ifndef POJAZD_H
 #define POJAZD_H
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -8,7 +10,6 @@ class Pojazd
 {
 
 private:
-	friend Pojazd* wczytaj_z_pliku(int& n);
 	string Numer_rejestracyjny;
 	string Rodzaj;
 	string Marka;
@@ -22,6 +23,9 @@ private:
 
 public:
 	Pojazd();
+
+	Pojazd(string n, string rodz, string mar, string mod, int r,
+		string sil, string przeb, int cen_godz, bool dost);
 
 	void wyswietl_dane();
 
@@ -37,13 +41,25 @@ public:
 
 	void zmien_dostepnosc();
 
+	static Pojazd* wczytaj_z_pliku(int& n);
+
+	void aktualizuj_plik();
+
+	string get_numer_rejestracyjny();
+	string get_rodzaj();
+	string get_marka();
+	string get_model();
+	int get_rok();
+	string get_silnik();
+	string get_przebieg();
+	bool get_dostepnosc();
+	int get_cena_za_godzine();
 	int get_liczba_pojazdow();
 
-	int get_cena_za_godzine();
 
 	void set_cena_za_godzine(int cena);
 
-	string get_przebieg();
+	
 
 	void set_przebieg(string km);
 
