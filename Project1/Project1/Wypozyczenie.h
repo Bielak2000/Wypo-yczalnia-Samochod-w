@@ -2,6 +2,7 @@
 #define WYPOZYCZENIE_H
 #include "Data.h"
 #include "Osoba.h"
+#include "Platnosc.h"
 #include <iostream>
 
 using namespace std;
@@ -16,6 +17,7 @@ private:
 	bool Zakonczone = 0;
 	string pesel;
 	Data termin_platnosci = Data_do;
+	Platnosc Rachunek;
 
 public:
 	Wypozyczenie();
