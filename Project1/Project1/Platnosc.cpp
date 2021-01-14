@@ -17,15 +17,3 @@ void Platnosc::dokonaj_platnosci()
 	// TODO - implement Platnosc::dokonaj_platnosci
 	throw "Not yet implemented";
 }
-
-void Platnosc::zaplac_karta()
-{
-	// TODO - implement Platnosc::zaplac_karta
-	throw "Not yet implemented";
-}
-
-void Platnosc::zaplac_gotowka()
-{
-	// TODO - implement Platnosc::zaplac_gotowka
-	throw "Not yet implemented";
-}
