@@ -3,16 +3,10 @@
 #include <iostream>
 using namespace std;
 
-/*Wlasciciel::Wlasciciel()
+Wlasciciel::Wlasciciel(): Pracownik("Jan", "Nowak", "92839284782", "Warszawa, ul. Szkolna 5", "983290139")
 {
-	this->Imie = "Jan";
-	this->Nazwisko = "Nowak";
-	this->Pesel = "92839284782";
-	this->Adres = "Warszawa, ul. Szkolna 5";
-	this->Numer_telefonu = "983290139";
-	this->Haslo = "LAB01";
-	this->Login = "JanNowak";
-}*/
+	
+}
 
 void Wlasciciel::dodaj_pojazd()
 {

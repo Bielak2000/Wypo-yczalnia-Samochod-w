@@ -2,8 +2,7 @@
 
 bool Platnosc::czy_zaplacono()
 {
-	// TODO - implement Platnosc::czy_zaplacono
-	throw "Not yet implemented";
+	return Potwierdzenie;
 }
 
 bool Platnosc::mozliwosc_odroczenia()
@@ -26,6 +25,5 @@ void Platnosc::zaplac_karta()
 
 void Platnosc::zaplac_gotowka()
 {
-	// TODO - implement Platnosc::zaplac_gotowka
-	throw "Not yet implemented";
+	
 }

@@ -20,7 +20,6 @@ public:
 	int Liczba_wypozyczen;
 	static int liczba_pojazdow;
 
-public:
 	Pojazd();
 
 	void wyswietl_dane();

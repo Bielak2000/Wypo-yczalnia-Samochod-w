@@ -2,11 +2,10 @@
 #include <iostream>
 
 using namespace std;
-/*
-Wypozyczenie::Wypozyczenie()
-{
 
-}*/
+Wypozyczenie::Wypozyczenie(): Data_od(0,0,0,0), Data_do(0,0,0,0), termin_platnosci(0,0,0,0)
+{
+}
 
 bool Wypozyczenie::zmien_okres()
 {

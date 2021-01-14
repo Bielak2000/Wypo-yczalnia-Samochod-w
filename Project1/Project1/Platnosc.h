@@ -7,13 +7,13 @@ using namespace std;
 class Platnosc
 {
 
-private:
+public:
 	string Sposob_platnosci;
 	int Kwota;
 	bool Potwierdzenie;
 	bool Odroczenie;
 
-public:
+
 	bool czy_zaplacono();
 
 	bool mozliwosc_odroczenia();

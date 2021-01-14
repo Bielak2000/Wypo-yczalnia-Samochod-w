@@ -15,7 +15,7 @@ class Klient : public Osoba
 public:
 	Klient(string Im, string Naz, string Pes, string Addr, string Numer);
 
-	bool wypozycz(string nr);
+	bool wypozycz(string nr, Pojazd* tablica_pojazdow);
 
 	void zarzadzaj_wypozyczeniem();
 

@@ -22,7 +22,7 @@ int main()
 	if (plik.good())
 	{
 		cout << "Udalo sie otworzyc plik!" << endl;
-		int liczba_pojazdow=0;
+		int liczba_pojazdow = 0;
 		while (getline(plik, linia))
 		{
 			liczba_pojazdow++;
@@ -46,38 +46,39 @@ int main()
 			iss >> pojazdy[i].Cena_za_godzine;
 			iss >> pojazdy[i].Dostepny;
 		}
-	}
-	plik.close();
-	//Wlasciciel w;
-	//w.dodaj_pojazd();
-	int wybor;
-	cout << "Witaj w naszej wypozyczalni samochdow!" << endl;
-	cout << "Kim jestes?";
 
-	cout << "Kim jestes?" << endl;
-	cout << "1.Klientem." << endl;
-	cin >> wybor;
+		plik.close();
+		//Wlasciciel w;
+		//w.dodaj_pojazd();
+		int wybor;
+		cout << "Witaj w naszej wypozyczalni samochdow!" << endl;
+		cout << "Kim jestes?";
 
-	if (wybor == 1)
-	{
-		int wybor1;
-		cout << "Wybierz opcje." << endl;
-		cout << "1.Wypozyczenie pojazdu." << endl;
-		cout << "2.Zarzadzaj wypozyczeniem." << endl;
-		cout << "3.Zwroc pojazd." << endl;
-		cout << "4.Wyswietl oferte." << endl;
-		cout << "5.Dokonaj platnosci." << endl;
-		cin >> wybor1;
+		cout << "Kim jestes?" << endl;
+		cout << "1.Klientem." << endl;
+		cin >> wybor;
 
-		if (wybor1 == 1)
+		if (wybor == 1)
 		{
-			string nr_rej;
-			Klient k1("Julek","Starski","123","Liliowa 15","123123");
-			cout << "Podaj numer rejestracyjny samochodu ktory chcesz wypozyczyc: ";
-			cin >> nr_rej;
-			k1.wypozycz(nr_rej);
+			int wybor1;
+			cout << "Wybierz opcje." << endl;
+			cout << "1.Wypozyczenie pojazdu." << endl;
+			cout << "2.Zarzadzaj wypozyczeniem." << endl;
+			cout << "3.Zwroc pojazd." << endl;
+			cout << "4.Wyswietl oferte." << endl;
+			cout << "5.Dokonaj platnosci." << endl;
+			cin >> wybor1;
+
+			if (wybor1 == 1)
+			{
+				string nr_rej;
+				Klient k1("Julek", "Starski", "123", "Liliowa 15", "123123");
+				cout << "Podaj numer rejestracyjny samochodu ktory chcesz wypozyczyc: ";
+				cin >> nr_rej;
+				k1.wypozycz(nr_rej, pojazdy);
+			}
+
+
 		}
-
-
 	}
 }

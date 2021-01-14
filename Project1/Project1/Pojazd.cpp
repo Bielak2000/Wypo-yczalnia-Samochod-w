@@ -58,8 +58,14 @@ int Pojazd::sprawdz_uszkodzenia()
 
 void Pojazd::zmien_dostepnosc()
 {
-	// TODO - implement Pojazd::zmien_dostepnosc
-	throw "Not yet implemented";
+	if (Dostepny)
+	{
+		Dostepny = false;
+	}
+	else
+	{
+		Dostepny = true;
+	}
 }
 
 void Pojazd::napraw()

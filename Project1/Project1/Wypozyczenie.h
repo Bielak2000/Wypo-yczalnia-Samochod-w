@@ -18,7 +18,7 @@ public:
 	Data termin_platnosci = Data_do;
 
 public:
-	//Wypozyczenie();
+	Wypozyczenie();
 
 	bool zmien_okres();
 

@@ -2,6 +2,8 @@
 #include "CppUnitTest.h"
 #include "../Project1/Pracownik.h"
 #include "../Project1/Pracownik.cpp"
+#include "../Project1/Osoba.h"
+#include "../Project1/Osoba.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

@@ -1,14 +1,10 @@
 #include "Osoba.h"
 
 
-/*Osoba::Osoba(string Im, string Naz, string Pes, string Addr, string Numer)
+Osoba::Osoba(string Im, string Naz, string Pes, string Addr, string Numer):
+	Imie(Im), Nazwisko(Naz), Pesel(Pes), Adres(Addr), Numer_telefonu(Numer)
 {
-	 this->Imie = Im;
-	 this->Nazwisko = Naz;
-	 this->Pesel = Pes;
-	 this->Adres = Addr;
-	 this->Numer_telefonu = Numer;
-}*/
+}
 
 void Osoba::wyswietl_dane()
 {

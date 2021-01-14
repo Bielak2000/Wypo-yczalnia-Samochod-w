@@ -16,7 +16,7 @@ public:
 
 public:
 
-	//Osoba(string Im, string Naz, string Pes, string Addr, string Numer);
+	Osoba(string Im, string Naz, string Pes, string Addr, string Numer);
 
 	void wyswietl_dane();
 
