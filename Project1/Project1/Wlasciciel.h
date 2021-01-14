@@ -18,10 +18,6 @@ public:
 	void usun_pojazd(string nr_rej);
 
 	void zarzadzaj_dzialalnoscia();
-
-	string get_login_wlasciciela();
-
-	string get_haslo_wlasciciela();
 };
 
 #endif
