@@ -1,4 +1,5 @@
 #include "Wlasciciel.h"
+#include "Pojazd.h"
 #include <fstream>
 #include <iostream>
 using namespace std;
@@ -48,10 +49,22 @@ void Wlasciciel::dodaj_pojazd()
 	}
 }
 
-void Wlasciciel::zmien_cene(string nr_rej)
+void Wlasciciel::zmien_cene(string nr_rej, Pojazd* pojazdy)
 {
-	// TODO - implement Wlasciciel::zmien_cene
-	throw "Not yet implemented";
+	//int n;
+	//Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);
+	for (int i = 0; i < pojazdy[0].get_liczba_pojazdow(); i++)
+	{
+		if (pojazdy[i].get_numer_rejestracyjny() == nr_rej)
+		{
+			int nowa_cena;
+			cout << "Podaj nowa cene za godzine dla tego pojazdu: ";
+			cin >> nowa_cena;
+			pojazdy[i].zmien_cene_pojazdu(nowa_cena);
+			pojazdy[i].aktualizuj_plik(pojazdy);
+			break;
+		}
+	}
 }
 
 void Wlasciciel::usun_pojazd(string nr_rej)

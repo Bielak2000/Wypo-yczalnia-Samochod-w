@@ -59,7 +59,7 @@ bool Pojazd::sprawdz_dostepnosc(string nr)
 	}
 }
 
-void Pojazd::zmien_cene(int cena)
+void Pojazd::zmien_cene_pojazdu(int cena)
 {
 	Cena_za_godzine = cena;
 }
@@ -117,12 +117,13 @@ Pojazd* Pojazd::wczytaj_z_pliku(int& n)
 	return pojazdy;
 }
 
-void Pojazd::aktualizuj_plik()
+void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 {
-	int n, jest = -1;	//ilosc pojazdow, indeks dla pojazdu dla ktorego wywolana jest metoda
-	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);	//wczytujemy pojazdy
+	//int n, jest = -1;	//ilosc pojazdow, indeks dla pojazdu dla ktorego wywolana jest metoda
+	//Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);	//wczytujemy pojazdy
+	int jest = -1;
 
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
 		if (pojazdy[i].get_numer_rejestracyjny() == this->Numer_rejestracyjny) 
 		{
 			jest = i;	//jesli pojazd jest juz w pliku to zapisujemy jego indeks w "jest"
@@ -149,7 +150,7 @@ void Pojazd::aktualizuj_plik()
 	{
 		ofstream plik;	//edytowanie pliku z nadpisaniem
 		plik.open("Pojazdy.txt");
-		for (int i = 0; i < n; i++)
+		for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby pojazdu nie zapisac 2x
 			plik << "\n" << pojazdy[i].Numer_rejestracyjny << " ";
@@ -232,8 +233,6 @@ void Pojazd::set_cena_za_godzine(int cena)
 {
 	Cena_za_godzine = cena;
 }
-
-
 
 void Pojazd::set_przebieg(string km)
 {

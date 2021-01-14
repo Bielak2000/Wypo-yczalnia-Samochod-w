@@ -14,9 +14,8 @@ namespace TestZmienCene
 		TEST_METHOD(TestZmienCeneWPojazd)
 		{
 			Pojazd p;
-			p.set_cena_za_godzine(120);
 			int nowa_cena = 150;
-			p.zmien_cene(nowa_cena);
+			p.zmien_cene_pojazdu(nowa_cena);
 			Assert::AreEqual(p.get_cena_za_godzine(), nowa_cena);
 		}
 	};
