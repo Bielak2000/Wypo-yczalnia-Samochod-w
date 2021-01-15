@@ -19,7 +19,8 @@ int main()
 {
 	int n;
 	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);
-  system("cls");
+
+	 system("cls");
 	int wybor;
 	cout << "Witaj w naszej wypozyczalni pojazdow!" << endl;
 	Sleep(3000);
@@ -68,6 +69,7 @@ int main()
 	}
 	else if (wybor == 3)
 	{
+		Wlasciciel w;
 		int wybor1;
 		cout << "Wybierz opcje." << endl;
 		cout << "1.Dodaj pojazd." << endl;
@@ -77,15 +79,18 @@ int main()
 		system("cls");
 		if (wybor1 == 1)
 		{
-
+			w.dodaj_pojazd();
 		}
 		else if (wybor1 == 2)
 		{
-
+			
 		}
 		else
 		{
-
+			string numer_rejestracyjny;
+			cout << "Podaj numer rejestracyjny pojazdu, ktorego cene za godzine chcesz zmienic: ";
+			cin >> numer_rejestracyjny;
+			w.zmien_cene(numer_rejestracyjny, pojazdy);
 		}
 	}
 }

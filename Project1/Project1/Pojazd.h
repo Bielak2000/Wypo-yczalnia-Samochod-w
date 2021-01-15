@@ -31,11 +31,9 @@ public:
 
 	void zmien_przebieg(string km);
 
-	void uszkodzenia();
-
 	bool sprawdz_dostepnosc(string nr);
 
-	void zmien_cene(int cena);
+	void zmien_cene_pojazdu(int cena);
 
 	void wypozycz();
 
@@ -43,7 +41,7 @@ public:
 
 	static Pojazd* wczytaj_z_pliku(int& n);
 
-	void aktualizuj_plik();
+	void aktualizuj_plik(Pojazd* pojazdy);
 
 	string get_numer_rejestracyjny();
 	string get_rodzaj();

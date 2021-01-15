@@ -4,6 +4,7 @@
 #include "../Project1/Pojazd.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace std;
 
 namespace TestZmienPrzebieg
 {
@@ -13,11 +14,10 @@ namespace TestZmienPrzebieg
 		
 		TEST_METHOD(TestZmienPrzebiegWPojazd)
 		{
+			string kmo = "26000";
 			Pojazd p;
-			p.set_przebieg("22012");
-			string km = "26000";
-			p.zmien_przebieg(km);
-			Assert::AreEqual(p.get_przebieg(), km);
+			p.zmien_przebieg(kmo);
+			Assert::AreEqual(p.get_przebieg(), kmo);
 		}
 	};
 }

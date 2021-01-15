@@ -1,6 +1,7 @@
 #ifndef WLASCICIEL_H
 #define WLASCICIEL_H
 #include "Pracownik.h"
+#include "Pojazd.h"
 #include <iostream>
 
 using namespace std;
@@ -13,7 +14,7 @@ public:
 
 	void dodaj_pojazd();
 
-	void zmien_cene(string nr_rej);
+	void zmien_cene(string nr_rej, Pojazd* pojazdy);
 
 	void usun_pojazd(string nr_rej);
 
