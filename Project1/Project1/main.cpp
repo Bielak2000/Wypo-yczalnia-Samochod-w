@@ -47,7 +47,8 @@ int main()
 
 		if (wybor1 == 1)
 		{
-			
+			Klient k;
+			k.wypozycz(pojazdy);
 		}
 		else if (wybor1 == 2)
 		{

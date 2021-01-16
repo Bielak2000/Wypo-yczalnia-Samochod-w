@@ -14,6 +14,8 @@ private:
 	bool Odroczenie;
 
 public:
+	//Platnosc(string sp = "Gotowka", int kw, bool potw = 0, bool odr = 0);
+	Platnosc(int kw=0);
 
 	bool czy_zaplacono();
 

@@ -20,7 +20,7 @@ private:
 	Platnosc Rachunek;
 
 public:
-	Wypozyczenie();
+	Wypozyczenie(Data d1=0, Data d2=0, string nr_rej="0", string pes="0", int cena=0);
 
 	bool zmien_okres();
 
