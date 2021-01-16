@@ -4,13 +4,9 @@
 
 using namespace std;
 
-Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer)
+Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer):
+	Osoba(Im, Naz, Pes, Addr, Numer)
 {
-	this->Imie = Im;
-	this->Nazwisko = Naz;
-	this->Pesel = Pes;
-	this->Adres = Addr;
-	this->Numer_telefonu = Numer;
 }
 /*
 bool Klient::wypozycz()

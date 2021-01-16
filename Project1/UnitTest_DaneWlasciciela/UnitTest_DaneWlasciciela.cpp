@@ -26,7 +26,7 @@ namespace UnitTestDaneWlasciciela
 			string pes = "92839284782";
 			string adr = "Warszawa, ul. Szkolna 5";
 			string numer = "983290139";
-			string has = "LAB01";
+			string has = "92839284782";
 			string log = "JanNowak";
 
 			Wlasciciel w;
@@ -36,8 +36,8 @@ namespace UnitTestDaneWlasciciela
 			Assert::AreEqual(w.get_pesel(), pes);
 			Assert::AreEqual(w.get_adres(), adr);
 			Assert::AreEqual(w.get_numer_telefonu(), numer);
-			Assert::AreEqual(w.get_login_wlasciciela(), log);
-			Assert::AreEqual(w.get_haslo_wlasciciela(), has);
+			Assert::AreEqual(w.get_login(), log);
+			Assert::AreEqual(w.get_haslo(), has);
 		}
 	};
 }

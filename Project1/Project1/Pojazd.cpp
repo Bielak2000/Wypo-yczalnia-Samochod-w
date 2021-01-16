@@ -66,14 +66,19 @@ void Pojazd::zmien_cene_pojazdu(int cena)
 
 void Pojazd::wypozycz()
 {
-	// TODO - implement Pojazd::wypozycz
-	throw "Not yet implemented";
+	zmien_dostepnosc();
 }
 
 void Pojazd::zmien_dostepnosc()
 {
-	// TODO - implement Pojazd::zmien_dostepnosc
-	throw "Not yet implemented";
+	if (Dostepny)
+	{
+		Dostepny = false;
+	}
+	else
+	{
+		Dostepny = true;
+	}
 }
 
 Pojazd* Pojazd::wczytaj_z_pliku(int& n)
@@ -239,6 +244,11 @@ void Pojazd::set_przebieg(string km)
 	Przebieg = km;
 }
 
+void Pojazd::set_dostepny( bool dostep )
+{
+	Pojazd::Dostepny = dostep;
+}
+
 /*
 void Pojazd::set_numer_rejestracyjny()
 {
@@ -258,8 +268,6 @@ void Pojazd::set_silnik();
 void Pojazd::set_przebieg();
 
 void Pojazd::set_cena_za_godzine();
-
-void Pojazd::set_dostepny();
 
 bool Pojazd::get_dostepny()
 {
