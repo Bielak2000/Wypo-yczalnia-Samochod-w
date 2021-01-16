@@ -239,8 +239,6 @@ void Pojazd::set_cena_za_godzine(int cena)
 	Cena_za_godzine = cena;
 }
 
-
-
 void Pojazd::set_przebieg(string km)
 {
 	Przebieg = km;
