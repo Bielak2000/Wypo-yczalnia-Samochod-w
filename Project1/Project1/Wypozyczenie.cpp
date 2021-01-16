@@ -1,9 +1,14 @@
 #include "Wypozyczenie.h"
+#include "Platnosc.h"
 #include <iostream>
 
 using namespace std;
 
-Wypozyczenie::Wypozyczenie(){}
+Wypozyczenie::Wypozyczenie(Data d1, Data d2, string nr_rej, string pes, int cena):Data_od(d1), Data_do(d2), Numer_rejestracyjny(nr_rej), pesel(pes)
+{
+	Platnosc p(cena);
+	Rachunek = p;
+}
 
 bool Wypozyczenie::zmien_okres()
 {

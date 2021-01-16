@@ -1,9 +1,14 @@
 #include "Platnosc.h"
-
-/*Platnosc::Platnosc(string sp, int kw, bool potw, bool odr):
+/*
+Platnosc::Platnosc(string sp, int kw, bool potw, bool odr):
 	Sposob_platnosci(sp), Kwota(kw), Potwierdzenie(potw), Odroczenie(odr)
 {
+
 }*/
+
+Platnosc::Platnosc(int kw) :Kwota(kw), Sposob_platnosci("Gotowka"), Potwierdzenie(false), Odroczenie(false)
+{
+}
 
 bool Platnosc::czy_zaplacono()
 {
