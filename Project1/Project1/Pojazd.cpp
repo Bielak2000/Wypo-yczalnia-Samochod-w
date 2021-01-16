@@ -240,6 +240,11 @@ void Pojazd::set_przebieg(string km)
 	Przebieg = km;
 }
 
+void Pojazd::set_dostepny( bool dostep )
+{
+	Pojazd::Dostepny = dostep;
+}
+
 /*
 void Pojazd::set_numer_rejestracyjny()
 {
@@ -259,8 +264,6 @@ void Pojazd::set_silnik();
 void Pojazd::set_przebieg();
 
 void Pojazd::set_cena_za_godzine();
-
-void Pojazd::set_dostepny();
 
 bool Pojazd::get_dostepny()
 {
