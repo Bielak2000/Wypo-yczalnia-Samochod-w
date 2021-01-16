@@ -66,8 +66,7 @@ void Pojazd::zmien_cene(int cena)
 
 void Pojazd::wypozycz()
 {
-	// TODO - implement Pojazd::wypozycz
-	throw "Not yet implemented";
+	zmien_dostepnosc();
 }
 
 void Pojazd::zmien_dostepnosc()
