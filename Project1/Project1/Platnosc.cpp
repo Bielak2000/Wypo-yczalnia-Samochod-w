@@ -7,8 +7,7 @@
 
 bool Platnosc::czy_zaplacono()
 {
-	// TODO - implement Platnosc::czy_zaplacono
-	throw "Not yet implemented";
+	return Potwierdzenie;
 }
 
 bool Platnosc::mozliwosc_odroczenia()
