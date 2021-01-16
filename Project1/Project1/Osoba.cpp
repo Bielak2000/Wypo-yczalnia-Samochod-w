@@ -16,8 +16,17 @@ void Osoba::wyswietl_dane()
 
 void Osoba::zmien_dane()
 {
-	// TODO - implement Osoba::zmien_dane
-	throw "Not yet implemented";
+	cout << "Prosze podac nastepujace dane:" << endl;
+	cout << "Imie: ";
+	cin >> Imie;
+	cout << "Nazwisko: ";
+	cin >> Nazwisko;
+	cout << "Pesel: ";
+	cin >> Pesel;
+	cout << "Adres: ";
+	cin >> Adres;
+	cout << "Nr telefonu: ";
+	cin >> Numer_telefonu;
 }
 
 string Osoba::get_imie()
