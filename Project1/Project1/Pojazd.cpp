@@ -72,8 +72,14 @@ void Pojazd::wypozycz()
 
 void Pojazd::zmien_dostepnosc()
 {
-	// TODO - implement Pojazd::zmien_dostepnosc
-	throw "Not yet implemented";
+	if (Dostepny)
+	{
+		Dostepny = false;
+	}
+	else
+	{
+		Dostepny = true;
+	}
 }
 
 Pojazd* Pojazd::wczytaj_z_pliku(int& n)
