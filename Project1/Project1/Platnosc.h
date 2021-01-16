@@ -14,11 +14,14 @@ private:
 	bool Odroczenie;
 
 public:
+
 	bool czy_zaplacono();
 
 	bool mozliwosc_odroczenia();
 
 	void dokonaj_platnosci();
+
+	void set_potwierdzenie(bool potw);
 };
 
 #endif
