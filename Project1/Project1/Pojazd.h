@@ -57,7 +57,7 @@ public:
 
 	void set_cena_za_godzine(int cena);
 
-	
+	void set_dostepny(bool dostep);
 
 	void set_przebieg(string km);
 

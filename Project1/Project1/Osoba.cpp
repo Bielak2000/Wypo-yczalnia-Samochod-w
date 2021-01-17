@@ -1,14 +1,10 @@
 #include "Osoba.h"
 
 
-/*Osoba::Osoba(string Im, string Naz, string Pes, string Addr, string Numer)
+Osoba::Osoba(string Im, string Naz, string Pes, string Addr, string Numer):
+	Imie(Im), Nazwisko(Naz), Pesel(Pes), Adres(Addr), Numer_telefonu(Numer)
 {
-	 this->Imie = Im;
-	 this->Nazwisko = Naz;
-	 this->Pesel = Pes;
-	 this->Adres = Addr;
-	 this->Numer_telefonu = Numer;
-}*/
+}
 
 void Osoba::wyswietl_dane()
 {
@@ -20,8 +16,17 @@ void Osoba::wyswietl_dane()
 
 void Osoba::zmien_dane()
 {
-	// TODO - implement Osoba::zmien_dane
-	throw "Not yet implemented";
+	cout << "Prosze podac nastepujace dane:" << endl;
+	cout << "Imie: ";
+	cin >> Imie;
+	cout << "Nazwisko: ";
+	cin >> Nazwisko;
+	cout << "Pesel: ";
+	cin >> Pesel;
+	cout << "Adres: ";
+	cin >> Adres;
+	cout << "Nr telefonu: ";
+	cin >> Numer_telefonu;
 }
 
 string Osoba::get_imie()
