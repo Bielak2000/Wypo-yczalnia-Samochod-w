@@ -60,14 +60,36 @@ void Wlasciciel::zmien_cene(string nr_rej, Pojazd* pojazdy)
 	}
 }
 
-void Wlasciciel::usun_pojazd(string nr_rej)
+void Wlasciciel::usun_pojazd(string nr_rej, Pojazd* pojazdy)
 {
-	// TODO - implement Wlasciciel::usun_pojazd
-	throw "Not yet implemented";
-}
+	int jest = -1;	//zmienna na indeks pojazdu w pliku
 
-void Wlasciciel::zarzadzaj_dzialalnoscia()
-{
-	// TODO - implement Wlasciciel::zarzadzaj_dzialalnoscia
-	throw "Not yet implemented";
+	for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
+		if (pojazdy[i].get_numer_rejestracyjny() == nr_rej)	//przeszukujemy tablice w poszukiwaniu pojazdu do usuniecia
+		{
+			jest = i;
+			break;
+		}
+
+	if (jest == -1)
+		cout << "Pojazd nie zostal usuniety, gdyz nie ma go w pliku.";
+	else
+	{
+		ofstream plik;
+		plik.open("Pojazdy.txt");	//nadpisujemy plik
+		for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
+		{
+			if (i == jest) continue;	//pomijanie dopisania pojazdu usuwanego
+			if (i != 0) plik << "\n";	//warunek, aby nie zrobic pustej linii na poczatku pliku
+			plik << pojazdy[i].get_numer_rejestracyjny() << " ";
+			plik << pojazdy[i].get_rodzaj() << " ";
+			plik << pojazdy[i].get_marka() << " ";
+			plik << pojazdy[i].get_model() << " ";
+			plik << pojazdy[i].get_rok() << " ";
+			plik << pojazdy[i].get_silnik() << " ";
+			plik << pojazdy[i].get_przebieg() << " ";
+			plik << pojazdy[i].get_cena_za_godzine() << " ";
+			plik << pojazdy[i].get_dostepnosc();
+		}
+	}
 }
