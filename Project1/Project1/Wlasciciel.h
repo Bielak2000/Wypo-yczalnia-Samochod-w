@@ -16,9 +16,7 @@ public:
 
 	void zmien_cene(string nr_rej, Pojazd* pojazdy);
 
-	void usun_pojazd(string nr_rej);
-
-	void zarzadzaj_dzialalnoscia();
+	void usun_pojazd(string nr_rej, Pojazd* pojazdy);
 };
 
 #endif
