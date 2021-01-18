@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../Project1/Platnosc.h"
+#include "../Project1/Platnosc.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -10,7 +11,7 @@ namespace TestSetCena
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(TestUstawCene)
 		{
 			Platnosc p;
 			int cena = 200;

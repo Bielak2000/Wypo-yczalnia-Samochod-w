@@ -45,3 +45,8 @@ bool Platnosc::get_potwierdzenie()
 {
 	return Platnosc::Potwierdzenie;
 }
+
+void Platnosc::set_kwota(int cena)
+{
+	Platnosc::Kwota = cena;
+}
