@@ -28,6 +28,8 @@ public:
 	int get_kwota();
 
 	bool get_potwierdzenie();
+
+	void set_kwota(int cena);
 };
 
 #endif
