@@ -69,6 +69,11 @@ void Wypozyczenie::zmien_termin_platnosci(Data d)
 	throw "Not yet implemented";
 }
 
+bool Wypozyczenie::get_zakonczone()
+{
+	return Wypozyczenie::Zakonczone;
+}
+
 Data Wypozyczenie::zwroc_date_rozpoczecia()
 {
 	// TODO - implement Wypozyczenie::zwroc_date_rozpoczecia
@@ -100,3 +105,7 @@ Data Wypozyczenie::get_termin_platnosci()
 	return Wypozyczenie::termin_platnosci;
 }
 
+Platnosc Wypozyczenie::get_rachunek()
+{
+	return Wypozyczenie::Rachunek;
+}

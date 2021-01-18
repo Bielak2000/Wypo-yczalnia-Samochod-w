@@ -5,7 +5,6 @@
 #include "Osoba.h"
 #include "Platnosc.h"
 #include "Pojazd.h"
-#include "Pracownik.h"
 #include "Wlasciciel.h"
 #include "Wypozyczenie.h"
 #include <fstream>
@@ -13,14 +12,12 @@
 
 using namespace std;
 
-
-
 int main()
 {
 	int n;
 	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);
 
-	 system("cls");
+	system("cls");
 	int wybor;
 	cout << "Witaj w naszej wypozyczalni pojazdow!" << endl;
 	Sleep(3000);
@@ -28,8 +25,7 @@ int main()
 
 	cout << "Kim jestes?" << endl;
 	cout << "1.Klientem." << endl;
-	cout << "2.Pracownikiem." << endl;
-	cout << "3.Wlascicielem." << endl;
+	cout << "2.Wlascicielem." << endl;
 	cin >> wybor;
 	system("cls");
 
@@ -68,7 +64,7 @@ int main()
 
 		}
 	}
-	else if (wybor == 3)
+	else if (wybor == 2)
 	{
 		Wlasciciel w;
 		int wybor1;
@@ -96,7 +92,8 @@ int main()
 			cin >> numer_rejestracyjny;
 			w.zmien_cene(numer_rejestracyjny, pojazdy);
 		}
-		else {
+		else 
+		{
 			cout << "Podano nieprawidlowy numer wyboru!";
 			Sleep(2000);
 		}
