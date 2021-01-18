@@ -3,10 +3,10 @@
 
 int Pojazd::liczba_pojazdow = 0;
 
-Pojazd::Pojazd()
+/*Pojazd::Pojazd()
 {
 	Pojazd::liczba_pojazdow++;
-}
+}*/
 
 Pojazd::Pojazd(string n, string rodz, string mar, string mod,
 	int r, string sil, string przeb, int cen_godz, bool dost)

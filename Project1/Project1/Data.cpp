@@ -26,7 +26,6 @@ void Data::zmien_date()
 	cout << "Data zostala zmieniona!" << endl;
 }
 
-
 int Data::get_dzien()
 {
 	return Data::dzien;

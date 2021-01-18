@@ -16,7 +16,8 @@ protected:
 
 public:
 
-	Osoba(string Im, string Naz, string Pes, string Addr, string Numer);
+	Osoba(string Im = "Niezdefiniowane", string Naz = "Niezdefiniowane", string Pes = "Niezdefiniowane",
+		string Addr = "Niezdefiniowane", string Numer = "Niezdefiniowane");
 
 	void wyswietl_dane();
 

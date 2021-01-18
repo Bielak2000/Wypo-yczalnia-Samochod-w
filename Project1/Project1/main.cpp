@@ -13,14 +13,12 @@
 
 using namespace std;
 
-
-
 int main()
 {
 	int n;
 	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);
 
-	 system("cls");
+	system("cls");
 	int wybor;
 	cout << "Witaj w naszej wypozyczalni pojazdow!" << endl;
 	Sleep(3000);
@@ -84,14 +82,21 @@ int main()
 		}
 		else if (wybor1 == 2)
 		{
-			
+			string nr_rej_usun;
+			cout << "Podaj numer rejestracyjny pojazdu, ktory chcesz usunac: ";
+			cin >> nr_rej_usun;
+			w.usun_pojazd(nr_rej_usun, pojazdy);
 		}
-		else
+		else if (wybor1 == 3)
 		{
 			string numer_rejestracyjny;
 			cout << "Podaj numer rejestracyjny pojazdu, ktorego cene za godzine chcesz zmienic: ";
 			cin >> numer_rejestracyjny;
 			w.zmien_cene(numer_rejestracyjny, pojazdy);
+		}
+		else {
+			cout << "Podano nieprawidlowy numer wyboru!";
+			Sleep(2000);
 		}
 	}
 }

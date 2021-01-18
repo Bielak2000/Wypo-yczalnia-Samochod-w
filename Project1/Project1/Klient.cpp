@@ -6,8 +6,7 @@
 using namespace std;
 
 Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer):
-	Osoba(Im, Naz, Pes, Addr, Numer)
-{}
+	Osoba(Im, Naz, Pes, Addr, Numer) {}
 
 bool Klient::wypozycz(Pojazd* pojazdy)
 {
