@@ -22,10 +22,10 @@ private:
 	static int liczba_pojazdow;
 
 public:
-	Pojazd();
+	//Pojazd();
 
-	Pojazd(string n, string rodz, string mar, string mod, int r,
-		string sil, string przeb, int cen_godz, bool dost);
+	Pojazd(string n="Niezdefiniowane", string rodz = "Niezdefiniowane", string mar = "Niezdefiniowane", string mod = "Niezdefiniowane", int r = 0,
+		string sil = "Niezdefiniowane", string przeb = "Niezdefiniowane", int cen_godz = 0, bool dost = false);
 
 	void wyswietl_dane();
 
