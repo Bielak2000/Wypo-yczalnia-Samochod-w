@@ -1,2 +1,4 @@
 ﻿  UnitTest_DaneWlasciciela.cpp
-  UnitTest_DaneWlasciciela.vcxproj -> D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\UnitTest_DaneWlasciciela.dll
+     Trwa tworzenie biblioteki D:\GitHub\Project1\x64\Debug\UnitTest_DaneWlasciciela.lib i obiektu D:\GitHub\Project1\x64\Debug\UnitTest_DaneWlasciciela.exp
+UnitTest_DaneWlasciciela.obj : error LNK2019: nierozpoznany symbol zewnętrzny "public: __cdecl Platnosc::Platnosc(int)" (??0Platnosc@@QEAA@H@Z) przywołany w funkcji "public: __cdecl Wypozyczenie::Wypozyczenie(class Data,class Data,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)" (??0Wypozyczenie@@QEAA@VData@@0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1H@Z)
+D:\GitHub\Project1\x64\Debug\UnitTest_DaneWlasciciela.dll : fatal error LNK1120: liczba nierozpoznanych elementów zewnętrznych: 1

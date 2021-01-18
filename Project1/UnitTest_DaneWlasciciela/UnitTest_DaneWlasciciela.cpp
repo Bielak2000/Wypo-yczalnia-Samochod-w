@@ -10,6 +10,8 @@
 #include "../Project1/Data.cpp"
 #include "../Project1/Wypozyczenie.h"
 #include "../Project1/Wypozyczenie.cpp"
+#include "../Project1/Pojazd.h"
+#include "../Project1/Pojazd.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
