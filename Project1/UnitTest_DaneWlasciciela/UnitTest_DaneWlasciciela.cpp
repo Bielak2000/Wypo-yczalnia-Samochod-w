@@ -2,8 +2,6 @@
 #include "CppUnitTest.h"
 #include "../Project1/Wlasciciel.h"
 #include "../Project1/Wlasciciel.cpp"
-#include "../Project1/Pracownik.h"
-#include "../Project1/Pracownik.cpp"
 #include "../Project1/Osoba.h"
 #include "../Project1/Osoba.cpp"
 #include "../Project1/Data.h"
@@ -30,7 +28,7 @@ namespace UnitTestDaneWlasciciela
 			string pes = "92839284782";
 			string adr = "Warszawa, ul. Szkolna 5";
 			string numer = "983290139";
-			string has = "92839284782";
+			string has = "Jan123";
 			string log = "JanNowak";
 
 			Wlasciciel w;

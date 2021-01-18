@@ -145,7 +145,6 @@
     <ClCompile Include="Osoba.cpp" />
     <ClCompile Include="Platnosc.cpp" />
     <ClCompile Include="Pojazd.cpp" />
-    <ClCompile Include="Pracownik.cpp" />
     <ClCompile Include="Wlasciciel.cpp" />
     <ClCompile Include="Wypozyczenie.cpp" />
   </ItemGroup>
@@ -155,7 +154,6 @@
     <ClInclude Include="Osoba.h" />
     <ClInclude Include="Platnosc.h" />
     <ClInclude Include="Pojazd.h" />
-    <ClInclude Include="Pracownik.h" />
     <ClInclude Include="Wlasciciel.h" />
     <ClInclude Include="Wypozyczenie.h" />
   </ItemGroup>

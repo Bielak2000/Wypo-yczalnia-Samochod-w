@@ -14,8 +14,8 @@ private:
 	Data Data_od;
 	Data Data_do;
 	string Numer_rejestracyjny;
-	bool Zakonczone = 0;
 	string pesel;
+	bool Zakonczone = 0;
 	Data termin_platnosci = Data_do;
 	Platnosc Rachunek;
 
@@ -48,11 +48,15 @@ public:
 
 	string get_pesel();
 
+	bool get_zakonczone();
+
 	Data get_data_od();
 
 	Data get_data_do();
 
 	Data get_termin_platnosci();
+
+	Platnosc get_rachunek();
 };
 
 #endif

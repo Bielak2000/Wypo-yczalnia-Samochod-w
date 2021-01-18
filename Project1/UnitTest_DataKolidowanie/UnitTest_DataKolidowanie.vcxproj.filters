@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="UnitTest_DanePracownika.cpp">
+    <ClCompile Include="UnitTest_DataKolidowanie.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">

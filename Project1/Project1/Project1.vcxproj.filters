@@ -33,9 +33,6 @@
     <ClCompile Include="Wypozyczenie.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Pracownik.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="Wlasciciel.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -57,9 +54,6 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Wypozyczenie.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Pracownik.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Wlasciciel.h">

@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{508DBBD6-6EE9-4520-96DB-89A89FF34733}</ProjectGuid>
+    <ProjectGuid>{6FDEA131-01D5-4B81-92DC-7D0888FF0853}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>UnitTestDanePracownika</RootNamespace>
+    <RootNamespace>UnitTestDataKolidowanie</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
   </PropertyGroup>
@@ -162,7 +162,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="UnitTest_DanePracownika.cpp" />
+    <ClCompile Include="UnitTest_DataKolidowanie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

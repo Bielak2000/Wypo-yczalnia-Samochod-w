@@ -1,12 +1,12 @@
 #include "Wlasciciel.h"
 #include "Pojazd.h"
+#include "Osoba.h"
 #include <fstream>
 #include <iostream>
 using namespace std;
 
-Wlasciciel::Wlasciciel(): Pracownik("Jan", "Nowak", "92839284782", "Warszawa, ul. Szkolna 5", "983290139")
-{
-}
+Wlasciciel::Wlasciciel(): Osoba("Jan", "Nowak", "92839284782", "Warszawa, ul. Szkolna 5", "983290139"), login("JanNowak"), haslo("Jan123")
+{}
 
 void Wlasciciel::dodaj_pojazd()
 {
@@ -92,4 +92,14 @@ void Wlasciciel::usun_pojazd(string nr_rej, Pojazd* pojazdy)
 			plik << pojazdy[i].get_dostepnosc();
 		}
 	}
+}
+
+string Wlasciciel::get_login()
+{
+	return Wlasciciel::login;
+}
+
+string Wlasciciel::get_haslo()
+{
+	return Wlasciciel::haslo;
 }
