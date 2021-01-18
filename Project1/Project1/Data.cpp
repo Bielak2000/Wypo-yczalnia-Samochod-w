@@ -26,6 +26,10 @@ void Data::zmien_date()
 	cout << "Data zostala zmieniona!" << endl;
 }
 
+bool Data::czy_koliduje(Data zajetyOd, Data zajetyDo, Data terminOd, Data terminDo)	//zajety - istniejace wypozyczenie, termin - potencjalne wypozyczenie
+{
+	throw "Not yet implemented";
+}
 
 int Data::get_dzien()
 {
