@@ -24,7 +24,8 @@ void Osoba::zmien_dane()
 	cout << "Pesel: ";
 	cin >> Pesel;
 	cout << "Adres: ";
-	cin >> Adres;
+	getline(cin, Adres);
+	getline(cin, Adres);
 	cout << "Nr telefonu: ";
 	cin >> Numer_telefonu;
 }

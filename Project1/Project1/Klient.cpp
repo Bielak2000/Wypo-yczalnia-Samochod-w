@@ -23,7 +23,8 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	cout << "Podaj pesel: ";
 	cin >> Pesel;
 	cout << "Podaj adres: ";
-	cin >> Adres;
+	getline(cin, Adres);
+	getline(cin, Adres);
 	cout << "Podaj telefon kontaktowy: ";
 	cin >> Numer_telefonu;
 	do {
@@ -80,37 +81,33 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 		}
 	} while (dostepny == false);
 
-	int cena;
+	int cena = 0;
 	pojazdy[i].zmien_dostepnosc();
-	if (rok1 == rok2)
+
+	int rok, miesiac, dzien;
+	miesiac = miesiac2 - miesiac1;
+	miesiac += 12*(rok2 - rok1);
+	dzien = dzien2 - dzien1;
+	for (int m = 0; m < miesiac; m++)
 	{
-		/*
-		if (miesiac1 == miesiac2)
+		int ktory = (miesiac1 + m) % 12;
+		if (ktory == 1 || ktory == 3 || ktory == 5 || ktory == 7 || ktory == 8 || ktory == 10 || ktory == 12)
 		{
-			if (dzien1 == dzien2)
-			{
-				cena = pojazdy[i].get_cena_za_godzine() * (godzina2 - godzina1);
-			}
-			else
-			{
-				cena = pojazdy[i].get_cena_za_godzine() * ((24 - godzina1) + godzina2);
-			}
-		}*/
-		if (miesiac1 == 1 || miesiac1 == 3 || miesiac1 == 5 || miesiac1 == 7 || miesiac1 == 8 || miesiac1 == 10 || miesiac1 == 12)
-		{
-			if (miesiac2 == 1 || miesiac2 == 3 || miesiac2 == 5 || miesiac2 == 7 || miesiac2 == 8 || miesiac2 == 10 || miesiac2 == 12)
-				cena = pojazdy[i].get_cena_za_godzine()*((miesiac2 - 1) * 31 + dzien2) * 24 - ((miesiac1 - 1) * 31 + dzien1) * 24;
-			else if(miesiac2 == 2)
-				cena = pojazdy[i].get_cena_za_godzine() * ((miesiac2 - 1) * 28 + dzien2) * 24 - ((miesiac1 - 1) * 31 + dzien1) * 24;
-			else
-				cena = pojazdy[i].get_cena_za_godzine() * ((miesiac2 - 1) * 30 + dzien2) * 24 - ((miesiac1 - 1) * 31 + dzien1) * 24;
+			dzien += 31;
 		}
-		else if (miesiac1 == 2)
+		else if (ktory == 2)
 		{
-			
+			dzien += 28;
 		}
-		///((miesiac2 - 1) * 30 + dzien2) * 24 - ((miesiac1 - 1) * 30 + dzien1) * 24;
+		else
+		{
+			dzien += 30;
+		}
 	}
+	cena = dzien * 24 * pojazdy[i].get_cena_za_godzine();
+
+
+	
 	Data d1(dzien1, miesiac1, rok1, godzina1);
 	Data d2(dzien2, miesiac2, rok2, godzina2);
 	Wypozyczenie w(d1, d2, nr_rej, Pesel, cena);
