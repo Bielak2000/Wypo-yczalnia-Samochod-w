@@ -1,2 +1,4 @@
-﻿  TestZmienDate.cpp
-  TestZmienDate.vcxproj -> D:\GitHub\Project1\x64\Debug\TestZmienDate.dll
+﻿  pch.cpp
+  TestZmienDate.cpp
+     Trwa tworzenie biblioteki D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestZmienDate.lib i obiektu D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestZmienDate.exp
+  TestZmienDate.vcxproj -> D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestZmienDate.dll

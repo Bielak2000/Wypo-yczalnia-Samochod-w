@@ -1,2 +1,4 @@
-﻿  TestKonstruktoraData.cpp
-  TestKonstruktoraData.vcxproj -> D:\GitHub\Project1\x64\Debug\TestKonstruktoraData.dll
+﻿  pch.cpp
+  TestKonstruktoraData.cpp
+     Trwa tworzenie biblioteki D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestKonstruktoraData.lib i obiektu D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestKonstruktoraData.exp
+  TestKonstruktoraData.vcxproj -> D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestKonstruktoraData.dll

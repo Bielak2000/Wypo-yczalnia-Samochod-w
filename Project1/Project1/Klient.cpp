@@ -6,6 +6,8 @@
 
 using namespace std;
 
+int Klient::liczba_klientow = 0;
+
 Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer):
 	Osoba(Im, Naz, Pes, Addr, Numer) {}
 
@@ -163,4 +165,99 @@ void Klient::zwroc_pojazd(Wypozyczenie w)
 {
 	// TODO - implement Klient::zwroc_pojazd
 	throw "Not yet implemented";
+}
+
+Klient* Klient::wczytaj_z_pliku(int& n)
+{
+	//pobranie danych z pliku 
+	string linia;//zmienna przehcowuja linie z pliku
+	ifstream plik;//zmienna obslugujaca plik 
+	plik.open("Klienci.txt");//otwieramy nasz plik z klientami
+	//sprawdzamy czy udalo sie otowrzyc plik, jesli nie to wychodzimy z programu
+	Klient* klienci = NULL;
+	if (plik.good())
+	{
+		cout << "Udalo sie otworzyc plik!" << endl;
+		int liczba_klientow = 0;
+		while (getline(plik, linia))
+		{
+			liczba_klientow++;
+		}
+		plik.clear();
+		plik.seekg(0);
+		liczba_klientow /= 2;
+		n = liczba_klientow;
+
+		klienci = new Klient[liczba_klientow];//utowrzenie tablicy elementow ktorymi sa obiekty strukutry dane o rozmiarze 10000
+		//do naszej tablicy przepisuje dane wartosci z pliku
+		for (int i = 0; i < liczba_klientow; i++)
+		{
+			getline(plik, linia);
+			istringstream iss(linia);
+			iss >> klienci[i].Imie;
+			iss >> klienci[i].Nazwisko;
+			iss >> klienci[i].Pesel;
+			iss >> klienci[i].Numer_telefonu;
+			getline(plik, linia);
+			klienci[i].Adres = linia;
+		}
+	}
+	plik.close();
+	return klienci;
+}
+
+
+void Klient::aktualizuj_plik(Klient* klienci)
+{
+	int jest = -1;	//indeks dla klienta dla ktorego wywolana jest metoda
+
+	for (int i = 0; i < klienci[i].get_liczba_klientow(); i++)
+		if (klienci[i].get_pesel() == this->Pesel)
+		{
+			jest = i;	//jesli klient jest juz w pliku to zapisujemy jego indeks w "jest"
+			break;
+		}
+
+	//jesli zmienna "jest" pozostala bez zmian -1 tzn ze nie ma klienta w pliku
+	if (jest == -1) //klienta nie ma w pliku
+	{
+		//dane klienta zajmuja 2 linijki - w 1 jest imie, nazwisko, pesel, numer telefonu, a w 2 adres
+		ofstream plik;	//edytowanie pliku z dopisywaniem
+		plik.open("Klienci.txt", ios::out | ios::app);
+		plik << "\n" << this->Imie << " ";
+		plik << this->Nazwisko << " ";
+		plik << this->Pesel << " ";
+		plik << this->Numer_telefonu << "\n";
+		plik << this->Adres;
+		plik.close();
+	}
+	else
+	{
+		ofstream plik;	//edytowanie pliku z nadpisaniem
+		plik.open("Klienci.txt");
+		for (int i = 0; i < klienci[i].get_liczba_klientow(); i++)
+		{
+			if (i == jest) continue;	//pomijane okrazenie w petli zeby klienta nie zapisac 2x
+			if (i != 0) plik << "\n";
+			plik << klienci[i].Imie << " ";
+			plik << klienci[i].Nazwisko << " ";
+			plik << klienci[i].Pesel << " ";
+			plik << klienci[i].Numer_telefonu << "\n";
+			plik << klienci[i].Adres << " ";
+		}
+
+		//na koncu dopisujemy nowego klienta z aktualnymi danymi
+		plik << "\n" << this->Imie << " ";
+		plik << this->Nazwisko << " ";
+		plik << this->Pesel << " ";
+		plik << this->Numer_telefonu << "\n";
+		plik << this->Adres << " ";
+
+		plik.close();
+	}
+}
+
+int Klient::get_liczba_klientow()
+{
+	return Klient::liczba_klientow;
 }
