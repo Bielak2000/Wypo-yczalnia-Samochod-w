@@ -91,7 +91,6 @@ Pojazd* Pojazd::wczytaj_z_pliku(int& n)
 	Pojazd* pojazdy = NULL;
 	if (plik.good())
 	{
-		cout << "Udalo sie otworzyc plik!" << endl;
 		int liczba_pojazdow = 0;
 		while (getline(plik, linia))
 		{
@@ -117,6 +116,11 @@ Pojazd* Pojazd::wczytaj_z_pliku(int& n)
 			iss >> pojazdy[i].Cena_za_godzine;
 			iss >> pojazdy[i].Dostepny;
 		}
+	}
+	else
+	{
+		cout << "Blad lacznosci z danymi!" << endl;
+		return nullptr;
 	}
 	plik.close();
 	return pojazdy;
