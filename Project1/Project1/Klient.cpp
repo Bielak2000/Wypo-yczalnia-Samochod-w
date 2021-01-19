@@ -1,13 +1,13 @@
 #include "Klient.h"
 #include "Wypozyczenie.h"
 #include "Pojazd.h"
+#include "Data.h"
 #include <iostream>
 
 using namespace std;
 
 Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer):
-	Osoba(Im, Naz, Pes, Addr, Numer)
-{}
+	Osoba(Im, Naz, Pes, Addr, Numer) {}
 
 bool Klient::wypozycz(Pojazd* pojazdy)
 {
@@ -116,6 +116,34 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	Wypozyczenie w(d1, d2, nr_rej, Pesel, cena);
 
 	cout << "Wypozyczono pojazd!" << endl;
+
+	ofstream plik;	//edytowanie pliku z dopisywaniem
+	plik.open("Wypozyczenia.txt", ios::out | ios::app);
+	plik << "\n" << w.get_data_do().get_dzien() << " ";
+	plik << w.get_data_do().get_miesiac() << " ";
+	plik << w.get_data_do().get_rok() << " ";
+	plik << w.get_data_do().get_godzina() << " ";
+
+	plik << w.get_data_od().get_dzien() << " ";
+	plik << w.get_data_od().get_miesiac() << " ";
+	plik << w.get_data_od().get_rok() << " ";
+	plik << w.get_data_od().get_godzina() << " ";
+
+	plik << w.get_numer_rejestracyjny() << " ";
+	plik << w.get_pesel() << " ";
+	if(w.get_zakonczone()==1)
+		plik << "Zakonczone" << " ";
+	else
+		plik << "Niezakonczone" << " ";
+
+	plik << w.get_rachunek().get_sposob_platnosci() << " ";
+	plik << w.get_rachunek().get_kwota() << " ";
+	if (w.get_rachunek().get_potwierdzenie() == 1)
+		plik << "Zaplacone" << " ";
+	else
+		plik << "Niezaplacone" << " ";
+	plik.close();
+
 	return 1;
 }
 
@@ -132,12 +160,6 @@ void Klient::wyswietl_oferte(Pojazd* tablica_pojazdow)
 		tablica_pojazdow[i].wyswietl_dane();
 		cout << endl;
 	}
-}
-
-void Klient::dokonaj_platnosci(Wypozyczenie w)
-{
-	// TODO - implement Klient::dokonaj_platnosci
-	throw "Not yet implemented";
 }
 
 void Klient::zwroc_pojazd(Wypozyczenie w)

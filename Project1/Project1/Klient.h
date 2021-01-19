@@ -21,8 +21,6 @@ public:
 
 	void wyswietl_oferte(Pojazd* tablica_pojazdow);
 
-	void dokonaj_platnosci(Wypozyczenie w);
-
 	void zwroc_pojazd(Wypozyczenie w);
 };
 
