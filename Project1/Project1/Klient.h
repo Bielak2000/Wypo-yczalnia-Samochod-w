@@ -1,6 +1,8 @@
 #ifndef KLIENT_H
 #define KLIENT_H
 #include <iostream>
+#include <windows.h>
+#include <time.h>
 #include "Osoba.h"
 #include "Wypozyczenie.h"
 #include "Pojazd.h"

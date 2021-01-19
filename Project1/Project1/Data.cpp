@@ -121,3 +121,23 @@ int Data::get_godzina()
 {
 	return Data::godzina;
 }
+
+void Data::set_dzien(int d)
+{
+	Data::dzien = d;
+}
+
+void Data::set_miesiac(int m)
+{
+	Data::miesiac = m;
+}
+
+void Data::set_rok(int r)
+{
+	Data::rok = r;
+}
+
+void Data::set_godzina(int g)
+{
+	Data::godzina = g;
+}

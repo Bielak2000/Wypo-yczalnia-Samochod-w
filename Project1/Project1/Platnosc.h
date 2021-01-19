@@ -30,6 +30,8 @@ public:
 	bool get_potwierdzenie();
 
 	void set_kwota(int cena);
+
+	void set_sposob_platnosci(string sposob);
 };
 
 #endif

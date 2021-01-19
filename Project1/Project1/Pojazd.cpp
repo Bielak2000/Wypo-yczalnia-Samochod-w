@@ -119,7 +119,6 @@ Pojazd* Pojazd::wczytaj_z_pliku(int& n)
 	}
 	else
 	{
-		cout << "Blad lacznosci z danymi!" << endl;
 		return nullptr;
 	}
 	plik.close();

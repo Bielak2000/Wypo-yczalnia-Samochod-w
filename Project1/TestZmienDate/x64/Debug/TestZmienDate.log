@@ -1,4 +1,4 @@
-﻿  pch.cpp
-  TestZmienDate.cpp
-     Trwa tworzenie biblioteki D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestZmienDate.lib i obiektu D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestZmienDate.exp
-  TestZmienDate.vcxproj -> D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestZmienDate.dll
+﻿  TestZmienDate.cpp
+  LINK : nie znaleziono elementu D:\GitHub\Project1\x64\Debug\TestZmienDate.dll ani nie został on skompilowany podczas ostatniego konsolidowania przyrostowego; zostanie wykonana pełna konsolidacja
+     Trwa tworzenie biblioteki D:\GitHub\Project1\x64\Debug\TestZmienDate.lib i obiektu D:\GitHub\Project1\x64\Debug\TestZmienDate.exp
+  TestZmienDate.vcxproj -> D:\GitHub\Project1\x64\Debug\TestZmienDate.dll
