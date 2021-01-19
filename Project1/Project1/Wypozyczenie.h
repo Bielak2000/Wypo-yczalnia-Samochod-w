@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <windows.h>
 
 using namespace std;
 
@@ -20,6 +21,7 @@ private:
 	bool Zakonczone = 0;
 	Data termin_platnosci = Data_do;
 	Platnosc Rachunek;
+	static int liczba_wypozyczen;
 
 public:
 	Wypozyczenie(Data d1=0, Data d2=0, string nr_rej="0", string pes="0", int cena=0);
@@ -36,7 +38,7 @@ public:
 
 	void podaj_termin();
 
-	void zaplac();
+	void zaplac(Wypozyczenie* tab_w);
 
 	void skroc_okres(Data rozpoczecie, Data zakonczenie);
 
@@ -58,6 +60,7 @@ public:
 
 	Data get_termin_platnosci();
 
+	Platnosc * get_rachunek1();
 	Platnosc get_rachunek();
 
 	static Wypozyczenie* wczytaj_z_pliku(int& w);
@@ -67,6 +70,10 @@ public:
 	void set_pesel(string pes);
 
 	void set_zakonczone(bool zakon);
+
+	int get_liczba_wypozyczen();
+
+	void aktualizuj_plik(Wypozyczenie * wypozyczenia);
 };
 
 #endif

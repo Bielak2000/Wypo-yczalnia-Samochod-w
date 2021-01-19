@@ -1,11 +1,10 @@
-#define _CRT_SECURE_NO_WARNINGS//dyrektywa do eliminowania ostrzezen o zaniechaniu - potrzebna jest dla funkcji localtime(&czas);
 #include "Klient.h"
 #include "Wypozyczenie.h"
 #include "Pojazd.h"
 #include "Data.h"
 #include <iostream>
 #include <time.h>
-
+#include <windows.h>
 using namespace std;
 
 int Klient::liczba_klientow = 0;
@@ -75,13 +74,14 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 		}
 
 		//pobieramy aktualny czas do zmiennej time_t
-		time_t czas = time(0);
+		time_t czas;
 		//konwetujemy zmienna time_t na wskaznik do zmiennej tm* za pomoca funkcji localtime(&czas), a elementy z kotrych nie bedziemy korzystac ustawiamy na null
-		tm* aktualny_czas = localtime(&czas);
-		dzien1 = aktualny_czas->tm_mday;
-		miesiac1 = aktualny_czas->tm_mon + 1;
-		rok1 = aktualny_czas->tm_year + 1900;
-		godzina1 = aktualny_czas->tm_hour+2;
+		tm aktualny_czas;
+		localtime_s(&aktualny_czas, &czas);
+		dzien1 = aktualny_czas.tm_mday;
+		miesiac1 = aktualny_czas.tm_mon + 1;
+		rok1 = aktualny_czas.tm_year + 1900;
+		godzina1 = aktualny_czas.tm_hour + 2;
 
 		Data d1(dzien1, miesiac1, rok1, godzina1);
 
@@ -179,7 +179,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	int cena = 0;
 	pojazdy[i].zmien_dostepnosc();
 
-	int rok, miesiac, dzien;
+	int miesiac, dzien;
 	miesiac = miesiac2 - miesiac1;
 	miesiac += 12*(rok2 - rok1);
 	dzien = dzien2 - dzien1;
@@ -233,6 +233,10 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 		plik << "Zaplacone" << " ";
 	else
 		plik << "Niezaplacone" << " ";
+	plik << w.get_termin_platnosci().get_dzien() << " ";
+	plik << w.get_termin_platnosci().get_miesiac() << " ";
+	plik << w.get_termin_platnosci().get_rok() << " ";
+	plik << w.get_termin_platnosci().get_godzina() << " ";
 	plik.close();
 
 	return true;
@@ -277,10 +281,66 @@ void Klient::wyswietl_oferte(Pojazd* tablica_pojazdow)
 	}
 }
 
-void Klient::zwroc_pojazd(Wypozyczenie w)
+void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 {
-	// TODO - implement Klient::zwroc_pojazd
-	throw "Not yet implemented";
+	string p, nr;
+	int sprawdzacz = 0;
+	cout << "Podaj swoj pesel: ";
+	cin >> p;
+	cout << "Podaj numer rejestracyjny: ";
+	cin >> nr;
+	for (int i = 0; i < tablica_w[0].get_liczba_wypozyczen(); i++)
+	{
+		if (tablica_w[i].get_pesel() == p && tablica_w[i].get_numer_rejestracyjny() == nr && tablica_w[i].get_rachunek().get_potwierdzenie() == 0)
+		{
+			sprawdzacz = 1;
+			tablica_w[i].set_zakonczone(true);
+			int wybor;
+			do
+			{
+				cout << "Czy pojazd jest uszkodzony?" << endl;
+				cout << "[1] TAK" << endl;
+				cout << "[2] NIE" << endl;
+				
+				cin >> wybor;
+
+				if (wybor == 1)
+				{
+					cout << "Podaj wartosc uszkodzen pojazdu: ";
+					int uszkodzenia;
+					cin >> uszkodzenia;
+					uszkodzenia += tablica_w[i].get_rachunek().get_kwota();
+					tablica_w[i].get_rachunek1()->set_kwota( uszkodzenia );
+				}
+			} while (wybor != 1 && wybor != 2);
+
+			cout << "Podaj aktualny przebieg: ";
+			string przebieg;
+			cin >> przebieg;
+			
+			for (int j = 0; j < tablica_pojazdow[0].get_liczba_pojazdow(); j++)
+			{
+				if (nr == tablica_pojazdow[j].get_numer_rejestracyjny())
+				{
+					tablica_pojazdow[j].set_przebieg(przebieg);
+					tablica_pojazdow[j].zmien_dostepnosc();
+					tablica_pojazdow[j].aktualizuj_plik(tablica_pojazdow);
+					break;
+				}
+			}
+
+			tablica_w[i].zaplac(tablica_w);
+
+			tablica_w[i].aktualizuj_plik(tablica_w);
+			break;
+		}
+
+	}
+	if (0==sprawdzacz)
+	{
+		cout << "Bledne dane!" << endl;
+		Sleep(2000);
+	}
 }
 
 Klient* Klient::wczytaj_z_pliku(int& n)
@@ -379,4 +439,9 @@ void Klient::aktualizuj_plik(Klient* klienci)
 int Klient::get_liczba_klientow()
 {
 	return Klient::liczba_klientow;
+}
+
+void Klient::zmniejsz_liczba_klientow()
+{
+	liczba_klientow--;
 }

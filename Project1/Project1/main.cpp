@@ -55,11 +55,12 @@ int main()
 			cout << "6.Wyjdz." << endl;
 			cin >> wybor1;
 			system("cls");
+			Klient k;
+			k.zmniejsz_liczba_klientow();
 
 			if (wybor1 == 1)
 			{
 				bool sprawdzenie;
-				Klient k;
 				sprawdzenie=k.wypozycz(pojazdy);
 				if(sprawdzenie)
 					k.aktualizuj_plik(klienci);
@@ -70,12 +71,13 @@ int main()
 			}
 			else if (wybor1 == 3)
 			{
+				k.zwroc_pojazd(wypozyczenia, pojazdy);
 
 			}
 			else if (wybor1 == 4)
 			{
-				Klient k1;
-				k1.wyswietl_oferte(pojazdy);
+				
+				k.wyswietl_oferte(pojazdy);
 			}
 			else if (wybor1 == 5)
 			{

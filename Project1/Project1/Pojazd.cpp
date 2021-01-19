@@ -161,7 +161,8 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 		for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby pojazdu nie zapisac 2x
-			plik << "\n" << pojazdy[i].Numer_rejestracyjny << " ";
+			if (i != 0) plik << "\n";
+			plik << pojazdy[i].Numer_rejestracyjny << " ";
 			plik << pojazdy[i].Rodzaj << " ";
 			plik << pojazdy[i].Marka << " ";
 			plik << pojazdy[i].Model << " ";

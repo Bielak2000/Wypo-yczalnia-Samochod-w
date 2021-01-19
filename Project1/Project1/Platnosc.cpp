@@ -48,7 +48,7 @@ bool Platnosc::get_potwierdzenie()
 
 void Platnosc::set_kwota(int cena)
 {
-	Platnosc::Kwota = cena;
+	this->Kwota = cena;
 }
 
 

@@ -24,13 +24,15 @@ public:
 
 	void wyswietl_oferte(Pojazd* tablica_pojazdow);
 
-	void zwroc_pojazd(Wypozyczenie w);
+	void zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow);
 
 	static Klient* wczytaj_z_pliku(int& n);
 
 	void aktualizuj_plik(Klient* klienci);
 
 	int get_liczba_klientow();
+
+	void zmniejsz_liczba_klientow();
 };
 
 #endif
