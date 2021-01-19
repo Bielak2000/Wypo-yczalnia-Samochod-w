@@ -18,6 +18,11 @@ public:
 	int get_miesiac();
 	int get_rok();
 	int get_godzina();
+
+	void set_dzien(int d);
+	void set_miesiac(int m);
+	void set_rok(int r);
+	void set_godzina(int g);
 };
 
 #endif

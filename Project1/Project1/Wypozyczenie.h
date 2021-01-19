@@ -4,6 +4,8 @@
 #include "Osoba.h"
 #include "Platnosc.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -57,6 +59,14 @@ public:
 	Data get_termin_platnosci();
 
 	Platnosc get_rachunek();
+
+	static Wypozyczenie* wczytaj_z_pliku(int& w);
+
+	void set_nr_rej(string nr);
+
+	void set_pesel(string pes);
+
+	void set_zakonczone(bool zakon);
 };
 
 #endif

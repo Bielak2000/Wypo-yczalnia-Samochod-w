@@ -16,6 +16,16 @@ int main()
 {
 	int n;
 	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);
+	int k;
+	Klient* klienci = Klient::wczytaj_z_pliku(k);
+	int w;
+	Wypozyczenie* wypozyczenia = Wypozyczenie::wczytaj_z_pliku(w);
+
+	if (pojazdy == nullptr || klienci == nullptr || wypozyczenia == nullptr)
+	{
+		cout << "Blad przy wczytaniu danych z pliku!" << endl;
+		return 1;
+	}
 
 	system("cls");
 	int wybor;
@@ -48,8 +58,11 @@ int main()
 
 			if (wybor1 == 1)
 			{
+				bool sprawdzenie;
 				Klient k;
-				k.wypozycz(pojazdy);
+				sprawdzenie=k.wypozycz(pojazdy);
+				if(sprawdzenie)
+					k.aktualizuj_plik(klienci);
 			}
 			else if (wybor1 == 2)
 			{

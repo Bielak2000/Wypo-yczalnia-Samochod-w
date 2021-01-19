@@ -1,6 +1,7 @@
 #ifndef OSOBA_H
 #define OSOBA_H
 #include<iostream>
+#include<string>
 
 using namespace std;
 

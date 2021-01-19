@@ -1,10 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS//dyrektywa do eliminowania ostrzezen o zaniechaniu - potrzebna jest dla funkcji localtime(&czas);
 #include "Klient.h"
 #include "Wypozyczenie.h"
 #include "Pojazd.h"
 #include "Data.h"
 #include <iostream>
+#include <time.h>
 
 using namespace std;
+
+int Klient::liczba_klientow = 0;
 
 Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer):
 	Osoba(Im, Naz, Pes, Addr, Numer) {}
@@ -23,29 +27,15 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	cout << "Podaj pesel: ";
 	cin >> Pesel;
 	cout << "Podaj adres: ";
-	cin >> Adres;
+	getline(cin, Adres);
+	getline(cin, Adres);
 	cout << "Podaj telefon kontaktowy: ";
 	cin >> Numer_telefonu;
 	do {
 		cout << "Podaj numer rejestracyjny: ";
 		cin >> nr_rej;
-		cout << "Podaj godzine rozpoczecia wypozyczenia: ";
-		cin >> godzina1;
-		cout << "Podaj dzien rozpoczecia wypozyczenia: ";
-		cin >> dzien1;
-		cout << "Podaj miesiac rozpoczecia wypozyczenia: ";
-		cin >> miesiac1;
-		cout << "Podaj rok rozpoczecia wypozyczenia: ";
-		cin >> rok1;
-		Data d1(dzien1, miesiac1, rok1, godzina1);
-		cout << "Podaj godzine zakonczenia wypozyczenia: ";
-		cin >> godzina2;
-		cout << "Podaj dzien zakonczenia wypozyczenia: ";
-		cin >> dzien2;
-		cout << "Podaj miesiac zakonczenia wypozyczenia: ";
-		cin >> miesiac2;
-		cout << "Podaj rok zakonczenia wypozyczenia: ";
-		cin >> rok2;
+
+		//sprawdzenie dostepnosci pojazdu
 		for (i = 0; i < pojazdy[0].get_liczba_pojazdow(); i++)
 		{
 			if (pojazdy[i].get_numer_rejestracyjny() == nr_rej)
@@ -59,6 +49,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 				break;
 			}
 		}
+
 		if (istnieje == false)
 		{
 			cout << "Nie znaleziono pojazdu o tym numerze rejestracyjnym!" << endl;
@@ -66,51 +57,151 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 			cout << "1.TAK" << endl;
 			cout << "2.NIE" << endl;
 			cin >> wybor1;
-			if (wybor1 == 2)
-				return 0;
+			if (wybor1 == 1)
+				continue;
+			else
+				return false;
 		}
-		else if(dostepny == false)
+		else if (dostepny == false)
 		{
 			cout << "Czy chcesz zmienic pojazd czy zrezygnowac?" << endl;
 			cout << "1.Zmienic pojazd" << endl;
 			cout << "2.Reyzgnuje" << endl;
 			cin >> wybor;
-			if (wybor == 2)
-				return 0;
+			if (wybor == 1)
+				continue;
+			else
+				return false;
 		}
+
+		//pobieramy aktualny czas do zmiennej time_t
+		time_t czas = time(0);
+		//konwetujemy zmienna time_t na wskaznik do zmiennej tm* za pomoca funkcji localtime(&czas), a elementy z kotrych nie bedziemy korzystac ustawiamy na null
+		tm* aktualny_czas = localtime(&czas);
+		dzien1 = aktualny_czas->tm_mday;
+		miesiac1 = aktualny_czas->tm_mon + 1;
+		rok1 = aktualny_czas->tm_year + 1900;
+		godzina1 = aktualny_czas->tm_hour+2;
+
+		Data d1(dzien1, miesiac1, rok1, godzina1);
+
+		//sprawdzenie poprawnosci wprowadzonej daty
+		int data;
+		do {
+			system("cls");
+			data = 0;
+			cout << "Podaj godzine zakonczenia wypozyczenia: ";
+			cin >> godzina2;
+			if (godzina2 > 24 || godzina2 < 1)
+			{
+				cout << "Podana zostala zla data! Sprobuj ponownie" << endl;
+				Sleep(3000);
+				data = 1;
+				continue;
+			}
+			cout << "Podaj miesiac zakonczenia wypozyczenia: ";
+			cin >> miesiac2;
+			if (miesiac2 > 12 || miesiac2 < 1)
+			{
+				cout << "Podana zostala zla data! Sprobuj ponownie" << endl;
+				Sleep(3000);
+				data = 1;
+				continue;
+			}
+			cout << "Podaj dzien zakonczenia wypozyczenia: ";
+			cin >> dzien2;
+			if(miesiac2==1 || miesiac2 == 3 || miesiac2 == 5 || miesiac2 == 7 || miesiac2 == 8 || miesiac2 == 10 || miesiac2 == 12)
+				if (dzien2 > 31 || dzien2 < 1)
+				{
+					cout << "Podana zostala zla data! Sprobuj ponownie" << endl;
+					Sleep(3000);
+					data = 1;
+					continue;
+				}
+			if (miesiac2 == 2)
+			{
+				if (dzien2 > 28 || dzien2 < 1)
+				{
+					cout << "Podana zostala zla data! Sprobuj ponownie" << endl;
+					Sleep(3000);
+					data = 1;
+					continue;
+				}
+			}
+			else
+				if (dzien2 > 30 || dzien2 < 1)
+				{
+					cout << "Podana zostala zla data! Sprobuj ponownie" << endl;
+					Sleep(3000);
+					data = 1;
+					continue;
+				};
+			
+			cout << "Podaj rok zakonczenia wypozyczenia: ";
+			cin >> rok2;
+			if (rok2 == rok1)
+			{
+				if (miesiac2 == miesiac1)
+				{
+					if (dzien2 == dzien1)
+					{
+						if (godzina2 <= godzina1)
+						{
+							cout << "Podana zla date! Sprobuj jeszcze raz!" << endl;
+							Sleep(3000);
+							data = 1;
+						}
+					}
+					else if(dzien2 < dzien1)
+					{
+						cout << "Podana zla date! Sprobuj jeszcze raz!" << endl;
+						Sleep(3000);
+						data = 1;
+					}
+				}
+				else if (miesiac2 < miesiac1)
+				{
+					cout << "Podana zla date! Sprobuj jeszcze raz!" << endl;
+					Sleep(3000);
+					data = 1;
+				}
+			}
+			else if (rok2 < rok1)
+			{
+				cout << "Podana zla date! Sprobuj jeszcze raz!" << endl;
+				Sleep(3000);
+				data = 1;
+			}
+		} while (data == 1);
+
 	} while (dostepny == false);
 
-	int cena;
+	int cena = 0;
 	pojazdy[i].zmien_dostepnosc();
-	if (rok1 == rok2)
+
+	int rok, miesiac, dzien;
+	miesiac = miesiac2 - miesiac1;
+	miesiac += 12*(rok2 - rok1);
+	dzien = dzien2 - dzien1;
+	for (int m = 0; m < miesiac; m++)
 	{
-		/*
-		if (miesiac1 == miesiac2)
+		int ktory = (miesiac1 + m) % 12;
+		if (ktory == 1 || ktory == 3 || ktory == 5 || ktory == 7 || ktory == 8 || ktory == 10 || ktory == 12)
 		{
-			if (dzien1 == dzien2)
-			{
-				cena = pojazdy[i].get_cena_za_godzine() * (godzina2 - godzina1);
-			}
-			else
-			{
-				cena = pojazdy[i].get_cena_za_godzine() * ((24 - godzina1) + godzina2);
-			}
-		}*/
-		if (miesiac1 == 1 || miesiac1 == 3 || miesiac1 == 5 || miesiac1 == 7 || miesiac1 == 8 || miesiac1 == 10 || miesiac1 == 12)
-		{
-			if (miesiac2 == 1 || miesiac2 == 3 || miesiac2 == 5 || miesiac2 == 7 || miesiac2 == 8 || miesiac2 == 10 || miesiac2 == 12)
-				cena = pojazdy[i].get_cena_za_godzine()*((miesiac2 - 1) * 31 + dzien2) * 24 - ((miesiac1 - 1) * 31 + dzien1) * 24;
-			else if(miesiac2 == 2)
-				cena = pojazdy[i].get_cena_za_godzine() * ((miesiac2 - 1) * 28 + dzien2) * 24 - ((miesiac1 - 1) * 31 + dzien1) * 24;
-			else
-				cena = pojazdy[i].get_cena_za_godzine() * ((miesiac2 - 1) * 30 + dzien2) * 24 - ((miesiac1 - 1) * 31 + dzien1) * 24;
+			dzien += 31;
 		}
-		else if (miesiac1 == 2)
+		else if (ktory == 2)
 		{
-			
+			dzien += 28;
 		}
-		///((miesiac2 - 1) * 30 + dzien2) * 24 - ((miesiac1 - 1) * 30 + dzien1) * 24;
+		else
+		{
+			dzien += 30;
+		}
 	}
+	cena = dzien * 24 * pojazdy[i].get_cena_za_godzine();
+	cena += godzina2 * pojazdy[i].get_cena_za_godzine();
+
 	Data d1(dzien1, miesiac1, rok1, godzina1);
 	Data d2(dzien2, miesiac2, rok2, godzina2);
 	Wypozyczenie w(d1, d2, nr_rej, Pesel, cena);
@@ -120,14 +211,14 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	ofstream plik;	//edytowanie pliku z dopisywaniem
 	plik.open("Wypozyczenia.txt", ios::out | ios::app);
 	plik << "\n" << w.get_data_do().get_dzien() << " ";
+	plik << w.get_data_od().get_miesiac() << " ";
+	plik << w.get_data_od().get_rok() << " ";
+	plik << w.get_data_do().get_godzina() << " ";
+
+	plik << w.get_data_do().get_dzien() << " ";
 	plik << w.get_data_do().get_miesiac() << " ";
 	plik << w.get_data_do().get_rok() << " ";
 	plik << w.get_data_do().get_godzina() << " ";
-
-	plik << w.get_data_od().get_dzien() << " ";
-	plik << w.get_data_od().get_miesiac() << " ";
-	plik << w.get_data_od().get_rok() << " ";
-	plik << w.get_data_od().get_godzina() << " ";
 
 	plik << w.get_numer_rejestracyjny() << " ";
 	plik << w.get_pesel() << " ";
@@ -144,7 +235,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 		plik << "Niezaplacone" << " ";
 	plik.close();
 
-	return 1;
+	return true;
 }
 
 void Klient::zarzadzaj_wypozyczeniem()
@@ -190,4 +281,102 @@ void Klient::zwroc_pojazd(Wypozyczenie w)
 {
 	// TODO - implement Klient::zwroc_pojazd
 	throw "Not yet implemented";
+}
+
+Klient* Klient::wczytaj_z_pliku(int& n)
+{
+	//pobranie danych z pliku 
+	string linia;//zmienna przehcowuja linie z pliku
+	ifstream plik;//zmienna obslugujaca plik 
+	plik.open("Klienci.txt");//otwieramy nasz plik z klientami
+	//sprawdzamy czy udalo sie otowrzyc plik, jesli nie to wychodzimy z programu
+	Klient* klienci = NULL;
+	if (plik.good())
+	{
+		int liczba_klientow = 0;
+		while (getline(plik, linia))
+		{
+			liczba_klientow++;
+		}
+		plik.clear();
+		plik.seekg(0);
+		liczba_klientow /= 2;
+		n = liczba_klientow;
+
+		klienci = new Klient[liczba_klientow];//utowrzenie tablicy elementow ktorymi sa obiekty strukutry dane o rozmiarze 10000
+		//do naszej tablicy przepisuje dane wartosci z pliku
+		for (int i = 0; i < liczba_klientow; i++)
+		{
+			getline(plik, linia);
+			istringstream iss(linia);
+			iss >> klienci[i].Imie;
+			iss >> klienci[i].Nazwisko;
+			iss >> klienci[i].Pesel;
+			iss >> klienci[i].Numer_telefonu;
+			getline(plik, linia);
+			klienci[i].Adres = linia;
+		}
+	}
+	else
+	{
+		return nullptr;
+	}
+	plik.close();
+	return klienci;
+}
+
+
+void Klient::aktualizuj_plik(Klient* klienci)
+{
+	int jest = -1;	//indeks dla klienta dla ktorego wywolana jest metoda
+
+	for (int i = 0; i < klienci[i].get_liczba_klientow(); i++)
+		if (klienci[i].get_pesel() == this->Pesel)
+		{
+			jest = i;	//jesli klient jest juz w pliku to zapisujemy jego indeks w "jest"
+			break;
+		}
+
+	//jesli zmienna "jest" pozostala bez zmian -1 tzn ze nie ma klienta w pliku
+	if (jest == -1) //klienta nie ma w pliku
+	{
+		//dane klienta zajmuja 2 linijki - w 1 jest imie, nazwisko, pesel, numer telefonu, a w 2 adres
+		ofstream plik;	//edytowanie pliku z dopisywaniem
+		plik.open("Klienci.txt", ios::out | ios::app);
+		plik << "\n" << this->Imie << " ";
+		plik << this->Nazwisko << " ";
+		plik << this->Pesel << " ";
+		plik << this->Numer_telefonu << "\n";
+		plik << this->Adres;
+		plik.close();
+	}
+	else
+	{
+		ofstream plik;	//edytowanie pliku z nadpisaniem
+		plik.open("Klienci.txt");
+		for (int i = 0; i < klienci[i].get_liczba_klientow(); i++)
+		{
+			if (i == jest) continue;	//pomijane okrazenie w petli zeby klienta nie zapisac 2x
+			if (i != 0) plik << "\n";
+			plik << klienci[i].Imie << " ";
+			plik << klienci[i].Nazwisko << " ";
+			plik << klienci[i].Pesel << " ";
+			plik << klienci[i].Numer_telefonu << "\n";
+			plik << klienci[i].Adres << " ";
+		}
+
+		//na koncu dopisujemy nowego klienta z aktualnymi danymi
+		plik << "\n" << this->Imie << " ";
+		plik << this->Nazwisko << " ";
+		plik << this->Pesel << " ";
+		plik << this->Numer_telefonu << "\n";
+		plik << this->Adres << " ";
+
+		plik.close();
+	}
+}
+
+int Klient::get_liczba_klientow()
+{
+	return Klient::liczba_klientow;
 }

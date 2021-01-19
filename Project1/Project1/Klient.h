@@ -1,6 +1,8 @@
 #ifndef KLIENT_H
 #define KLIENT_H
 #include <iostream>
+#include <windows.h>
+#include <time.h>
 #include "Osoba.h"
 #include "Wypozyczenie.h"
 #include "Pojazd.h"
@@ -10,10 +12,11 @@ using namespace std;
 
 class Klient : public Osoba
 {
-
+	static int liczba_klientow;
 
 public:
-	Klient(string Im="0", string Naz="0", string Pes="0", string Addr="0", string Numer="0");
+	Klient(string Im = "Niezdefiniowane", string Naz = "Niezdefiniowane", string Pes = "Niezdefiniowane",
+		string Addr = "Niezdefiniowane", string Numer = "Niezdefiniowane");
 	
 	bool wypozycz(Pojazd* pojazdy);
 
@@ -22,6 +25,12 @@ public:
 	void wyswietl_oferte(Pojazd* tablica_pojazdow);
 
 	void zwroc_pojazd(Wypozyczenie w);
+
+	static Klient* wczytaj_z_pliku(int& n);
+
+	void aktualizuj_plik(Klient* klienci);
+
+	int get_liczba_klientow();
 };
 
 #endif

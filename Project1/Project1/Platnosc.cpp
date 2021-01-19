@@ -50,3 +50,9 @@ void Platnosc::set_kwota(int cena)
 {
 	Platnosc::Kwota = cena;
 }
+
+
+void Platnosc::set_sposob_platnosci(string sposob)
+{
+	Platnosc::Sposob_platnosci = sposob;
+}
