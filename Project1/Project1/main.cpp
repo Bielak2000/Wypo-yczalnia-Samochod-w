@@ -16,6 +16,8 @@ int main()
 {
 	int n;
 	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);
+	int k;
+	Klient* klienci = Klient::wczytaj_z_pliku(k);
 
 	system("cls");
 	int wybor;
