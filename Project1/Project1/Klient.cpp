@@ -148,8 +148,32 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 
 void Klient::zarzadzaj_wypozyczeniem()
 {
-	// TODO - implement Klient::zarzadzaj_wypozyczeniem
-	throw "Not yet implemented";
+	int wybor;
+	int wybor1 = 0;
+	do
+	{	
+		cout << "Co chcesz zrobic ze swoim wypozyczeniem?" << endl;
+		cout << "1.Wydluzenie wypozyczenia." << endl;
+		cout << "2.Skrocenie wypozyczenia." << endl;
+		cin >> wybor;
+		if (wybor == 1)
+		{
+
+		}
+		else if (wybor == 2)
+		{
+
+		}
+		else
+		{
+			cout << "Zly wybor!" << endl;
+			cout << "Czy chcesz kontynuowac zarzadzanie swoim wypozyczeniem?" << endl;
+			cout << "1.Tak." << endl;
+			cout << "1.Nie." << endl;
+			cin >> wybor1;
+
+		}
+	} while (wybor1 == 1);
 }
 
 void Klient::wyswietl_oferte(Pojazd* tablica_pojazdow)

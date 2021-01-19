@@ -6,8 +6,7 @@ using namespace std;
 
 Wypozyczenie::Wypozyczenie(Data d1, Data d2, string nr_rej, string pes, int cena):Data_od(d1), Data_do(d2), Numer_rejestracyjny(nr_rej), pesel(pes)
 {
-	Platnosc p(cena);
-	Rachunek = p;
+	Wypozyczenie::Rachunek.set_kwota(cena);
 }
 
 bool Wypozyczenie::zmien_okres()
