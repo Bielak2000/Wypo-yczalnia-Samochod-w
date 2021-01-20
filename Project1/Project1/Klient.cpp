@@ -218,7 +218,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 
 	ofstream plik;	//edytowanie pliku z dopisywaniem
 	plik.open("Wypozyczenia.txt", ios::out | ios::app);
-	if (w.get_liczba_wypozyczen() != 0)
+	if (Wypozyczenie::get_liczba_wypozyczen() != 1)
 		plik << "\n";
 	plik << w.get_data_od().get_dzien() << " ";
 	plik << w.get_data_od().get_miesiac() << " ";

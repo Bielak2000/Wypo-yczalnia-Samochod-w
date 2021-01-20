@@ -164,6 +164,8 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby pojazdu nie zapisac 2x
 			if (i != 0) plik << "\n";
+			else if (i == 1 && jest == 0) {}		//takie cos wymyslilem, ale nie dziala
+			//jak cos wymyslicie to pamietajcie ze wszystkie funkcje trzeba uwzglednic
 			plik << pojazdy[i].Numer_rejestracyjny << " ";
 			plik << pojazdy[i].Rodzaj << " ";
 			plik << pojazdy[i].Marka << " ";
