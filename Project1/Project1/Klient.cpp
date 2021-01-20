@@ -46,7 +46,9 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 			{
 				if (pojazdy[i].get_dostepnosc() == 1)
 				{
+					
 					cout << "Pojazd jest dostepny!" << endl;
+					Sleep(2000);
 					dostepny = true;
 				}
 				istnieje = true;
@@ -61,6 +63,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 			cout << "1.TAK" << endl;
 			cout << "2.NIE" << endl;
 			cin >> wybor1;
+			system("cls");
 			if (wybor1 == 1)
 				continue;
 			else
@@ -73,6 +76,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 			cout << "1.Zmienic pojazd" << endl;
 			cout << "2.Reyzgnuje" << endl;
 			cin >> wybor;
+			system("cls");
 			if (wybor == 1)
 				continue;
 			else
@@ -211,6 +215,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	godzina += dzien * 24;
 	cena = godzina * pojazdy[i].get_cena_za_godzine();
 
+
 	Data d1(dzien1, miesiac1, rok1, godzina1);
 	Data d2(dzien2, miesiac2, rok2, godzina2);
 	Wypozyczenie w(d1, d2, nr_rej, Pesel, cena);
@@ -255,35 +260,6 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	return true;
 }
 
-void Klient::zarzadzaj_wypozyczeniem()
-{
-	int wybor;
-	int wybor1 = 0;
-	do
-	{	
-		cout << "Co chcesz zrobic ze swoim wypozyczeniem?" << endl;
-		cout << "1.Wydluzenie wypozyczenia." << endl;
-		cout << "2.Skrocenie wypozyczenia." << endl;
-		cin >> wybor;
-		if (wybor == 1)
-		{
-
-		}
-		else if (wybor == 2)
-		{
-
-		}
-		else
-		{
-			cout << "Zly wybor!" << endl;
-			cout << "Czy chcesz kontynuowac zarzadzanie swoim wypozyczeniem?" << endl;
-			cout << "1.Tak." << endl;
-			cout << "1.Nie." << endl;
-			cin >> wybor1;
-
-		}
-	} while (wybor1 == 1);
-}
 
 void Klient::wyswietl_oferte(Pojazd* tablica_pojazdow)
 {

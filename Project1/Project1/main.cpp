@@ -146,6 +146,7 @@ int main()
 					Sleep(1000);
 					system("cls");
 					do {
+						sprawdzacz2 = 0;
 						cout << "Co chcesz zrobic z tym wypozyczeniem: " << endl;
 						cout << "1.Skrocic czas wypozyczenia." << endl;
 						cout << "2.Wydluzyc czas wypozyczenia." << endl;
@@ -173,7 +174,46 @@ int main()
 								cout << "Podano nieprawidlowa date!" << endl;
 								Sleep(2000);
 								system("cls");
-								continue;
+								sprawdzacz2 = 1;
+							}
+							else
+							{
+								wypozyczenia[indeks].set_termin_platnosci(d);
+								int cena = 0;
+								int miesiac, dzien;
+								miesiac = wypozyczenia[indeks].get_data_do().get_miesiac() - wypozyczenia[indeks].get_data_od().get_miesiac();
+								miesiac += 12 * (wypozyczenia[indeks].get_data_do().get_rok() - wypozyczenia[indeks].get_data_od().get_rok());
+								dzien = wypozyczenia[indeks].get_data_do().get_dzien() - wypozyczenia[indeks].get_data_od().get_dzien();
+								for (int m = 0; m < miesiac; m++)
+								{
+									int ktory = (wypozyczenia[indeks].get_data_od().get_miesiac() + m) % 12;
+									if (ktory == 1 || ktory == 3 || ktory == 5 || ktory == 7 || ktory == 8 || ktory == 10 || ktory == 12)
+									{
+										dzien += 31;
+									}
+									else if (ktory == 2)
+									{
+										dzien += 28;
+									}
+									else
+									{
+										dzien += 30;
+									}
+								}
+								int godzina = wypozyczenia[indeks].get_data_do().get_godzina() - wypozyczenia[indeks].get_data_od().get_miesiac();
+								godzina += dzien * 24;
+								for (int j = 0; j < pojazdy[0].get_liczba_pojazdow(); j++)
+								{
+									if (wypozyczenia[indeks].get_numer_rejestracyjny() == pojazdy[j].get_numer_rejestracyjny())
+									{
+										cena = godzina * pojazdy[j].get_cena_za_godzine();
+										break;
+									}
+								}
+								wypozyczenia[indeks].get_rachunek1()->set_kwota(cena);
+								wypozyczenia[indeks].aktualizuj_plik(wypozyczenia);
+								cout << "Dokonano zmiany terminu" << endl;
+								Sleep(2000);
 							}
 						}
 						else if (wybor2 == 2)
@@ -198,7 +238,46 @@ int main()
 								cout << "Podano nieprawidlowa date!" << endl;
 								Sleep(2000);
 								system("cls");
-								continue;
+								sprawdzacz2 = 1;
+							}
+							else
+							{
+								wypozyczenia[indeks].set_termin_platnosci(d);
+								int cena = 0;
+								int miesiac, dzien;
+								miesiac = wypozyczenia[indeks].get_data_do().get_miesiac() - wypozyczenia[indeks].get_data_od().get_miesiac();
+								miesiac += 12 * (wypozyczenia[indeks].get_data_do().get_rok() - wypozyczenia[indeks].get_data_od().get_rok());
+								dzien = wypozyczenia[indeks].get_data_do().get_dzien() - wypozyczenia[indeks].get_data_od().get_dzien();
+								for (int m = 0; m < miesiac; m++)
+								{
+									int ktory = (wypozyczenia[indeks].get_data_od().get_miesiac() + m) % 12;
+									if (ktory == 1 || ktory == 3 || ktory == 5 || ktory == 7 || ktory == 8 || ktory == 10 || ktory == 12)
+									{
+										dzien += 31;
+									}
+									else if (ktory == 2)
+									{
+										dzien += 28;
+									}
+									else
+									{
+										dzien += 30;
+									}
+								}
+								int godzina = wypozyczenia[indeks].get_data_do().get_godzina() - wypozyczenia[indeks].get_data_od().get_miesiac();
+								godzina += dzien * 24;
+								for (int j = 0; j < pojazdy[0].get_liczba_pojazdow(); j++)
+								{
+									if (wypozyczenia[indeks].get_numer_rejestracyjny() == pojazdy[j].get_numer_rejestracyjny())
+									{
+										cena = godzina * pojazdy[j].get_cena_za_godzine();
+										break;
+									}
+								}
+								wypozyczenia[indeks].get_rachunek1()->set_kwota(cena);
+								wypozyczenia[indeks].aktualizuj_plik(wypozyczenia);
+								cout << "Dokonano zmiany terminu" << endl;
+								Sleep(2000);
 							}
 						}
 						else
