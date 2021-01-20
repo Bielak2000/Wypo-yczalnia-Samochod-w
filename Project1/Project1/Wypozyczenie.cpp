@@ -286,6 +286,11 @@ bool Wypozyczenie::get_zakonczone()
 	return Wypozyczenie::Zakonczone;
 }
 
+void Wypozyczenie::set_termin_platnosci(Data d)
+{
+	Wypozyczenie::termin_platnosci = d;
+}
+
 Data Wypozyczenie::zwroc_date_rozpoczecia()
 {
 	// TODO - implement Wypozyczenie::zwroc_date_rozpoczecia

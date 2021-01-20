@@ -62,6 +62,8 @@ public:
 	static int get_liczba_wypozyczen();
 
 	void aktualizuj_plik(Wypozyczenie * wypozyczenia);
+
+	void set_termin_platnosci(Data d);
 };
 
 #endif
