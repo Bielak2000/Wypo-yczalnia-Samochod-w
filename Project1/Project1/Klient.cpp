@@ -199,8 +199,9 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 			dzien += 30;
 		}
 	}
-	cena = dzien * 24 * pojazdy[i].get_cena_za_godzine();
-	cena += godzina2 * pojazdy[i].get_cena_za_godzine();
+	int godzina = godzina2 - godzina1;
+	godzina += dzien * 24;
+	cena = godzina * pojazdy[i].get_cena_za_godzine();
 
 	Data d1(dzien1, miesiac1, rok1, godzina1);
 	Data d2(dzien2, miesiac2, rok2, godzina2);
