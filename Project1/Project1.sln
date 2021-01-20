@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project1", "Project1\Project1.vcxproj", "{026FA52D-94A5-4729-A362-48ECDFA0A324}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestWypozyczenie", "TestWypozyczenie\TestWypozyczenie.vcxproj", "{5A57E3AB-7697-4E46-B3B4-6720B56B1FE3}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestPeselKlienta", "TestPeselKlienta\TestPeselKlienta.vcxproj", "{63858B16-4A90-4E77-9AB8-0B6ABDD34761}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest_DaneKlienta", "DaneOsoby\DaneOsoby.vcxproj", "{0620A843-E03A-4AE6-B976-B8FE82F6A745}"
@@ -25,7 +23,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest_DanePojazdu", "Uni
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest_DataKolidowanie", "UnitTest_DataKolidowanie\UnitTest_DataKolidowanie.vcxproj", "{6FDEA131-01D5-4B81-92DC-7D0888FF0853}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test_SetCena", "Test_SetCena\Test_SetCena.vcxproj", "{53FB9AC8-D295-41AB-967A-7CB516FFCFBF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSetCena", "Test_SetCena\Test_SetCena.vcxproj", "{53FB9AC8-D295-41AB-967A-7CB516FFCFBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +41,6 @@ Global
 		{026FA52D-94A5-4729-A362-48ECDFA0A324}.Release|x64.Build.0 = Release|x64
 		{026FA52D-94A5-4729-A362-48ECDFA0A324}.Release|x86.ActiveCfg = Release|Win32
 		{026FA52D-94A5-4729-A362-48ECDFA0A324}.Release|x86.Build.0 = Release|Win32
-		{5A57E3AB-7697-4E46-B3B4-6720B56B1FE3}.Debug|x64.ActiveCfg = Debug|x64
-		{5A57E3AB-7697-4E46-B3B4-6720B56B1FE3}.Debug|x64.Build.0 = Debug|x64
-		{5A57E3AB-7697-4E46-B3B4-6720B56B1FE3}.Debug|x86.ActiveCfg = Debug|Win32
-		{5A57E3AB-7697-4E46-B3B4-6720B56B1FE3}.Debug|x86.Build.0 = Debug|Win32
-		{5A57E3AB-7697-4E46-B3B4-6720B56B1FE3}.Release|x64.ActiveCfg = Release|x64
-		{5A57E3AB-7697-4E46-B3B4-6720B56B1FE3}.Release|x64.Build.0 = Release|x64
-		{5A57E3AB-7697-4E46-B3B4-6720B56B1FE3}.Release|x86.ActiveCfg = Release|Win32
-		{5A57E3AB-7697-4E46-B3B4-6720B56B1FE3}.Release|x86.Build.0 = Release|Win32
 		{63858B16-4A90-4E77-9AB8-0B6ABDD34761}.Debug|x64.ActiveCfg = Debug|x64
 		{63858B16-4A90-4E77-9AB8-0B6ABDD34761}.Debug|x64.Build.0 = Debug|x64
 		{63858B16-4A90-4E77-9AB8-0B6ABDD34761}.Debug|x86.ActiveCfg = Debug|Win32

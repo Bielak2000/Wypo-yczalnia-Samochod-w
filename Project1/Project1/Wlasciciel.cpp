@@ -35,6 +35,8 @@ void Wlasciciel::dodaj_pojazd()
 		cin >> Cena_za_godzine;
 		plik << "\n" << Numer_rejestracyjny << " " << Rodzaj << " " << Marka << " " << Model << " " <<
 			Rok << " " << Silnik << " " << Przebieg << " " << Cena_za_godzine << " 1";
+		cout << "Dodano pojazd!" << endl;
+		Sleep(2000);
 	}
 	else
 	{
@@ -55,6 +57,8 @@ void Wlasciciel::zmien_cene(string nr_rej, Pojazd* pojazdy)
 			cin >> nowa_cena;
 			pojazdy[i].zmien_cene_pojazdu(nowa_cena);
 			pojazdy[i].aktualizuj_plik(pojazdy);
+			cout << "Cena zostala zmieniona!" << endl;
+			Sleep(2000);
 			break;
 		}
 	}
@@ -91,6 +95,8 @@ void Wlasciciel::usun_pojazd(string nr_rej, Pojazd* pojazdy)
 			plik << pojazdy[i].get_cena_za_godzine() << " ";
 			plik << pojazdy[i].get_dostepnosc();
 		}
+		cout << "Usunieto pojazd!" << endl;
+		Sleep(2000);
 	}
 }
 

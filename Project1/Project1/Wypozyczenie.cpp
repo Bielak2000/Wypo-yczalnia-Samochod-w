@@ -11,39 +11,9 @@ Wypozyczenie::Wypozyczenie(Data d1, Data d2, string nr_rej, string pes, int cena
 	liczba_wypozyczen++;
 }
 
-bool Wypozyczenie::zmien_okres()
-{
-	// TODO - implement Wypozyczenie::zmien_okres
-	throw "Not yet implemented";
-}
-
-void Wypozyczenie::zakoncz_wypozyczenie()
-{
-	// TODO - implement Wypozyczenie::zakoncz_wypozyczenie
-	throw "Not yet implemented";
-}
-
-Data Wypozyczenie::zwroc_date_zakonczenia()
-{
-	// TODO - implement Wypozyczenie::zwroc_date_zakonczenia
-	throw "Not yet implemented";
-}
-
-void Wypozyczenie::dodaj_auto(string nr)
-{
-	// TODO - implement Wypozyczenie::dodaj_auto
-	throw "Not yet implemented";
-}
-
 void Wypozyczenie::pesel_klienta(string nr)
 {
 	pesel = nr;
-}
-
-void Wypozyczenie::podaj_termin()
-{
-	// TODO - implement Wypozyczenie::podaj_termin
-	throw "Not yet implemented";
 }
 
 void Wypozyczenie::zaplac(Wypozyczenie * tab_w)
@@ -139,26 +109,19 @@ void Wypozyczenie::zaplac(Wypozyczenie * tab_w)
 			{
 				cout << "Nie mozna odroczyc!" << endl;
 			}
-
 		}
 	} while (true);
 }
 
-void Wypozyczenie::skroc_okres(Data rozpoczecie, Data zakonczenie)
+void Wypozyczenie::skroc_okres(Data nowe_zakonczenie)
 {
 	// TODO - implement Wypozyczenie::skroc_okres
 	throw "Not yet implemented";
 }
 
-void Wypozyczenie::wydluz_okres(Data rozpoczecie, Data zakonczenie)
+void Wypozyczenie::wydluz_okres(Data nowe_zakonczenie)
 {
 	// TODO - implement Wypozyczenie::wydluz_okres
-	throw "Not yet implemented";
-}
-
-void Wypozyczenie::zmien_termin_platnosci(Data d)
-{
-	// TODO - implement Wypozyczenie::zmien_termin_platnosci
 	throw "Not yet implemented";
 }
 
@@ -364,7 +327,8 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 		for (int i = 0; i < Wypozyczenie::get_liczba_wypozyczen(); i++)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby wypozyczenia nie zapisac 2x
-			if (i != 0 && jest != 0) plik << "\n";
+			if (!(i == 1 && jest == 0))
+			if (i != 0) plik << "\n";
 			plik << wypozyczenia[i].get_data_od().get_dzien() << " ";
 			plik << wypozyczenia[i].get_data_od().get_miesiac() << " ";
 			plik << wypozyczenia[i].get_data_od().get_rok() << " ";
