@@ -20,8 +20,6 @@ public:
 	
 	bool wypozycz(Pojazd* pojazdy);
 
-	void zarzadzaj_wypozyczeniem();
-
 	void wyswietl_oferte(Pojazd* tablica_pojazdow);
 
 	void zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow);

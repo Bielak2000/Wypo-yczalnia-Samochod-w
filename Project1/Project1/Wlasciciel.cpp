@@ -35,6 +35,8 @@ void Wlasciciel::dodaj_pojazd()
 		cin >> Cena_za_godzine;
 		plik << "\n" << Numer_rejestracyjny << " " << Rodzaj << " " << Marka << " " << Model << " " <<
 			Rok << " " << Silnik << " " << Przebieg << " " << Cena_za_godzine << " 1";
+		cout << "Dodano pojazd!" << endl;
+		Sleep(2000);
 	}
 	else
 	{
@@ -55,6 +57,8 @@ void Wlasciciel::zmien_cene(string nr_rej, Pojazd* pojazdy)
 			cin >> nowa_cena;
 			pojazdy[i].zmien_cene_pojazdu(nowa_cena);
 			pojazdy[i].aktualizuj_plik(pojazdy);
+			cout << "Cena zostala zmieniona!" << endl;
+			Sleep(2000);
 			break;
 		}
 	}
@@ -75,21 +79,32 @@ void Wlasciciel::usun_pojazd(string nr_rej, Pojazd* pojazdy)
 		cout << "Pojazd nie zostal usuniety, gdyz nie ma go w pliku.";
 	else
 	{
-		ofstream plik;
-		plik.open("Pojazdy.txt");	//nadpisujemy plik
-		for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
+		if (pojazdy[jest].get_dostepnosc() == 1)
 		{
-			if (i == jest) continue;	//pomijanie dopisania pojazdu usuwanego
-			if (i != 0) plik << "\n";	//warunek, aby nie zrobic pustej linii na poczatku pliku
-			plik << pojazdy[i].get_numer_rejestracyjny() << " ";
-			plik << pojazdy[i].get_rodzaj() << " ";
-			plik << pojazdy[i].get_marka() << " ";
-			plik << pojazdy[i].get_model() << " ";
-			plik << pojazdy[i].get_rok() << " ";
-			plik << pojazdy[i].get_silnik() << " ";
-			plik << pojazdy[i].get_przebieg() << " ";
-			plik << pojazdy[i].get_cena_za_godzine() << " ";
-			plik << pojazdy[i].get_dostepnosc();
+			ofstream plik;
+			plik.open("Pojazdy.txt");	//nadpisujemy plik
+			for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
+			{
+				if (i == jest) continue;	//pomijanie dopisania pojazdu usuwanego
+				if (i != 0) plik << "\n";	//warunek, aby nie zrobic pustej linii na poczatku pliku
+				plik << pojazdy[i].get_numer_rejestracyjny() << " ";
+				plik << pojazdy[i].get_rodzaj() << " ";
+				plik << pojazdy[i].get_marka() << " ";
+				plik << pojazdy[i].get_model() << " ";
+				plik << pojazdy[i].get_rok() << " ";
+				plik << pojazdy[i].get_silnik() << " ";
+				plik << pojazdy[i].get_przebieg() << " ";
+				plik << pojazdy[i].get_cena_za_godzine() << " ";
+				plik << pojazdy[i].get_dostepnosc();
+			}
+			cout << "Usunieto pojazd!" << endl;
+			Sleep(2000);
+		}
+		else
+		{
+			cout << "Pojazd jest niedostpeny! Nie mozna go usunac!" << endl;
+			Sleep(2000);
+			system("cls");
 		}
 	}
 }
