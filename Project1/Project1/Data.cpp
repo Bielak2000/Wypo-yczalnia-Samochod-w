@@ -3,14 +3,16 @@
 
 using namespace std;
 
-Data::Data(int d, int m, int r, int g)
+//konstruktor
+Data::Data(int dzzien, int miiesiac, int rook, int goodzina)
 {
-	dzien = d;
-	miesiac = m;
-	rok = r;
-	godzina = g;
+	dzien = dzzien;
+	miesiac = miiesiac;
+	rok = rook;
+	godzina = goodzina;
 }
 
+//metoda sluzaca do zmiany daty, wewnatrz jej wpisywane sa dane, przez ktore maja zostac nadpisane stare dane
 void Data::zmien_date()
 {
 	cout << "Podaj nowa date w formacie liczbowym: " << endl;
@@ -108,6 +110,7 @@ bool Data::czy_koliduje(Data zajetyOd, Data zajetyDo, Data terminOd, Data termin
 	}
 }
 
+//gettery
 int Data::get_dzien()
 {
 	return Data::dzien;
@@ -127,6 +130,7 @@ int Data::get_godzina()
 	return Data::godzina;
 }
 
+//settery
 void Data::set_dzien(int d)
 {
 	Data::dzien = d;

@@ -1,56 +1,60 @@
 #include "Osoba.h"
 
-
-Osoba::Osoba(string Im, string Naz, string Pes, string Addr, string Numer):
-	Imie(Im), Nazwisko(Naz), Pesel(Pes), Adres(Addr), Numer_telefonu(Numer)
+//Konstruktor parametryzuj¹cy i domyœlny
+Osoba::Osoba(string im, string naz, string pes, string addr, string numer):
+	imie(im), nazwisko(naz), pesel(pes), adres(addr), numer_telefonu(numer)
 {
 }
 
+//Metoda wyœwietlaj¹ca dane osobowe
 void Osoba::wyswietl_dane()
 {
-	cout << "Imie i nazwisko:\t" << this->Imie << " " << this->Nazwisko << endl;
-	cout << "Pesel:\t\t" << this->Pesel << endl;
-	cout << "Numer telefonu:\t" << this->Numer_telefonu << endl;
-	cout << "Adres:\t\t" << this->Adres << endl;
+	cout << "Imie i nazwisko:\t" << this->imie << " " << this->nazwisko << endl;
+	cout << "Pesel:\t\t" << this->pesel << endl;
+	cout << "Numer telefonu:\t" << this->numer_telefonu << endl;
+	cout << "Adres:\t\t" << this->adres << endl;
 }
 
+//Metoda zmieniaj¹ca dane osobowe
 void Osoba::zmien_dane()
 {
 	cout << "Prosze podac nastepujace dane:" << endl;
 	cout << "Imie: ";
-	cin >> Imie;
+	cin >> imie;
 	cout << "Nazwisko: ";
-	cin >> Nazwisko;
+	cin >> nazwisko;
 	cout << "Pesel: ";
-	cin >> Pesel;
+	cin >> pesel;
 	cout << "Adres: ";
-	getline(cin, Adres);
-	getline(cin, Adres);
+	getline(cin, adres);
+	getline(cin, adres);
 	cout << "Nr telefonu: ";
-	cin >> Numer_telefonu;
+	cin >> numer_telefonu;
 }
 
+
+//Gettery
 string Osoba::get_imie()
 {
-	return Osoba::Imie;
+	return Osoba::imie;
 }
 
 string Osoba::get_nazwisko()
 {
-	return Osoba::Nazwisko;
+	return Osoba::nazwisko;
 }
 
 string Osoba::get_pesel()
 {
-	return Osoba::Pesel;
+	return Osoba::pesel;
 }
 
 string Osoba::get_adres()
 {
-	return Osoba::Adres;
+	return Osoba::adres;
 }
 
 string Osoba::get_numer_telefonu()
 {
-	return Osoba::Numer_telefonu;
+	return Osoba::numer_telefonu;
 }

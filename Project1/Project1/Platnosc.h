@@ -7,31 +7,27 @@ using namespace std;
 class Platnosc
 {
 private:
-	string Sposob_platnosci;
-	int Kwota;
-	bool Potwierdzenie;
+	string sposob_platnosci;
+	int kwota;
+	bool potwierdzenie;
 
 public:
-	//Platnosc(string sp = "Gotowka", int kw, bool potw = 0, bool odr = 0);
-	Platnosc(int kw=0);
 
-	bool czy_zaplacono();
+	Platnosc(int kw=0);			//Konstruktor
 
-	bool mozliwosc_odroczenia();
+	bool czy_zaplacono();		//Metoda sprawdzaj¹ca czy dokonano p³atnoœci (getter pola potwierdzenie)
 
-	void dokonaj_platnosci();
-
+	//Settery
+	void set_kwota(int cena);
+	void set_sposob_platnosci(string sposob);
 	void set_potwierdzenie(bool potw);
 
+	//Gettery
 	string get_sposob_platnosci();
-
 	int get_kwota();
-
 	bool get_potwierdzenie();
 
-	void set_kwota(int cena);
 
-	void set_sposob_platnosci(string sposob);
 };
 
 #endif

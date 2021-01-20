@@ -7,31 +7,38 @@
 #include <windows.h>
 using namespace std;
 
-int Klient::liczba_klientow = 0;
+int Klient::liczba_klientow = 0;//poczatkowa inicjalizacja statycznego pola wskazujacego na liczbe klientow
 
-Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer):
-	Osoba(Im, Naz, Pes, Addr, Numer) {
+//konstruktor, zwieksza statyczne pole liczba_klientow o jeden
+Klient::Klient(string imiee, string nazwiskoo, string pesell, string address, string numerr):
+	Osoba(imiee, nazwiskoo, pesell, address, numerr) {
 	liczba_klientow++;
 }
 
+//funkcja sluzaca do wypozyczenia pojazdu, klient podaje swoje dane i zapisuje je do pol, wyswietlana jest oferta wyzpoyczalnii, podawany jest numer rejestracyjny
+//i na jego bazie sprawdzamy czy jest on dostepny i czy on istnieje:
+//1.W przypadku gdzy jest niedostepny lub nieistnieje uzytkownik moze zrezygnowac lub zakonczyc.
+//2.W drugim przypadku zapisywana jest aktualna data z wyprzedzeniem o godzine do daty rozpoczecia wypozyczenia oraz klient podaje date zakonczenia, ktora jest sprawdzana
+//czy zostala podana poprawna(jest pozniejsza niz data rozpoczecia), jesli nie to trzeba podac ja od nowa, gdy dobra to zmieniania jest dostepnosc pojazdu i aktualizuje
+//sie plik z pojazdami; nastepnie obliczana jest kwota za wypozyczenie i tworzy sie obiekt klasy wypozyczenie po czym zapisuje sie to wypozyczenie do pliku.
 bool Klient::wypozycz(Pojazd* pojazdy)
 {
 	bool dostepny = false;
 	string nr_rej;
 	bool istnieje = false;
 	int godzina1, dzien1, miesiac1, rok1, godzina2, dzien2, miesiac2, rok2, wybor, wybor1;
-	int i = 0;
+	int i = 0;//zmienna sterujaca petla
 	cout << "Podaj imie: ";
-	cin >> Imie;
+	cin >> imie;
 	cout << "Podaj nazwisko: ";
-	cin >> Nazwisko;
+	cin >> nazwisko;
 	cout << "Podaj pesel: ";
-	cin >> Pesel;
+	cin >> pesel;
 	cout << "Podaj adres: ";
-	getline(cin, Adres);
-	getline(cin, Adres);
+	getline(cin, adres);
+	getline(cin, adres);
 	cout << "Podaj telefon kontaktowy: ";
-	cin >> Numer_telefonu;
+	cin >> numer_telefonu;
 	do {
 		cout << endl << "-----------------------------------------------------" << endl;
 		this->wyswietl_oferte(pojazdy);
@@ -215,16 +222,16 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	godzina += dzien * 24;
 	cena = godzina * pojazdy[i].get_cena_za_godzine();
 
-
-	Data d1(dzien1, miesiac1, rok1, godzina1);
-	Data d2(dzien2, miesiac2, rok2, godzina2);
-	Wypozyczenie w(d1, d2, nr_rej, Pesel, cena);
+	Data data1(dzien1, miesiac1, rok1, godzina1);
+	Data data2(dzien2, miesiac2, rok2, godzina2);
+	Wypozyczenie w(data1, data2, nr_rej, pesel, cena);
 
 	cout << "Wypozyczono pojazd!" << endl;
 	Sleep(2000);
 	system("cls");
 
-	ofstream plik;	//edytowanie pliku z dopisywaniem
+	//edytowanie pliku z dopisywaniem
+	ofstream plik;
 	plik.open("Wypozyczenia.txt", ios::out | ios::app);
 	if (Wypozyczenie::get_liczba_wypozyczen() != 1)
 		plik << "\n";
@@ -260,7 +267,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	return true;
 }
 
-
+//metoda do wyswietlania oferty czyli wszytskich danych o pojazdach, korzysta z metody wyswietl_dane w klasie Pojazd
 void Klient::wyswietl_oferte(Pojazd* tablica_pojazdow)
 {
 	for (int i = 0; i < tablica_pojazdow[0].get_liczba_pojazdow(); i++)
@@ -270,20 +277,23 @@ void Klient::wyswietl_oferte(Pojazd* tablica_pojazdow)
 	}
 }
 
+//metoda sluzaca do zwrotu wypozyczonego pojazdu przez klienta, podaje on numer rejestracyjny i swoj pesel metoda sprawdza czy ten klient ma takie wypozyczenie(jesli nie to 
+//wychodzi z funkcji, jesli tak spawdza sie uszkodzenia i w razie czego podaje wartosc uszkodzen i dopsiuje do kwoty za wypozyczenie, podaje sie tez aktualny przebieg i dopisuje 
+//do pojazdu, zmienia sie jego dostpenosc na dostepny i aktualizuje plik z pojazdami, po tym zmienia sie pole zakonczone na 1 w wypozyczeniu i aktualizuje
+//plik z wypozyczeniami.
 void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 {
-	string p, nr;
+	string pesell, nr_rejj;
 	int sprawdzacz = 0;
 	cout << "Podaj swoj pesel: ";
-	cin >> p;
+	cin >> pesell;
 	cout << "Podaj numer rejestracyjny: ";
-	cin >> nr;
+	cin >> nr_rejj;
 	for (int i = 0; i < tablica_w[0].get_liczba_wypozyczen(); i++)
 	{
-		if (tablica_w[i].get_pesel() == p && tablica_w[i].get_numer_rejestracyjny() == nr && tablica_w[i].get_rachunek().get_potwierdzenie() == 0)
+		if (tablica_w[i].get_pesel() == pesell && tablica_w[i].get_numer_rejestracyjny() == nr_rejj && tablica_w[i].get_rachunek().get_potwierdzenie() == 0)
 		{
 			sprawdzacz = 1;
-			tablica_w[i].set_zakonczone(true);
 			int wybor;
 			do
 			{
@@ -309,9 +319,9 @@ void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 			
 			for (int j = 0; j < tablica_pojazdow[0].get_liczba_pojazdow(); j++)
 			{
-				if (nr == tablica_pojazdow[j].get_numer_rejestracyjny())
+				if (nr_rejj == tablica_pojazdow[j].get_numer_rejestracyjny())
 				{
-					tablica_pojazdow[j].set_przebieg(przebieg);
+					tablica_pojazdow[j].zmien_przebieg(przebieg);
 					tablica_pojazdow[j].zmien_dostepnosc();
 					tablica_pojazdow[j].aktualizuj_plik(tablica_pojazdow);
 					break;
@@ -337,19 +347,19 @@ void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 }
 
 //funkcja wyszukuje dane wypozyczenie za ktore chce zaplacic uzytkownik po przez wyszukanie jego po peselu i nr rejestracyjnym pojazdu;
-//korzysta z funkcji zaplac w wypozyczeniu i na koniec aktualizuje plik
+//korzysta z funkcji zaplac w wypozyczeniu i na koniec aktualizuje plik, a jesli nie znaleziono takiego wypozyczenia to wyswietla komunikat i wychodzi z funkcji;
 void Klient::dokonaj_platnosci(Wypozyczenie* tablica_w)
 {
-	string pes, nr;
+	string pessel, nr_reej;
 	cout << "Podaj pesel: ";
-	cin >> pes;
+	cin >> pessel;
 	cout << "Podaj numer rejestracyjny pojazdu za wypozyczenie ktorego chcesz zaplacic: ";
-	cin >> nr;
+	cin >> nr_reej;
 	bool sprawdzacz = 0;
 
 	for (int i = 0; i < tablica_w[0].get_liczba_wypozyczen(); i++)
 	{
-		if (tablica_w[i].get_numer_rejestracyjny() == nr && tablica_w[i].get_pesel() == pes)
+		if (tablica_w[i].get_numer_rejestracyjny() == nr_reej && tablica_w[i].get_pesel() == pessel)
 		{
 			tablica_w[i].zaplac(tablica_w);
 			tablica_w[i].aktualizuj_plik(tablica_w);
@@ -388,12 +398,12 @@ Klient* Klient::wczytaj_z_pliku(int& rozmiar)
 		{
 			getline(plik, linia);		//w pierwszej z linii sa podstawowe dane
 			istringstream iss(linia);
-			iss >> klienci[i].Imie;
-			iss >> klienci[i].Nazwisko;
-			iss >> klienci[i].Pesel;
-			iss >> klienci[i].Numer_telefonu;
-			getline(plik, linia);		//w drugiej linii jest adres
-			klienci[i].Adres = linia;
+			iss >> klienci[i].imie;
+			iss >> klienci[i].nazwisko;
+			iss >> klienci[i].pesel;
+			iss >> klienci[i].numer_telefonu;
+			getline(plik, linia);
+			klienci[i].adres = linia;
 		}
 	}
 	else
@@ -410,7 +420,7 @@ void Klient::aktualizuj_plik(Klient* klienci) //przyjmowany argument to tablica 
 	int jest = -1;	//indeks dla klienta dla ktorego wywolana jest metoda
 
 	for (int i = 0; i < klienci[i].get_liczba_klientow(); i++)
-		if (klienci[i].get_pesel() == this->Pesel)
+		if (klienci[i].get_pesel() == this->pesel)
 		{
 			jest = i;	//jesli klient jest juz w pliku to zapisujemy jego indeks w "jest"
 			break;
@@ -424,11 +434,11 @@ void Klient::aktualizuj_plik(Klient* klienci) //przyjmowany argument to tablica 
 		plik.open("Klienci.txt", ios::out | ios::app);
 		if (klienci[0].get_liczba_klientow() != 0)
 			plik << "\n";
-		plik << this->Imie << " ";
-		plik << this->Nazwisko << " ";
-		plik << this->Pesel << " ";
-		plik << this->Numer_telefonu << "\n";
-		plik << this->Adres;
+		plik << this->imie << " ";
+		plik << this->nazwisko << " ";
+		plik << this->pesel << " ";
+		plik << this->numer_telefonu << "\n";
+		plik << this->adres;
 		plik.close();
 	}
 	else
@@ -438,33 +448,35 @@ void Klient::aktualizuj_plik(Klient* klienci) //przyjmowany argument to tablica 
 		for (int i = 0; i < klienci[i].get_liczba_klientow(); i++)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby klienta nie zapisac 2x
-			if (!(i == 1 && jest == 0))		//warunek aby nie zapisac pustej linii w przypadku pustego pliku
-				if (i != 0) plik << "\n";
-			plik << klienci[i].Imie << " ";
-			plik << klienci[i].Nazwisko << " ";
-			plik << klienci[i].Pesel << " ";
-			plik << klienci[i].Numer_telefonu << "\n";
-			plik << klienci[i].Adres << " ";
+			if (!(i == 1 && jest == 0))
+			if (i != 0) plik << "\n";
+			plik << klienci[i].imie << " ";
+			plik << klienci[i].nazwisko << " ";
+			plik << klienci[i].pesel << " ";
+			plik << klienci[i].numer_telefonu << "\n";
+			plik << klienci[i].adres << " ";
 		}
 
 		//na koncu dopisujemy nowego klienta z aktualnymi danymi
 		if (klienci[0].get_liczba_klientow() != 1)
 			plik << "\n";
-		plik << this->Imie << " ";
-		plik << this->Nazwisko << " ";
-		plik << this->Pesel << " ";
-		plik << this->Numer_telefonu << "\n";
-		plik << this->Adres << " ";
+		plik << this->imie << " ";
+		plik << this->nazwisko << " ";
+		plik << this->pesel << " ";
+		plik << this->numer_telefonu << "\n";
+		plik << this->adres << " ";
 
 		plik.close();
 	}
 }
 
+//getter do liczby klientow
 int Klient::get_liczba_klientow()
 {
 	return Klient::liczba_klientow;
 }
 
+//metoda do zmieniejszenia liczby klientow o jeden
 void Klient::zmniejsz_liczba_klientow()
 {
 	liczba_klientow--;

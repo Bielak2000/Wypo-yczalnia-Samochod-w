@@ -1,83 +1,62 @@
 #include "Pojazd.h"
 
+int Pojazd::liczba_pojazdow = 0;//poczatkowa inicjalizacja zmiennej statycznej
 
-int Pojazd::liczba_pojazdow = 0;
-
-/*Pojazd::Pojazd()
+//konstuktor tej klasy wraz z inkrementacja statycznego pola wskauzjacego na liczbe pojazdow
+Pojazd::Pojazd(string nr_rejj, string rodz, string markaa, string mod,
+	int rokk, string silnikk, string przebiegg, int cen_godz, bool dost)
 {
-	Pojazd::liczba_pojazdow++;
-}*/
-
-Pojazd::Pojazd(string n, string rodz, string mar, string mod,
-	int r, string sil, string przeb, int cen_godz, bool dost)
-{
-	this->Numer_rejestracyjny = n;
-	this->Rodzaj = rodz;
-	this->Marka = mar;
-	this->Model = mod;
-	this->Rok = r;
-	this->Silnik = sil;
-	this->Przebieg = przeb;
-	this->Cena_za_godzine = cen_godz;
-	this->Dostepny = dost;
-
+	this->numer_rejestracyjny = nr_rejj;
+	this->rodzaj = rodz;
+	this->marka = markaa;
+	this->model = mod;
+	this->rok = rokk;
+	this->silnik = silnikk;
+	this->przebieg = przebiegg;
+	this->cena_za_godzine = cen_godz;
+	this->dostepny = dost;
 	this->liczba_pojazdow++;
 }
 
+//metoda sluzaca do wyswietlenia wszytskich danych o pojezdzie
 void Pojazd::wyswietl_dane()
 {
-	cout << "Rodzaj: " << Rodzaj;
-	cout << ", marka: " << Marka;
-	cout << ", model: " << Model;
-	cout << ", rok: " << Rok;
-	cout << ", numer rejestracyjny: " << Numer_rejestracyjny << endl;
-	cout << "\tSilnik: " << Silnik;
-	cout << ", przebieg: " << Przebieg;
-	if (Dostepny == 1)
+	cout << "Rodzaj: " << rodzaj;
+	cout << ", marka: " << marka;
+	cout << ", model: " << model;
+	cout << ", rok: " << rok;
+	cout << ", numer rejestracyjny: " << numer_rejestracyjny << endl;
+	cout << "\tSilnik: " << silnik;
+	cout << ", przebieg: " << przebieg;
+	if (dostepny == 1)
 		cout << ", dostepny: TAK";
 	else
 		cout << ", dostepny: NIE";
-	cout << ", cena za godzine: " << Cena_za_godzine << ".";
+	cout << ", cena za godzine: " << cena_za_godzine << ".";
 }
 
+//metoda sluzaca do zmiany przebiegu pojazdu
 void Pojazd::zmien_przebieg(string km)
 {
-	Przebieg = km;
+	przebieg = km;
 }
 
-bool Pojazd::sprawdz_dostepnosc(string nr)
-{
-	if (Dostepny == 1)
-	{
-		cout << "Pojazd jest dostepny." << endl;
-		return true;
-	}
-	else
-	{
-		cout << "Pojazd jest niedostepny." << endl;
-		return false;
-	}
-}
-
+//metoda sluzaca do zmiany ceny pojazdu
 void Pojazd::zmien_cene_pojazdu(int cena)
 {
-	Cena_za_godzine = cena;
+	cena_za_godzine = cena;
 }
 
-void Pojazd::wypozycz()
-{
-	zmien_dostepnosc();
-}
-
+//metoda zmieniajaca dostepnosc pojazdu na przeciwna
 void Pojazd::zmien_dostepnosc()
 {
-	if (Dostepny)
+	if (dostepny)
 	{
-		Dostepny = false;
+		dostepny = false;
 	}
 	else
 	{
-		Dostepny = true;
+		dostepny = true;
 	}
 }
 
@@ -107,15 +86,15 @@ Pojazd* Pojazd::wczytaj_z_pliku(int& rozmiar)
 		{
 			getline(plik, linia);
 			istringstream iss(linia);
-			iss >> pojazdy[i].Numer_rejestracyjny;
-			iss >> pojazdy[i].Rodzaj;
-			iss >> pojazdy[i].Marka;
-			iss >> pojazdy[i].Model;
-			iss >> pojazdy[i].Rok;
-			iss >> pojazdy[i].Silnik;
-			iss >> pojazdy[i].Przebieg;
-			iss >> pojazdy[i].Cena_za_godzine;
-			iss >> pojazdy[i].Dostepny;
+			iss >> pojazdy[i].numer_rejestracyjny;
+			iss >> pojazdy[i].rodzaj;
+			iss >> pojazdy[i].marka;
+			iss >> pojazdy[i].model;
+			iss >> pojazdy[i].rok;
+			iss >> pojazdy[i].silnik;
+			iss >> pojazdy[i].przebieg;
+			iss >> pojazdy[i].cena_za_godzine;
+			iss >> pojazdy[i].dostepny;
 		}
 	}
 	else
@@ -132,7 +111,7 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)	//przyjmowany argument to tablica 
 	int jest = -1;	//zmienna na indeks pojazdu
 
 	for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
-		if (pojazdy[i].get_numer_rejestracyjny() == this->Numer_rejestracyjny) 
+		if (pojazdy[i].get_numer_rejestracyjny() == this->numer_rejestracyjny) 
 		{
 			jest = i;	//jesli pojazd jest juz w pliku to zapisujemy jego indeks w "jest"
 			break;
@@ -145,15 +124,15 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)	//przyjmowany argument to tablica 
 		plik.open("Pojazdy.txt", ios::out|ios::app);
 		if (pojazdy[0].get_liczba_pojazdow() != 0)
 			plik << "\n";
-		plik << this->Numer_rejestracyjny << " ";
-		plik << this->Rodzaj << " ";
-		plik << this->Marka << " ";
-		plik << this->Model << " ";
-		plik << this->Rok << " ";
-		plik << this->Silnik << " ";
-		plik << this->Przebieg << " ";
-		plik << this->Cena_za_godzine << " ";
-		plik << this->Dostepny;
+		plik << this->numer_rejestracyjny << " ";
+		plik << this->rodzaj << " ";
+		plik << this->marka << " ";
+		plik << this->model << " ";
+		plik << this->rok << " ";
+		plik << this->silnik << " ";
+		plik << this->przebieg << " ";
+		plik << this->cena_za_godzine << " ";
+		plik << this->dostepny;
 		plik.close();
 	}
 	else
@@ -165,72 +144,73 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)	//przyjmowany argument to tablica 
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby pojazdu nie zapisac 2x
 			if (!(i == 1 && jest == 0))	//warunek zeby nie bylo linii odstepu w przypadku pustego pliku
 				if (i != 0)	 plik << "\n";
-			plik << pojazdy[i].Numer_rejestracyjny << " ";
-			plik << pojazdy[i].Rodzaj << " ";
-			plik << pojazdy[i].Marka << " ";
-			plik << pojazdy[i].Model << " ";
-			plik << pojazdy[i].Rok << " ";
-			plik << pojazdy[i].Silnik << " ";
-			plik << pojazdy[i].Przebieg << " ";
-			plik << pojazdy[i].Cena_za_godzine << " ";
-			plik << pojazdy[i].Dostepny;
+			plik << pojazdy[i].numer_rejestracyjny << " ";
+			plik << pojazdy[i].rodzaj << " ";
+			plik << pojazdy[i].marka << " ";
+			plik << pojazdy[i].model << " ";
+			plik << pojazdy[i].rok << " ";
+			plik << pojazdy[i].silnik << " ";
+			plik << pojazdy[i].przebieg << " ";
+			plik << pojazdy[i].cena_za_godzine << " ";
+			plik << pojazdy[i].dostepny;
 		}
 
 		//na koncu dopisujemy pojazd z aktualnymi danymi
 		if (pojazdy[0].get_liczba_pojazdow() != 1)
 			plik << "\n";
-		plik << this->Numer_rejestracyjny << " ";
-		plik << this->Rodzaj << " ";
-		plik << this->Marka << " ";
-		plik << this->Model << " ";
-		plik << this->Rok << " ";
-		plik << this->Silnik << " ";
-		plik << this->Przebieg << " ";
-		plik << this->Cena_za_godzine << " ";
-		plik << this->Dostepny;
+		plik << this->numer_rejestracyjny << " ";
+		plik << this->rodzaj << " ";
+		plik << this->marka << " ";
+		plik << this->model << " ";
+		plik << this->rok << " ";
+		plik << this->silnik << " ";
+		plik << this->przebieg << " ";
+		plik << this->cena_za_godzine << " ";
+		plik << this->dostepny;
 
 		plik.close();
 	}
 }
 
+//gettery
 string Pojazd::get_numer_rejestracyjny()
 {
-	return Pojazd::Numer_rejestracyjny;
+	return Pojazd::numer_rejestracyjny;
 }
 
 string Pojazd::get_rodzaj()
 {
-	return Pojazd::Rodzaj;
+	return Pojazd::rodzaj;
 }
 
 string Pojazd::get_marka()
 {
-	return Pojazd::Marka;
+	return Pojazd::marka;
 }
 
 string Pojazd::get_model()
 {
-	return Pojazd::Model;
+	return Pojazd::model;
 }
 
 int Pojazd::get_rok() 
 {
-	return Pojazd::Rok;
+	return Pojazd::rok;
 }
 
 string Pojazd::get_silnik()
 {
-	return Pojazd::Silnik;
+	return Pojazd::silnik;
 }
 
 string Pojazd::get_przebieg()
 {
-	return Pojazd::Przebieg;
+	return Pojazd::przebieg;
 }
 
 bool Pojazd::get_dostepnosc()
 {
-	return Pojazd::Dostepny;
+	return Pojazd::dostepny;
 }
 
 int Pojazd::get_liczba_pojazdow()
@@ -240,49 +220,11 @@ int Pojazd::get_liczba_pojazdow()
 
 int Pojazd::get_cena_za_godzine()
 {
-	return Pojazd::Cena_za_godzine;
+	return Pojazd::cena_za_godzine;
 }
 
-void Pojazd::set_cena_za_godzine(int cena)
+//settery
+void Pojazd::set_dostepny(bool dostep)
 {
-	Cena_za_godzine = cena;
+	Pojazd::dostepny = dostep;
 }
-
-void Pojazd::set_przebieg(string km)
-{
-	Przebieg = km;
-}
-
-void Pojazd::set_dostepny( bool dostep )
-{
-	Pojazd::Dostepny = dostep;
-}
-
-/*
-void Pojazd::set_numer_rejestracyjny()
-{
-
-}
-
-void Pojazd::set_rodzaj();
-
-void Pojazd::set_marka();
-
-void Pojazd::set_model();
-
-void Pojazd::set_rok();
-
-void Pojazd::set_silnik();
-
-void Pojazd::set_przebieg();
-
-void Pojazd::set_cena_za_godzine();
-
-bool Pojazd::get_dostepny()
-{
-	if (Pojazd::Dostepny == 1)
-		return true;
-	else
-		return false;
-}*/
-
