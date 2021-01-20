@@ -224,7 +224,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 
 	Data data1(dzien1, miesiac1, rok1, godzina1);
 	Data data2(dzien2, miesiac2, rok2, godzina2);
-	Wypozyczenie w(data1, data2, nr_rej, pesel, cena);
+	Wypozyczenie wypozyczenie(data1, data2, nr_rej, pesel, cena);
 
 	cout << "Wypozyczono pojazd!" << endl;
 	Sleep(2000);
@@ -235,33 +235,33 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	plik.open("Wypozyczenia.txt", ios::out | ios::app);
 	if (Wypozyczenie::get_liczba_wypozyczen() != 1)
 		plik << "\n";
-	plik << w.get_data_od().get_dzien() << " ";
-	plik << w.get_data_od().get_miesiac() << " ";
-	plik << w.get_data_od().get_rok() << " ";
-	plik << w.get_data_od().get_godzina() << " ";
+	plik << wypozyczenie.get_data_od().get_dzien() << " ";
+	plik << wypozyczenie.get_data_od().get_miesiac() << " ";
+	plik << wypozyczenie.get_data_od().get_rok() << " ";
+	plik << wypozyczenie.get_data_od().get_godzina() << " ";
 
-	plik << w.get_data_do().get_dzien() << " ";
-	plik << w.get_data_do().get_miesiac() << " ";
-	plik << w.get_data_do().get_rok() << " ";
-	plik << w.get_data_do().get_godzina() << " ";
+	plik << wypozyczenie.get_data_do().get_dzien() << " ";
+	plik << wypozyczenie.get_data_do().get_miesiac() << " ";
+	plik << wypozyczenie.get_data_do().get_rok() << " ";
+	plik << wypozyczenie.get_data_do().get_godzina() << " ";
 
-	plik << w.get_numer_rejestracyjny() << " ";
-	plik << w.get_pesel() << " ";
-	if(w.get_zakonczone()==1)
+	plik << wypozyczenie.get_numer_rejestracyjny() << " ";
+	plik << wypozyczenie.get_pesel() << " ";
+	if(wypozyczenie.get_zakonczone()==1)
 		plik << "Zakonczone" << " ";
 	else
 		plik << "Niezakonczone" << " ";
 
-	plik << w.get_rachunek().get_sposob_platnosci() << " ";
-	plik << w.get_rachunek().get_kwota() << " ";
-	if (w.get_rachunek().get_potwierdzenie() == 1)
+	plik << wypozyczenie.get_rachunek().get_sposob_platnosci() << " ";
+	plik << wypozyczenie.get_rachunek().get_kwota() << " ";
+	if (wypozyczenie.get_rachunek().get_potwierdzenie() == 1)
 		plik << "Zaplacone" << " ";
 	else
 		plik << "Niezaplacone" << " ";
-	plik << w.get_termin_platnosci().get_dzien() << " ";
-	plik << w.get_termin_platnosci().get_miesiac() << " ";
-	plik << w.get_termin_platnosci().get_rok() << " ";
-	plik << w.get_termin_platnosci().get_godzina() << " ";
+	plik << wypozyczenie.get_termin_platnosci().get_dzien() << " ";
+	plik << wypozyczenie.get_termin_platnosci().get_miesiac() << " ";
+	plik << wypozyczenie.get_termin_platnosci().get_rok() << " ";
+	plik << wypozyczenie.get_termin_platnosci().get_godzina() << " ";
 	plik.close();
 
 	return true;

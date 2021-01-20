@@ -21,8 +21,6 @@ public:
 	Osoba(string Im = "Niezdefiniowane", string Naz = "Niezdefiniowane", string Pes = "Niezdefiniowane",
 		string Addr = "Niezdefiniowane", string Numer = "Niezdefiniowane");
 
-	void wyswietl_dane();	//Metoda wyœwietlaj¹ca dane osobowe
-
 	void zmien_dane();	//Metoda zmieniaj¹ca dane osobowe
 
 	//Gettery

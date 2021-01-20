@@ -5,7 +5,7 @@ using namespace std;
 
 int Wypozyczenie::liczba_wypozyczen = 0;
 
-Wypozyczenie::Wypozyczenie(Data d1, Data d2, string nr_rej, string pes, int cena):data_od(d1), data_do(d2), numer_rejestracyjny(nr_rej), pesel(pes)
+Wypozyczenie::Wypozyczenie(Data data1, Data data2, string nr_rej, string pes, int cena):data_od(data1), data_do(data2), numer_rejestracyjny(nr_rej), pesel(pes)
 {
 	Wypozyczenie::rachunek.set_kwota(cena);
 	liczba_wypozyczen++;
@@ -114,49 +114,49 @@ void Wypozyczenie::zaplac(Wypozyczenie * tab_wyp)
 //skracanie okresu wypozyczenia
 bool Wypozyczenie::skroc_okres(Data nowe_zakonczenie)
 {
-	bool x = false;
+	bool sprawdzacz = false;
 	if (this->data_od.get_rok() < nowe_zakonczenie.get_rok())
 	{
-		x=true;
+		sprawdzacz=true;
 	}
 	else if (this->data_od.get_rok() > nowe_zakonczenie.get_rok())
 	{
-		x = false;
+		sprawdzacz = false;
 	}
 	else
 	{
 		if (this->data_od.get_miesiac() < nowe_zakonczenie.get_miesiac())
 		{
-			x = true;
+			sprawdzacz = true;
 		}
 		else if (this->data_od.get_miesiac() > nowe_zakonczenie.get_miesiac())
 		{
-			x = false;
+			sprawdzacz = false;
 		}
 		else
 		{
 			if (this->data_od.get_dzien() < nowe_zakonczenie.get_dzien())
 			{
-				x = true;
+				sprawdzacz = true;
 			}
 			else if (this->data_od.get_dzien() > nowe_zakonczenie.get_dzien())
 			{
-				x = false;
+				sprawdzacz = false;
 			}
 			else
 			{
 				if (this->data_od.get_godzina() < nowe_zakonczenie.get_godzina())
 				{
-					x = true;
+					sprawdzacz = true;
 				}
 				else
 				{
-					x = false;
+					sprawdzacz = false;
 				}
 			}
 		}
 	}
-	if (x == false)
+	if (sprawdzacz == false)
 		return false;
 
 	if (this->data_do.get_rok() > nowe_zakonczenie.get_rok())
@@ -420,7 +420,8 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby wypozyczenia nie zapisac 2x
 			if (!(i == 1 && jest == 0))	//warunek zeby nie zapisac pustej linii w przypadku pustego pliku
-				if (i != 0) plik << "\n";
+				if (i != 0) 
+					plik << "\n";
 			plik << wypozyczenia[i].get_data_od().get_dzien() << " ";
 			plik << wypozyczenia[i].get_data_od().get_miesiac() << " ";
 			plik << wypozyczenia[i].get_data_od().get_rok() << " ";
@@ -484,11 +485,11 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 	}
 }
 
+//Gettery
 bool Wypozyczenie::get_zakonczone()
 {
 	return Wypozyczenie::zakonczone;
 }
-
 string Wypozyczenie::get_numer_rejestracyjny()
 {
 	return Wypozyczenie::numer_rejestracyjny;
@@ -522,7 +523,7 @@ int Wypozyczenie::get_liczba_wypozyczen()
 	return liczba_wypozyczen;
 }
 
-
+//Settery
 void Wypozyczenie::set_termin_platnosci(Data d)
 {
 	Wypozyczenie::termin_platnosci = d;

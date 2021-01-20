@@ -16,12 +16,12 @@ int main()	//Funkcja g³ówna
 {
 
 	//Przepisanie informacji z plików do tablic
-	int n;
-	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);
-	int k;
-	Klient* klienci = Klient::wczytaj_z_pliku(k);
-	int w;
-	Wypozyczenie* wypozyczenia = Wypozyczenie::wczytaj_z_pliku(w);
+	int ilosc_pojazdow;
+	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(ilosc_pojazdow);
+	int ilosc_klientow;
+	Klient* klienci = Klient::wczytaj_z_pliku(ilosc_klientow);
+	int ilosc_wypozyczen;
+	Wypozyczenie* wypozyczenia = Wypozyczenie::wczytaj_z_pliku(ilosc_wypozyczen);
 
 	//Sprawdzanie b³êdu przy wczytywaniu danych
 	if (pojazdy == nullptr || klienci == nullptr || wypozyczenia == nullptr)
@@ -68,16 +68,16 @@ int main()	//Funkcja g³ówna
 			cout << "7.Wyjdz." << endl;
 			cin >> wybor1;
 			system("cls");
-			Klient k;
-			k.zmniejsz_liczba_klientow(); //Teraz bedzie prawidlowa ilosc klientow
+			Klient klient;
+			klient.zmniejsz_liczba_klientow(); //Teraz bedzie prawidlowa ilosc klientow
 
 			//Wybory z menu
 			if (wybor1 == 1)
 			{
 				bool sprawdzenie;
-				sprawdzenie=k.wypozycz(pojazdy);
+				sprawdzenie=klient.wypozycz(pojazdy);
 				if(sprawdzenie)
-					k.aktualizuj_plik(klienci);
+					klient.aktualizuj_plik(klienci);
 			}
 			else if (wybor1 == 2)
 			{
@@ -170,21 +170,21 @@ int main()	//Funkcja g³ówna
 						system("cls");
 						if (wybor2 == 1)
 						{
-							Data d;
+							Data data;
 							int zmienna;
 							cout << "Podaj nowy rok: ";
 							cin >> zmienna;
-							d.set_rok(zmienna);
+							data.set_rok(zmienna);
 							cout << "Podaj nowy miesiac: ";
 							cin >> zmienna;
-							d.set_miesiac(zmienna);
+							data.set_miesiac(zmienna);
 							cout << "Podaj nowy dzien: ";
 							cin >> zmienna;
-							d.set_dzien(zmienna);
+							data.set_dzien(zmienna);
 							cout << "Podaj nowy godzina: ";
 							cin >> zmienna;
-							d.set_godzina(zmienna);
-							bool udane = wypozyczenia[indeks].skroc_okres(d);
+							data.set_godzina(zmienna);
+							bool udane = wypozyczenia[indeks].skroc_okres(data);
 
 							//Gdy podana data jest mniejsza od pocz¹tkowej lub wiêksza od koñcowej
 							if (!udane)
@@ -196,7 +196,7 @@ int main()	//Funkcja g³ówna
 							}
 							else
 							{
-								wypozyczenia[indeks].set_termin_platnosci(d);
+								wypozyczenia[indeks].set_termin_platnosci(data);
 
 								//Liczenie ceny
 								int cena = 0;
@@ -238,21 +238,21 @@ int main()	//Funkcja g³ówna
 						}
 						else if (wybor2 == 2)
 						{
-							Data d;
+							Data data;
 							int zmienna;
 							cout << "Podaj nowy rok: ";
 							cin >> zmienna;
-							d.set_rok(zmienna);
+							data.set_rok(zmienna);
 							cout << "Podaj nowy miesiac: ";
 							cin >> zmienna;
-							d.set_miesiac(zmienna);
+							data.set_miesiac(zmienna);
 							cout << "Podaj nowy dzien: ";
 							cin >> zmienna;
-							d.set_dzien(zmienna);
+							data.set_dzien(zmienna);
 							cout << "Podaj nowy godzina: ";
 							cin >> zmienna;
-							d.set_godzina(zmienna);
-							bool udane = wypozyczenia[indeks].wydluz_okres(d);
+							data.set_godzina(zmienna);
+							bool udane = wypozyczenia[indeks].wydluz_okres(data);
 
 							//Gdy podana data mniejsza od koncowej
 							if (!udane)
@@ -264,7 +264,7 @@ int main()	//Funkcja g³ówna
 							}
 							else
 							{
-								wypozyczenia[indeks].set_termin_platnosci(d);
+								wypozyczenia[indeks].set_termin_platnosci(data);
 
 								//Liczenie ceny
 								int cena = 0;
@@ -314,29 +314,29 @@ int main()	//Funkcja g³ówna
 			}
 			else if (wybor1 == 3)
 			{
-				k.zwroc_pojazd(wypozyczenia, pojazdy);
+				klient.zwroc_pojazd(wypozyczenia, pojazdy);
 
 			}
 			else if (wybor1 == 4)
 			{
-				k.wyswietl_oferte(pojazdy);
+				klient.wyswietl_oferte(pojazdy);
 			}
 			else if (wybor1 == 5)
 			{
-				k.dokonaj_platnosci(wypozyczenia);
+				klient.dokonaj_platnosci(wypozyczenia);
 			}
 			else if (wybor1 == 6)
 			{
-				string p;
+				string pese;
 				cout << "Podaj swoj pesel: ";
-				cin >> p;
+				cin >> pese;
 
 				//Pêtla wypisuj¹ca liste wypozyczeñ klienta
 				for (int i = 0; i < wypozyczenia[0].get_liczba_wypozyczen(); i++)
 				{
 
 					//Gdy wypozyczenie nale¿y do klienta
-					if (wypozyczenia[i].get_pesel() == p)
+					if (wypozyczenia[i].get_pesel() == pese)
 					{
 						cout << endl;
 						cout << "Data rozpoczecia: ";
@@ -395,7 +395,7 @@ int main()	//Funkcja g³ówna
 	{
 		string login, haslo;
 		int wybor2;
-		Wlasciciel w;
+		Wlasciciel wlasciciel;
 
 		//Logowanie w³aœciciela
 		do 
@@ -404,7 +404,7 @@ int main()	//Funkcja g³ówna
 					cin >> login;
 					cout << "Podaj haslo: ";
 					cin >> haslo;
-					if (w.get_login() == login && w.get_haslo() == haslo)
+					if (wlasciciel.get_login() == login && wlasciciel.get_haslo() == haslo)
 					{
 						cout << "Zalogowano!" << endl;
 						Sleep(2000);
@@ -424,21 +424,21 @@ int main()	//Funkcja g³ówna
 							system("cls");
 							if (wybor1 == 1)
 							{
-								w.dodaj_pojazd();
+								wlasciciel.dodaj_pojazd();
 							}
 							else if (wybor1 == 2)
 							{
 								string nr_rej_usun;
 								cout << "Podaj numer rejestracyjny pojazdu, ktory chcesz usunac: ";
 								cin >> nr_rej_usun;
-								w.usun_pojazd(nr_rej_usun, pojazdy);
+								wlasciciel.usun_pojazd(nr_rej_usun, pojazdy);
 							}
 							else if (wybor1 == 3)
 							{
 								string numer_rejestracyjny;
 								cout << "Podaj numer rejestracyjny pojazdu, ktorego cene za godzine chcesz zmienic: ";
 								cin >> numer_rejestracyjny;
-								w.zmien_cene(numer_rejestracyjny, pojazdy);
+								wlasciciel.zmien_cene(numer_rejestracyjny, pojazdy);
 							}
 							else if (wybor1 == 4)
 							{

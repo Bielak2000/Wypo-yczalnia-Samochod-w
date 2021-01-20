@@ -28,11 +28,11 @@ public:
 
 	void aktualizuj_plik(Klient* klienci);	//aktualizacja pliku z klientami
 
-	int get_liczba_klientow();//getter 
-
 	void zmniejsz_liczba_klientow();//metoda sluzaca do zmniejszenia liczby klientow
 
 	void dokonaj_platnosci(Wypozyczenie* tablica_w);//metoda dokonujaca platnosci za wypozyczenie
+
+	int get_liczba_klientow();//getter 
 };
 
 #endif
