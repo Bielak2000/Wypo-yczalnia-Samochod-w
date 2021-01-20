@@ -33,6 +33,9 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	cout << "Podaj telefon kontaktowy: ";
 	cin >> Numer_telefonu;
 	do {
+		cout << endl << "-----------------------------------------------------" << endl;
+		this->wyswietl_oferte(pojazdy);
+		cout << "-----------------------------------------------------" << endl;
 		cout << "Podaj numer rejestracyjny: ";
 		cin >> nr_rej;
 
@@ -215,7 +218,9 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 
 	ofstream plik;	//edytowanie pliku z dopisywaniem
 	plik.open("Wypozyczenia.txt", ios::out | ios::app);
-	plik << "\n" << w.get_data_od().get_dzien() << " ";
+	if (w.get_liczba_wypozyczen() != 0)
+		plik << "\n";
+	plik << w.get_data_od().get_dzien() << " ";
 	plik << w.get_data_od().get_miesiac() << " ";
 	plik << w.get_data_od().get_rok() << " ";
 	plik << w.get_data_od().get_godzina() << " ";

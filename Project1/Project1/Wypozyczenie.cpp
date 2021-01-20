@@ -312,7 +312,7 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 {
 	int jest = -1;	//indeks dla wypozyczenia dla ktorego wywolana jest metoda
 
-	for (int i = 0; i < wypozyczenia[i].get_liczba_wypozyczen(); i++)
+	for (int i = 0; i < Wypozyczenie::get_liczba_wypozyczen(); i++)
 		if (wypozyczenia[i].get_pesel() == this->pesel && wypozyczenia[i].get_numer_rejestracyjny() == this->Numer_rejestracyjny
 			&& wypozyczenia[i].get_data_od().get_dzien() == this->Data_od.get_dzien() && wypozyczenia[i].get_data_od().get_miesiac() == this->Data_od.get_miesiac() &&
 			wypozyczenia[i].get_data_od().get_rok() == this->Data_od.get_rok() && wypozyczenia[i].get_data_od().get_godzina() == this->Data_od.get_godzina())
@@ -326,7 +326,7 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 	{
 		ofstream plik;	//edytowanie pliku z dopisywaniem
 		plik.open("Wypozyczenia.txt", ios::out | ios::app);
-		if (wypozyczenia[0].get_liczba_wypozyczen() != 0)
+		if (Wypozyczenie::get_liczba_wypozyczen() != 0)
 			plik << "\n";
 		plik << this->get_data_od().get_dzien() << " ";
 		plik << this->get_data_od().get_miesiac() << " ";
@@ -361,10 +361,10 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 	{
 		ofstream plik;	//edytowanie pliku z nadpisaniem
 		plik.open("Wypozyczenia.txt");
-		for (int i = 0; i < wypozyczenia[i].get_liczba_wypozyczen(); i++)
+		for (int i = 0; i < Wypozyczenie::get_liczba_wypozyczen(); i++)
 		{
-			if (i != 0) plik << "\n";
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby wypozyczenia nie zapisac 2x
+			if (i != 0 && jest != 0) plik << "\n";
 			plik << wypozyczenia[i].get_data_od().get_dzien() << " ";
 			plik << wypozyczenia[i].get_data_od().get_miesiac() << " ";
 			plik << wypozyczenia[i].get_data_od().get_rok() << " ";
@@ -396,7 +396,7 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 
 		//na koncu dopisujemy nowe wypozyczenie z aktualnymi danym	
 		//edytowanie pliku z dopisywaniem
-		if (wypozyczenia[0].get_liczba_wypozyczen() != 1)
+		if (Wypozyczenie::get_liczba_wypozyczen() != 1)
 			plik << "\n";
 		plik << this->get_data_od().get_dzien() << " ";
 		plik << this->get_data_od().get_miesiac() << " ";

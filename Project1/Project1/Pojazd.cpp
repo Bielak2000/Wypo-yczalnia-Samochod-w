@@ -26,12 +26,12 @@ Pojazd::Pojazd(string n, string rodz, string mar, string mod,
 
 void Pojazd::wyswietl_dane()
 {
-	cout << "Numer rejestracyjny: " << Numer_rejestracyjny;
-	cout << ", rodzaj: " << Rodzaj;
+	cout << "Rodzaj: " << Rodzaj;
 	cout << ", marka: " << Marka;
 	cout << ", model: " << Model;
 	cout << ", rok: " << Rok;
-	cout << ", silnik: " << Silnik;
+	cout << ", numer rejestracyjny: " << Numer_rejestracyjny << endl;
+	cout << "\tSilnik: " << Silnik;
 	cout << ", przebieg: " << Przebieg;
 	if (Dostepny == 1)
 		cout << ", dostepny: TAK";
