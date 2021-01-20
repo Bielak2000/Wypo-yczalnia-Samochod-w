@@ -5,15 +5,20 @@
 #include <iostream>
 using namespace std;
 
+//Konstruktor domyœlny
 Wlasciciel::Wlasciciel(): Osoba("Jan", "Nowak", "92839284782", "Warszawa, ul. Szkolna 5", "983290139"), login("JanNowak"), haslo("Jan123")
 {}
 
+//Metoda dodaj¹ca pojazd
 void Wlasciciel::dodaj_pojazd()
 {
 	fstream plik;
+
+	//Otwarcie pliku
 	plik.open("Pojazdy.txt");
 	if (plik.good())
 	{
+		//Podanie danych pojazdu do koñca pliku
 		plik.seekg(0, ios::end);
 		cout << "Podaj dane pojazdu:" << endl;
 		string Numer_rejestracyjny, Rodzaj, Marka, Model, Rok, Silnik, Przebieg, Cena_za_godzine;
@@ -44,10 +49,9 @@ void Wlasciciel::dodaj_pojazd()
 	}
 }
 
+//Metoda zmieniaj¹ca cene pojazdu
 void Wlasciciel::zmien_cene(string nr_rej, Pojazd* pojazdy)
 {
-	//int n;
-	//Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);
 	for (int i = 0; i < pojazdy[0].get_liczba_pojazdow(); i++)
 	{
 		if (pojazdy[i].get_numer_rejestracyjny() == nr_rej)
@@ -64,12 +68,14 @@ void Wlasciciel::zmien_cene(string nr_rej, Pojazd* pojazdy)
 	}
 }
 
+//Metoda usuwaj¹ca pojazd
 void Wlasciciel::usun_pojazd(string nr_rej, Pojazd* pojazdy)
 {
 	int jest = -1;	//zmienna na indeks pojazdu w pliku
 
+	//przeszukujemy tablice w poszukiwaniu pojazdu do usuniecia
 	for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
-		if (pojazdy[i].get_numer_rejestracyjny() == nr_rej)	//przeszukujemy tablice w poszukiwaniu pojazdu do usuniecia
+		if (pojazdy[i].get_numer_rejestracyjny() == nr_rej)	
 		{
 			jest = i;
 			break;
@@ -86,6 +92,7 @@ void Wlasciciel::usun_pojazd(string nr_rej, Pojazd* pojazdy)
 			for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
 			{
 				if (i == jest) continue;	//pomijanie dopisania pojazdu usuwanego
+				if (!(i == 1 && jest == 0)) //warunek pomijaj¹cy koniec lini w przypadku gdy pierwsza linia pliku jest edytowana
 				if (i != 0) plik << "\n";	//warunek, aby nie zrobic pustej linii na poczatku pliku
 				plik << pojazdy[i].get_numer_rejestracyjny() << " ";
 				plik << pojazdy[i].get_rodzaj() << " ";
@@ -109,6 +116,7 @@ void Wlasciciel::usun_pojazd(string nr_rej, Pojazd* pojazdy)
 	}
 }
 
+//Gettery
 string Wlasciciel::get_login()
 {
 	return Wlasciciel::login;

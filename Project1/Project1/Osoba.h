@@ -9,29 +9,27 @@ class Osoba
 {
 
 protected:
-	string Imie;
-	string Nazwisko;
-	string Pesel;
-	string Adres;
-	string Numer_telefonu;
+	string imie;
+	string nazwisko;
+	string pesel;
+	string adres;
+	string numer_telefonu;
 
 public:
 
+	//Konstruktor parametryzuj¹cy i domyœlny
 	Osoba(string Im = "Niezdefiniowane", string Naz = "Niezdefiniowane", string Pes = "Niezdefiniowane",
 		string Addr = "Niezdefiniowane", string Numer = "Niezdefiniowane");
 
-	void wyswietl_dane();
+	void wyswietl_dane();	//Metoda wyœwietlaj¹ca dane osobowe
 
-	void zmien_dane();
+	void zmien_dane();	//Metoda zmieniaj¹ca dane osobowe
 
+	//Gettery
 	string get_imie();
-
 	string get_nazwisko();
-
 	string get_pesel();
-
 	string get_adres();
-
 	string get_numer_telefonu();
 
 };

@@ -12,19 +12,17 @@ class Wlasciciel : public Osoba
 	string login;
 	string haslo;
 public:
-
-	Wlasciciel();
-
-	void dodaj_pojazd();
-
-	void zmien_cene(string nr_rej, Pojazd* pojazdy);
-
-	void usun_pojazd(string nr_rej, Pojazd* pojazdy);
-
-	void zatwierdz_wypozyczenie(Wypozyczenie w);
-
-	string get_login();
 	
+	Wlasciciel();		//Konstruktor domyslny w³aœciciela
+
+	void dodaj_pojazd();	//Metoda dodaj¹ca pojazd	
+
+	void zmien_cene(string nr_rej, Pojazd* pojazdy);	//Metoda zmieniaj¹ca cene pojazdu
+
+	void usun_pojazd(string nr_rej, Pojazd* pojazdy);	//Metoda usuwaj¹ca pojazd
+
+	//Gettery
+	string get_login();
 	string get_haslo();
 };
 
