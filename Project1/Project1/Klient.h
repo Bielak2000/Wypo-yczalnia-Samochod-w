@@ -33,6 +33,8 @@ public:
 	int get_liczba_klientow();
 
 	void zmniejsz_liczba_klientow();
+
+	void dokonaj_platnosci(Wypozyczenie* tablica_w);
 };
 
 #endif

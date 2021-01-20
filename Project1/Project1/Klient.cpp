@@ -10,7 +10,9 @@ using namespace std;
 int Klient::liczba_klientow = 0;
 
 Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer):
-	Osoba(Im, Naz, Pes, Addr, Numer) {}
+	Osoba(Im, Naz, Pes, Addr, Numer) {
+	liczba_klientow++;
+}
 
 bool Klient::wypozycz(Pojazd* pojazdy)
 {
@@ -31,6 +33,9 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	cout << "Podaj telefon kontaktowy: ";
 	cin >> Numer_telefonu;
 	do {
+		cout << endl << "-----------------------------------------------------" << endl;
+		this->wyswietl_oferte(pojazdy);
+		cout << "-----------------------------------------------------" << endl;
 		cout << "Podaj numer rejestracyjny: ";
 		cin >> nr_rej;
 
@@ -63,6 +68,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 		}
 		else if (dostepny == false)
 		{
+			cout << "Pojazd jest niedostepny!" << endl;
 			cout << "Czy chcesz zmienic pojazd czy zrezygnowac?" << endl;
 			cout << "1.Zmienic pojazd" << endl;
 			cout << "2.Reyzgnuje" << endl;
@@ -75,13 +81,14 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 
 		//pobieramy aktualny czas do zmiennej time_t
 		time_t czas;
+		time(&czas);
 		//konwetujemy zmienna time_t na wskaznik do zmiennej tm* za pomoca funkcji localtime(&czas), a elementy z kotrych nie bedziemy korzystac ustawiamy na null
-		tm aktualny_czas;
+		struct tm aktualny_czas;
 		localtime_s(&aktualny_czas, &czas);
 		dzien1 = aktualny_czas.tm_mday;
 		miesiac1 = aktualny_czas.tm_mon + 1;
 		rok1 = aktualny_czas.tm_year + 1900;
-		godzina1 = aktualny_czas.tm_hour + 2;
+		godzina1 = aktualny_czas.tm_hour + 1;
 
 		Data d1(dzien1, miesiac1, rok1, godzina1);
 
@@ -178,6 +185,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 
 	int cena = 0;
 	pojazdy[i].zmien_dostepnosc();
+	pojazdy[i].aktualizuj_plik(pojazdy);
 
 	int miesiac, dzien;
 	miesiac = miesiac2 - miesiac1;
@@ -208,13 +216,17 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	Wypozyczenie w(d1, d2, nr_rej, Pesel, cena);
 
 	cout << "Wypozyczono pojazd!" << endl;
+	Sleep(2000);
+	system("cls");
 
 	ofstream plik;	//edytowanie pliku z dopisywaniem
 	plik.open("Wypozyczenia.txt", ios::out | ios::app);
-	plik << "\n" << w.get_data_do().get_dzien() << " ";
+	if (Wypozyczenie::get_liczba_wypozyczen() != 1)
+		plik << "\n";
+	plik << w.get_data_od().get_dzien() << " ";
 	plik << w.get_data_od().get_miesiac() << " ";
 	plik << w.get_data_od().get_rok() << " ";
-	plik << w.get_data_do().get_godzina() << " ";
+	plik << w.get_data_od().get_godzina() << " ";
 
 	plik << w.get_data_do().get_dzien() << " ";
 	plik << w.get_data_do().get_miesiac() << " ";
@@ -330,7 +342,11 @@ void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 				}
 			}
 
-			tablica_w[i].zaplac(tablica_w);
+			tablica_w[i].set_zakonczone(true);
+
+			cout << "Pojazd zostal zwrocony!" << endl;
+			Sleep(2000);
+			system("cls");
 
 			tablica_w[i].aktualizuj_plik(tablica_w);
 			break;
@@ -342,6 +358,31 @@ void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 		cout << "Bledne dane!" << endl;
 		Sleep(2000);
 	}
+}
+
+//funkcja wyszukuje dane wypozyczenie za ktore chce zaplacic uzytkownik po przez wyszukanie jego po peselu i nr rejestracyjnym pojazdu;
+//korzysta z funkcji zaplac w wypozyczeniu i na koniec aktualizuje plik
+void Klient::dokonaj_platnosci(Wypozyczenie* tablica_w)
+{
+	string pes, nr;
+	cout << "Podaj pesel: ";
+	cin >> pes;
+	cout << "Podaj numer rejestracyjny pojazdu za wypozyczenie ktorego chcesz zaplacic: ";
+	cin >> nr;
+	bool sprawdzacz = 0;
+
+	for (int i = 0; i < tablica_w[0].get_liczba_wypozyczen(); i++)
+	{
+		if (tablica_w[i].get_numer_rejestracyjny() == nr && tablica_w[i].get_pesel() == pes)
+		{
+			tablica_w[i].zaplac(tablica_w);
+			tablica_w[i].aktualizuj_plik(tablica_w);
+			sprawdzacz = 1;
+			break;
+		}
+	}
+	if (!sprawdzacz)
+		cout << "Nie znaleziono takiego wypozyczenia!" << endl;
 }
 
 Klient* Klient::wczytaj_z_pliku(int& n)
@@ -404,7 +445,9 @@ void Klient::aktualizuj_plik(Klient* klienci)
 		//dane klienta zajmuja 2 linijki - w 1 jest imie, nazwisko, pesel, numer telefonu, a w 2 adres
 		ofstream plik;	//edytowanie pliku z dopisywaniem
 		plik.open("Klienci.txt", ios::out | ios::app);
-		plik << "\n" << this->Imie << " ";
+		if (klienci[0].get_liczba_klientow() != 0)
+			plik << "\n";
+		plik << this->Imie << " ";
 		plik << this->Nazwisko << " ";
 		plik << this->Pesel << " ";
 		plik << this->Numer_telefonu << "\n";
@@ -418,6 +461,7 @@ void Klient::aktualizuj_plik(Klient* klienci)
 		for (int i = 0; i < klienci[i].get_liczba_klientow(); i++)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby klienta nie zapisac 2x
+			if (!(i == 1 && jest == 0))
 			if (i != 0) plik << "\n";
 			plik << klienci[i].Imie << " ";
 			plik << klienci[i].Nazwisko << " ";
@@ -427,7 +471,9 @@ void Klient::aktualizuj_plik(Klient* klienci)
 		}
 
 		//na koncu dopisujemy nowego klienta z aktualnymi danymi
-		plik << "\n" << this->Imie << " ";
+		if (klienci[0].get_liczba_klientow() != 1)
+			plik << "\n";
+		plik << this->Imie << " ";
 		plik << this->Nazwisko << " ";
 		plik << this->Pesel << " ";
 		plik << this->Numer_telefonu << "\n";

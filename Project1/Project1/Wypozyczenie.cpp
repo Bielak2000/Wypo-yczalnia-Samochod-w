@@ -11,39 +11,9 @@ Wypozyczenie::Wypozyczenie(Data d1, Data d2, string nr_rej, string pes, int cena
 	liczba_wypozyczen++;
 }
 
-bool Wypozyczenie::zmien_okres()
-{
-	// TODO - implement Wypozyczenie::zmien_okres
-	throw "Not yet implemented";
-}
-
-void Wypozyczenie::zakoncz_wypozyczenie()
-{
-	// TODO - implement Wypozyczenie::zakoncz_wypozyczenie
-	throw "Not yet implemented";
-}
-
-Data Wypozyczenie::zwroc_date_zakonczenia()
-{
-	// TODO - implement Wypozyczenie::zwroc_date_zakonczenia
-	throw "Not yet implemented";
-}
-
-void Wypozyczenie::dodaj_auto(string nr)
-{
-	// TODO - implement Wypozyczenie::dodaj_auto
-	throw "Not yet implemented";
-}
-
 void Wypozyczenie::pesel_klienta(string nr)
 {
 	pesel = nr;
-}
-
-void Wypozyczenie::podaj_termin()
-{
-	// TODO - implement Wypozyczenie::podaj_termin
-	throw "Not yet implemented";
 }
 
 void Wypozyczenie::zaplac(Wypozyczenie * tab_w)
@@ -69,7 +39,6 @@ void Wypozyczenie::zaplac(Wypozyczenie * tab_w)
 			Sleep(2000);
 			system("cls");
 			this->get_rachunek1()->set_potwierdzenie(true);
-			this->set_zakonczone(true);
 			return;
 		}
 		else if (wybor == 2)
@@ -82,7 +51,6 @@ void Wypozyczenie::zaplac(Wypozyczenie * tab_w)
 			Sleep(2000);
 			system("cls");
 			this->get_rachunek1()->set_potwierdzenie(true);
-			this->set_zakonczone(true);
 			return;
 
 		}
@@ -133,32 +101,27 @@ void Wypozyczenie::zaplac(Wypozyczenie * tab_w)
 				(&termin_platnosci)->set_dzien(d);
 				(&termin_platnosci)->set_miesiac(m);
 				(&termin_platnosci)->set_rok(r);
+				cout << "Termin platnosci zostal odroczony!" << endl;
+				Sleep(2000);
 				return;
 			}
 			else
 			{
 				cout << "Nie mozna odroczyc!" << endl;
 			}
-
 		}
 	} while (true);
 }
 
-void Wypozyczenie::skroc_okres(Data rozpoczecie, Data zakonczenie)
+void Wypozyczenie::skroc_okres(Data nowe_zakonczenie)
 {
 	// TODO - implement Wypozyczenie::skroc_okres
 	throw "Not yet implemented";
 }
 
-void Wypozyczenie::wydluz_okres(Data rozpoczecie, Data zakonczenie)
+void Wypozyczenie::wydluz_okres(Data nowe_zakonczenie)
 {
 	// TODO - implement Wypozyczenie::wydluz_okres
-	throw "Not yet implemented";
-}
-
-void Wypozyczenie::zmien_termin_platnosci(Data d)
-{
-	// TODO - implement Wypozyczenie::zmien_termin_platnosci
 	throw "Not yet implemented";
 }
 
@@ -312,8 +275,10 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 {
 	int jest = -1;	//indeks dla wypozyczenia dla ktorego wywolana jest metoda
 
-	for (int i = 0; i < wypozyczenia[i].get_liczba_wypozyczen(); i++)
-		if (wypozyczenia[i].get_pesel() == this->pesel && wypozyczenia[i].get_numer_rejestracyjny() == this->Numer_rejestracyjny)
+	for (int i = 0; i < Wypozyczenie::get_liczba_wypozyczen(); i++)
+		if (wypozyczenia[i].get_pesel() == this->pesel && wypozyczenia[i].get_numer_rejestracyjny() == this->Numer_rejestracyjny
+			&& wypozyczenia[i].get_data_od().get_dzien() == this->Data_od.get_dzien() && wypozyczenia[i].get_data_od().get_miesiac() == this->Data_od.get_miesiac() &&
+			wypozyczenia[i].get_data_od().get_rok() == this->Data_od.get_rok() && wypozyczenia[i].get_data_od().get_godzina() == this->Data_od.get_godzina())
 		{
 			jest = i;	//jesli wypozyczenie jest juz w pliku to zapisujemy jego indeks w "jest"
 			break;
@@ -324,10 +289,12 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 	{
 		ofstream plik;	//edytowanie pliku z dopisywaniem
 		plik.open("Wypozyczenia.txt", ios::out | ios::app);
-		plik << "\n" << this->get_data_od().get_dzien() << " ";
+		if (Wypozyczenie::get_liczba_wypozyczen() != 1)
+			plik << "\n";
+		plik << this->get_data_od().get_dzien() << " ";
 		plik << this->get_data_od().get_miesiac() << " ";
 		plik << this->get_data_od().get_rok() << " ";
-		plik << this->get_data_do().get_godzina() << " ";
+		plik << this->get_data_od().get_godzina() << " ";
 
 		plik << this->get_data_do().get_dzien() << " ";
 		plik << this->get_data_do().get_miesiac() << " ";
@@ -357,15 +324,15 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 	{
 		ofstream plik;	//edytowanie pliku z nadpisaniem
 		plik.open("Wypozyczenia.txt");
-		for (int i = 0; i < wypozyczenia[i].get_liczba_wypozyczen(); i++)
+		for (int i = 0; i < Wypozyczenie::get_liczba_wypozyczen(); i++)
 		{
-			
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby wypozyczenia nie zapisac 2x
+			if (!(i == 1 && jest == 0))
 			if (i != 0) plik << "\n";
 			plik << wypozyczenia[i].get_data_od().get_dzien() << " ";
 			plik << wypozyczenia[i].get_data_od().get_miesiac() << " ";
 			plik << wypozyczenia[i].get_data_od().get_rok() << " ";
-			plik << wypozyczenia[i].get_data_do().get_godzina() << " ";
+			plik << wypozyczenia[i].get_data_od().get_godzina() << " ";
 
 			plik << wypozyczenia[i].get_data_do().get_dzien() << " ";
 			plik << wypozyczenia[i].get_data_do().get_miesiac() << " ";
@@ -393,10 +360,12 @@ void Wypozyczenie::aktualizuj_plik(Wypozyczenie* wypozyczenia)
 
 		//na koncu dopisujemy nowe wypozyczenie z aktualnymi danym	
 		//edytowanie pliku z dopisywaniem
-		plik << "\n" << this->get_data_od().get_dzien() << " ";
+		if (Wypozyczenie::get_liczba_wypozyczen() != 1)
+			plik << "\n";
+		plik << this->get_data_od().get_dzien() << " ";
 		plik << this->get_data_od().get_miesiac() << " ";
 		plik << this->get_data_od().get_rok() << " ";
-		plik << this->get_data_do().get_godzina() << " ";
+		plik << this->get_data_od().get_godzina() << " ";
 
 		plik << this->get_data_do().get_dzien() << " ";
 		plik << this->get_data_do().get_miesiac() << " ";

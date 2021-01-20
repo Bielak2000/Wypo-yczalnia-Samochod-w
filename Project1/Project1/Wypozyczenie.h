@@ -26,25 +26,13 @@ private:
 public:
 	Wypozyczenie(Data d1=0, Data d2=0, string nr_rej="0", string pes="0", int cena=0);
 
-	bool zmien_okres();
-
-	void zakoncz_wypozyczenie();
-
-	Data zwroc_date_zakonczenia();
-
-	void dodaj_auto(string nr);
-
 	void pesel_klienta(string nr_pesel);
-
-	void podaj_termin();
 
 	void zaplac(Wypozyczenie* tab_w);
 
-	void skroc_okres(Data rozpoczecie, Data zakonczenie);
+	void skroc_okres(Data nowe_zakonczenie);
 
-	void wydluz_okres(Data rozpoczecie, Data zakonczenie);
-
-	void zmien_termin_platnosci(Data d);
+	void wydluz_okres(Data nowe_zakonczenie);
 
 	Data zwroc_date_rozpoczecia();
 
@@ -71,7 +59,7 @@ public:
 
 	void set_zakonczone(bool zakon);
 
-	int get_liczba_wypozyczen();
+	static int get_liczba_wypozyczen();
 
 	void aktualizuj_plik(Wypozyczenie * wypozyczenia);
 };
