@@ -39,9 +39,9 @@ public:
 
 	void zmien_dostepnosc();
 
-	static Pojazd* wczytaj_z_pliku(int& n);
+	static Pojazd* wczytaj_z_pliku(int& n);		//wczytywanie z pliku pojazdow do tablicy
 
-	void aktualizuj_plik(Pojazd* pojazdy);
+	void aktualizuj_plik(Pojazd* pojazdy);	//aktualizowanie pliku z pojazdami
 
 	string get_numer_rejestracyjny();
 	string get_rodzaj();

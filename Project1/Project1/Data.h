@@ -13,7 +13,7 @@ private:
 public:
 	Data(int d=0, int m=0, int r=0, int g=0);
 	void zmien_date();
-	static bool czy_koliduje(Data zajetyOd, Data zajetyDo, Data terminOd, Data terminDo);
+	static bool czy_koliduje(Data zajetyOd, Data zajetyDo, Data terminOd, Data terminDo);	//metoda sprawdzajaca czy podane daty ze soba koliduja
 	int get_dzien();
 	int get_miesiac();
 	int get_rok();

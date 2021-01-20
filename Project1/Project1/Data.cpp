@@ -28,6 +28,10 @@ void Data::zmien_date()
 
 bool Data::czy_koliduje(Data zajetyOd, Data zajetyDo, Data terminOd, Data terminDo)	//zajety - istniejace wypozyczenie, termin - potencjalne wypozyczenie
 {
+	//nazywamy zmienne 3 literami wedlug nastepujacego klucza:
+	//z lub t - sprawdzamy zajety lub termin
+	//1 lub 2 - od lub do
+	//m lub d - dzien lub miesiac
 	int z1m = zajetyOd.miesiac;
 	int z2m = zajetyDo.miesiac;
 	int t1m = terminOd.miesiac;
@@ -44,7 +48,8 @@ bool Data::czy_koliduje(Data zajetyOd, Data zajetyDo, Data terminOd, Data termin
 	int zd = z2d - z1d;	//dlugosc istniejacego wypozyczenia(zajety) w dniach
 	int td = t2d - t1d;	//dlugosc potencjalnego wypozyczenia(termin) w dniach
 
-	if (zm == 0 && tm == 0)
+	//algorytm sprawdzajacy kolidowanie dat
+	if (zm == 0 && tm == 0)	//jesli liczba miesiecy wypozyczenia trwa mniej niz miesiac
 	{
 		if (z1m == t2m)
 		{

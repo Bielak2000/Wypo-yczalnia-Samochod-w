@@ -24,9 +24,9 @@ public:
 
 	void zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow);
 
-	static Klient* wczytaj_z_pliku(int& n);
+	static Klient* wczytaj_z_pliku(int& n);	//wczytywanie z pliku klientow do tablicy
 
-	void aktualizuj_plik(Klient* klienci);
+	void aktualizuj_plik(Klient* klienci);	//aktualizacja pliku z klientami
 
 	int get_liczba_klientow();
 

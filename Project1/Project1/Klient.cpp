@@ -361,50 +361,51 @@ void Klient::dokonaj_platnosci(Wypozyczenie* tablica_w)
 		cout << "Nie znaleziono takiego wypozyczenia!" << endl;
 }
 
-Klient* Klient::wczytaj_z_pliku(int& n)
+//zwracany argument metody to wskaznik do tablicy z klientami, a przekazywany argument to rozmiar tej tablicy
+Klient* Klient::wczytaj_z_pliku(int& rozmiar)
 {
 	//pobranie danych z pliku 
-	string linia;//zmienna przehcowuja linie z pliku
+	string linia;//zmienna przechowujaca linie z pliku
 	ifstream plik;//zmienna obslugujaca plik 
 	plik.open("Klienci.txt");//otwieramy nasz plik z klientami
-	//sprawdzamy czy udalo sie otowrzyc plik, jesli nie to wychodzimy z programu
 	Klient* klienci = NULL;
+	//sprawdzamy czy udalo sie otworzyc plik, jesli nie to wychodzimy z programu
 	if (plik.good())
 	{
 		int liczba_klientow = 0;
-		while (getline(plik, linia))
+		while (getline(plik, linia))	// w tej petli sprawdzamy ile jest linijek zeby wiedziec jaki bedzie rozmiar tablicy 
 		{
 			liczba_klientow++;
 		}
 		plik.clear();
 		plik.seekg(0);
 		liczba_klientow /= 2;
-		n = liczba_klientow;
+		rozmiar = liczba_klientow;
 
-		klienci = new Klient[liczba_klientow];//utowrzenie tablicy elementow ktorymi sa obiekty strukutry dane o rozmiarze 10000
-		//do naszej tablicy przepisuje dane wartosci z pliku
+		klienci = new Klient[liczba_klientow];//utworzenie tablicy elementow na podstawie obliczonej liczby klientow
+		//do naszej tablicy przepisujemy dane wartosci z pliku
 		for (int i = 0; i < liczba_klientow; i++)
 		{
-			getline(plik, linia);
+			getline(plik, linia);		//w pierwszej z linii sa podstawowe dane
 			istringstream iss(linia);
 			iss >> klienci[i].Imie;
 			iss >> klienci[i].Nazwisko;
 			iss >> klienci[i].Pesel;
 			iss >> klienci[i].Numer_telefonu;
-			getline(plik, linia);
+			getline(plik, linia);		//w drugiej linii jest adres
 			klienci[i].Adres = linia;
 		}
 	}
 	else
 	{
-		return nullptr;
+		return nullptr; //w przypadku gdy nie udaje sie otworzyc pliku zwracamy wskaznik pusty
 	}
 	plik.close();
 	return klienci;
 }
 
 
-void Klient::aktualizuj_plik(Klient* klienci)
+void Klient::aktualizuj_plik(Klient* klienci) //przyjmowany argument to tablica pojazdow
 {
 	int jest = -1;	//indeks dla klienta dla ktorego wywolana jest metoda
 
@@ -415,7 +416,7 @@ void Klient::aktualizuj_plik(Klient* klienci)
 			break;
 		}
 
-	//jesli zmienna "jest" pozostala bez zmian -1 tzn ze nie ma klienta w pliku
+	//jesli zmienna "jest" pozostala bez zmian (-1) tzn ze nie ma klienta w pliku
 	if (jest == -1) //klienta nie ma w pliku
 	{
 		//dane klienta zajmuja 2 linijki - w 1 jest imie, nazwisko, pesel, numer telefonu, a w 2 adres
@@ -437,8 +438,8 @@ void Klient::aktualizuj_plik(Klient* klienci)
 		for (int i = 0; i < klienci[i].get_liczba_klientow(); i++)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby klienta nie zapisac 2x
-			if (!(i == 1 && jest == 0))
-			if (i != 0) plik << "\n";
+			if (!(i == 1 && jest == 0))		//warunek aby nie zapisac pustej linii w przypadku pustego pliku
+				if (i != 0) plik << "\n";
 			plik << klienci[i].Imie << " ";
 			plik << klienci[i].Nazwisko << " ";
 			plik << klienci[i].Pesel << " ";
