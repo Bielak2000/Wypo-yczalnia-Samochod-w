@@ -19,7 +19,7 @@ namespace TestPeselKlienta
 		{
 			string pesel = "00294291538";
 			Wypozyczenie w;
-			w.pesel_klienta(pesel);
+			w.set_pesel(pesel);
 			Assert::AreEqual(pesel, w.get_pesel());
 		}
 	};

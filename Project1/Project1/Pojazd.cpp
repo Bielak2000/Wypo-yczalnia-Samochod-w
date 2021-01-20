@@ -60,27 +60,28 @@ void Pojazd::zmien_dostepnosc()
 	}
 }
 
-Pojazd* Pojazd::wczytaj_z_pliku(int& n)
+//zwracany argument metody to wskaznik do tablicy z pojazdami, a przekazywany argument to rozmiar tej tablicy
+Pojazd* Pojazd::wczytaj_z_pliku(int& rozmiar)
 {
 	//pobranie danych z pliku 
-	string linia;//zmienna przehcowuja linie z pliku
-	ifstream plik;//zmienna obslugujaca plik 
-	plik.open("Pojazdy.txt");//otwieramy nasz plik z przelewami
-	//sprawdzamy czy udalo sie otowrzyc plik, jesli nie to wychodzimy z programu
+	string linia;	//zmienna przechowujaca linie z pliku
+	ifstream plik;	//zmienna obslugujaca plik 
+	plik.open("Pojazdy.txt");	//otwieramy nasz plik z przelewami
 	Pojazd* pojazdy = NULL;
+	//sprawdzamy czy udalo sie otworzyc plik, jesli nie to wychodzimy z programu
 	if (plik.good())
 	{
 		int liczba_pojazdow = 0;
-		while (getline(plik, linia))
+		while (getline(plik, linia))	// w tej petli sprawdzamy ile jest linijek zeby wiedziec jaki bedzie rozmiar tablicy 
 		{
 			liczba_pojazdow++;
 		}
 		plik.clear();
 		plik.seekg(0);
-		n = liczba_pojazdow;
+		rozmiar = liczba_pojazdow;
 
-		pojazdy = new Pojazd[liczba_pojazdow];//utowrzenie tablicy elementow ktorymi sa obiekty strukutry dane o rozmiarze 10000
-		//do naszej tablicy przepisuje dane wartosci z pliku
+		pojazdy = new Pojazd[liczba_pojazdow];	//utworzenie tablicy elementow na podstawie obliczonej ilosci pojazdow
+		//do naszej tablicy przepisujemy dane wartosci z pliku
 		for (int i = 0; i < liczba_pojazdow; i++)
 		{
 			getline(plik, linia);
@@ -98,17 +99,16 @@ Pojazd* Pojazd::wczytaj_z_pliku(int& n)
 	}
 	else
 	{
-		return nullptr;
+		return nullptr;	//aktualizacja pliku z pojazdami
 	}
 	plik.close();
 	return pojazdy;
 }
 
-void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
+
+void Pojazd::aktualizuj_plik(Pojazd* pojazdy)	//przyjmowany argument to tablica pojazdow
 {
-	//int n, jest = -1;	//ilosc pojazdow, indeks dla pojazdu dla ktorego wywolana jest metoda
-	//Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);	//wczytujemy pojazdy
-	int jest = -1;
+	int jest = -1;	//zmienna na indeks pojazdu
 
 	for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
 		if (pojazdy[i].get_numer_rejestracyjny() == this->numer_rejestracyjny) 
@@ -117,7 +117,7 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 			break;
 		}
 
-	//jesli zmienna "jest" pozostala bez zmian -1 tzn ze nie ma pojazdu w pliku
+	//jesli zmienna "jest" pozostala bez zmian (-1) tzn ze nie ma pojazdu w pliku
 	if (jest == -1) //pojazdu nie ma w pliku
 	{
 		ofstream plik;	//edytowanie pliku z dopisywaniem
@@ -142,7 +142,7 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 		for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby pojazdu nie zapisac 2x
-			if (!(i == 1 && jest == 0))
+			if (!(i == 1 && jest == 0))	//warunek zeby nie bylo linii odstepu w przypadku pustego pliku
 				if (i != 0)	 plik << "\n";
 			plik << pojazdy[i].numer_rejestracyjny << " ";
 			plik << pojazdy[i].rodzaj << " ";
@@ -155,7 +155,7 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 			plik << pojazdy[i].dostepny;
 		}
 
-		//na koncu dopisujemy nowy pojazd z aktualnymi danymi
+		//na koncu dopisujemy pojazd z aktualnymi danymi
 		if (pojazdy[0].get_liczba_pojazdow() != 1)
 			plik << "\n";
 		plik << this->numer_rejestracyjny << " ";

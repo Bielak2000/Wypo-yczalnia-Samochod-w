@@ -36,9 +36,9 @@ public:
 
 	void zmien_dostepnosc();//metoda sluzaca do zmiany dostepnosci na przecwina
 
-	static Pojazd* wczytaj_z_pliku(int& n);
+	static Pojazd* wczytaj_z_pliku(int& n);		//wczytywanie z pliku pojazdow do tablicy
 
-	void aktualizuj_plik(Pojazd* pojazdy);
+	void aktualizuj_plik(Pojazd* pojazdy);	//aktualizowanie pliku z pojazdami
 
 	//gettery
 	string get_numer_rejestracyjny();
