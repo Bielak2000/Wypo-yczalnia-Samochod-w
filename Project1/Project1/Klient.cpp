@@ -207,14 +207,17 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 			dzien += 30;
 		}
 	}
-	cena = dzien * 24 * pojazdy[i].get_cena_za_godzine();
-	cena += godzina2 * pojazdy[i].get_cena_za_godzine();
+	int godzina = godzina2 - godzina1;
+	godzina += dzien * 24;
+	cena = godzina * pojazdy[i].get_cena_za_godzine();
 
 	Data d1(dzien1, miesiac1, rok1, godzina1);
 	Data d2(dzien2, miesiac2, rok2, godzina2);
 	Wypozyczenie w(d1, d2, nr_rej, Pesel, cena);
 
 	cout << "Wypozyczono pojazd!" << endl;
+	Sleep(2000);
+	system("cls");
 
 	ofstream plik;	//edytowanie pliku z dopisywaniem
 	plik.open("Wypozyczenia.txt", ios::out | ios::app);
@@ -343,6 +346,7 @@ void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 
 			cout << "Pojazd zostal zwrocony!" << endl;
 			Sleep(2000);
+			system("cls");
 
 			tablica_w[i].aktualizuj_plik(tablica_w);
 			break;
@@ -457,6 +461,7 @@ void Klient::aktualizuj_plik(Klient* klienci)
 		for (int i = 0; i < klienci[i].get_liczba_klientow(); i++)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby klienta nie zapisac 2x
+			if (!(i == 1 && jest == 0))
 			if (i != 0) plik << "\n";
 			plik << klienci[i].Imie << " ";
 			plik << klienci[i].Nazwisko << " ";
