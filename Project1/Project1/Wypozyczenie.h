@@ -30,9 +30,9 @@ public:
 
 	void zaplac(Wypozyczenie* tab_w);
 
-	void skroc_okres(Data nowe_zakonczenie);
+	bool skroc_okres(Data nowe_zakonczenie);
 
-	void wydluz_okres(Data nowe_zakonczenie);
+	bool wydluz_okres(Data nowe_zakonczenie);
 
 	Data zwroc_date_rozpoczecia();
 

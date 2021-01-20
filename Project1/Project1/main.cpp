@@ -153,11 +153,53 @@ int main()
 						system("cls");
 						if (wybor2 == 1)
 						{
-
+							Data d;
+							int zmienna;
+							cout << "Podaj nowy rok: ";
+							cin >> zmienna;
+							d.set_rok(zmienna);
+							cout << "Podaj nowy miesiac: ";
+							cin >> zmienna;
+							d.set_miesiac(zmienna);
+							cout << "Podaj nowy dzien: ";
+							cin >> zmienna;
+							d.set_dzien(zmienna);
+							cout << "Podaj nowy godzina: ";
+							cin >> zmienna;
+							d.set_godzina(zmienna);
+							bool udane = wypozyczenia[indeks].skroc_okres(d);
+							if (!udane)
+							{
+								cout << "Podano nieprawidlowa date!" << endl;
+								Sleep(2000);
+								system("cls");
+								continue;
+							}
 						}
 						else if (wybor2 == 2)
 						{
-
+							Data d;
+							int zmienna;
+							cout << "Podaj nowy rok: ";
+							cin >> zmienna;
+							d.set_rok(zmienna);
+							cout << "Podaj nowy miesiac: ";
+							cin >> zmienna;
+							d.set_miesiac(zmienna);
+							cout << "Podaj nowy dzien: ";
+							cin >> zmienna;
+							d.set_dzien(zmienna);
+							cout << "Podaj nowy godzina: ";
+							cin >> zmienna;
+							d.set_godzina(zmienna);
+							bool udane = wypozyczenia[indeks].wydluz_okres(d);
+							if (!udane)
+							{
+								cout << "Podano nieprawidlowa date!" << endl;
+								Sleep(2000);
+								system("cls");
+								continue;
+							}
 						}
 						else
 						{

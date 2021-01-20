@@ -113,16 +113,172 @@ void Wypozyczenie::zaplac(Wypozyczenie * tab_w)
 	} while (true);
 }
 
-void Wypozyczenie::skroc_okres(Data nowe_zakonczenie)
+bool Wypozyczenie::skroc_okres(Data nowe_zakonczenie)
 {
-	// TODO - implement Wypozyczenie::skroc_okres
-	throw "Not yet implemented";
+	bool x = false;
+	if (this->Data_od.get_rok() < nowe_zakonczenie.get_rok())
+	{
+		x=true;
+	}
+	else if (this->Data_od.get_rok() > nowe_zakonczenie.get_rok())
+	{
+		x = false;
+	}
+	else
+	{
+		if (this->Data_od.get_miesiac() < nowe_zakonczenie.get_miesiac())
+		{
+			x = true;
+		}
+		else if (this->Data_od.get_miesiac() > nowe_zakonczenie.get_miesiac())
+		{
+			x = false;
+		}
+		else
+		{
+			if (this->Data_od.get_dzien() < nowe_zakonczenie.get_dzien())
+			{
+				x = true;
+			}
+			else if (this->Data_od.get_dzien() > nowe_zakonczenie.get_dzien())
+			{
+				x = false;
+			}
+			else
+			{
+				if (this->Data_od.get_godzina() < nowe_zakonczenie.get_godzina())
+				{
+					x = true;
+				}
+				else
+				{
+					x = false;
+				}
+			}
+		}
+	}
+	if (x == false)
+		return false;
+
+	if (this->Data_do.get_rok() > nowe_zakonczenie.get_rok())
+	{
+		this->Data_do.set_dzien(nowe_zakonczenie.get_dzien());
+		this->Data_do.set_miesiac(nowe_zakonczenie.get_miesiac());
+		this->Data_do.set_rok(nowe_zakonczenie.get_rok());
+		this->Data_do.set_godzina(nowe_zakonczenie.get_godzina());
+		return true;
+	}
+	else if (this->Data_do.get_rok() < nowe_zakonczenie.get_rok())
+	{
+		return false;
+	}
+	else
+	{
+		if (this->Data_do.get_miesiac() > nowe_zakonczenie.get_miesiac())
+		{
+			this->Data_do.set_dzien(nowe_zakonczenie.get_dzien());
+			this->Data_do.set_miesiac(nowe_zakonczenie.get_miesiac());
+			this->Data_do.set_rok(nowe_zakonczenie.get_rok());
+			this->Data_do.set_godzina(nowe_zakonczenie.get_godzina());
+			return true;
+		}
+		else if (this->Data_do.get_miesiac() < nowe_zakonczenie.get_miesiac())
+		{
+			return false;
+		}
+		else
+		{
+			if (this->Data_do.get_dzien() > nowe_zakonczenie.get_dzien())
+			{
+				this->Data_do.set_dzien(nowe_zakonczenie.get_dzien());
+				this->Data_do.set_miesiac(nowe_zakonczenie.get_miesiac());
+				this->Data_do.set_rok(nowe_zakonczenie.get_rok());
+				this->Data_do.set_godzina(nowe_zakonczenie.get_godzina());
+				return true;
+			}
+			else if (this->Data_do.get_dzien() < nowe_zakonczenie.get_dzien())
+			{
+				return false;
+			}
+			else
+			{
+				if (this->Data_do.get_godzina() > nowe_zakonczenie.get_godzina())
+				{
+					this->Data_do.set_dzien(nowe_zakonczenie.get_dzien());
+					this->Data_do.set_miesiac(nowe_zakonczenie.get_miesiac());
+					this->Data_do.set_rok(nowe_zakonczenie.get_rok());
+					this->Data_do.set_godzina(nowe_zakonczenie.get_godzina());
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+	}
+
 }
 
-void Wypozyczenie::wydluz_okres(Data nowe_zakonczenie)
+bool Wypozyczenie::wydluz_okres(Data nowe_zakonczenie)
 {
-	// TODO - implement Wypozyczenie::wydluz_okres
-	throw "Not yet implemented";
+	if (this->Data_do.get_rok() < nowe_zakonczenie.get_rok())
+	{
+		this->Data_do.set_dzien(nowe_zakonczenie.get_dzien());
+		this->Data_do.set_miesiac(nowe_zakonczenie.get_miesiac());
+		this->Data_do.set_rok(nowe_zakonczenie.get_rok());
+		this->Data_do.set_godzina(nowe_zakonczenie.get_godzina());
+		return true;
+	}
+	else if (this->Data_do.get_rok() > nowe_zakonczenie.get_rok())
+	{
+		return false;
+	}
+	else
+	{
+		if (this->Data_do.get_miesiac() < nowe_zakonczenie.get_miesiac())
+		{
+			this->Data_do.set_dzien(nowe_zakonczenie.get_dzien());
+			this->Data_do.set_miesiac(nowe_zakonczenie.get_miesiac());
+			this->Data_do.set_rok(nowe_zakonczenie.get_rok());
+			this->Data_do.set_godzina(nowe_zakonczenie.get_godzina());
+			return true;
+		}
+		else if (this->Data_do.get_miesiac() > nowe_zakonczenie.get_miesiac())
+		{
+			return false;
+		}
+		else
+		{
+			if (this->Data_do.get_dzien() < nowe_zakonczenie.get_dzien())
+			{
+				this->Data_do.set_dzien(nowe_zakonczenie.get_dzien());
+				this->Data_do.set_miesiac(nowe_zakonczenie.get_miesiac());
+				this->Data_do.set_rok(nowe_zakonczenie.get_rok());
+				this->Data_do.set_godzina(nowe_zakonczenie.get_godzina());
+				return true;
+			}
+			else if (this->Data_do.get_dzien() > nowe_zakonczenie.get_dzien())
+			{
+				return false;
+			}
+			else
+			{
+				if (this->Data_do.get_godzina() < nowe_zakonczenie.get_godzina())
+				{
+					this->Data_do.set_dzien(nowe_zakonczenie.get_dzien());
+					this->Data_do.set_miesiac(nowe_zakonczenie.get_miesiac());
+					this->Data_do.set_rok(nowe_zakonczenie.get_rok());
+					this->Data_do.set_godzina(nowe_zakonczenie.get_godzina());
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+	}
 }
 
 bool Wypozyczenie::get_zakonczone()
