@@ -12,8 +12,10 @@
 
 using namespace std;
 
-int main()
+int main()	//Funkcja g³ówna
 {
+
+	//Przepisanie informacji z plików do tablic
 	int n;
 	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(n);
 	int k;
@@ -21,18 +23,21 @@ int main()
 	int w;
 	Wypozyczenie* wypozyczenia = Wypozyczenie::wczytaj_z_pliku(w);
 
+	//Sprawdzanie b³êdu przy wczytywaniu danych
 	if (pojazdy == nullptr || klienci == nullptr || wypozyczenia == nullptr)
 	{
 		cout << "Blad przy wczytaniu danych z pliku!" << endl;
 		return 1;
 	}
 
+	//Przywitanie
 	system("cls");
 	int wybor;
 	cout << "Witaj w naszej wypozyczalni pojazdow!" << endl;
 	Sleep(3000);
 	system("cls");
 
+	//Wybor kim jestes
 	cout << "Kim jestes?" << endl;
 	cout << "1.Klientem." << endl;
 	cout << "2.Wlascicielem." << endl;
@@ -40,14 +45,18 @@ int main()
 	system("cls");
 
 	int zmienna = 0; //zmienna sterujaca petlami
-
 	
+	//Gdy wybierasz klienta
 	if (wybor == 1)
 	{
 		int sprawdzacz = 0;
 		int sprawdzacz2 = 0;
+
+		//Pêtla klienta
 		for(;;)
 		{
+
+			//menu
 			int wybor1;
 			cout << "Wybierz opcje." << endl;
 			cout << "1.Wypozyczenie pojazdu." << endl;
@@ -60,8 +69,9 @@ int main()
 			cin >> wybor1;
 			system("cls");
 			Klient k;
-			k.zmniejsz_liczba_klientow();
+			k.zmniejsz_liczba_klientow(); //Teraz bedzie prawidlowa ilosc klientow
 
+			//Wybory z menu
 			if (wybor1 == 1)
 			{
 				bool sprawdzenie;
@@ -76,8 +86,12 @@ int main()
 				cout << "Wpisz swoj pesel: ";
 				cin >> pes;
 				cout << "Oto twoja lista wypozyczen: " << endl;
+
+				//Pêtla wypisuj¹ca liste wypozyczeñ klienta
 				for (int i = 0; i < wypozyczenia[0].get_liczba_wypozyczen(); i++)
 				{
+					
+					//Gdy wypozyczenie nale¿y do klienta
 					if (wypozyczenia[i].get_pesel() == pes)
 					{
 						cout << endl;
@@ -145,6 +159,8 @@ int main()
 					}
 					Sleep(1000);
 					system("cls");
+
+					//Pêtla zmiany d³ugoœci wypozyczenia
 					do {
 						sprawdzacz2 = 0;
 						cout << "Co chcesz zrobic z tym wypozyczeniem: " << endl;
@@ -169,6 +185,8 @@ int main()
 							cin >> zmienna;
 							d.set_godzina(zmienna);
 							bool udane = wypozyczenia[indeks].skroc_okres(d);
+
+							//Gdy podana data jest mniejsza od pocz¹tkowej lub wiêksza od koñcowej
 							if (!udane)
 							{
 								cout << "Podano nieprawidlowa date!" << endl;
@@ -179,6 +197,8 @@ int main()
 							else
 							{
 								wypozyczenia[indeks].set_termin_platnosci(d);
+
+								//Liczenie ceny
 								int cena = 0;
 								int miesiac, dzien;
 								miesiac = wypozyczenia[indeks].get_data_do().get_miesiac() - wypozyczenia[indeks].get_data_od().get_miesiac();
@@ -233,6 +253,8 @@ int main()
 							cin >> zmienna;
 							d.set_godzina(zmienna);
 							bool udane = wypozyczenia[indeks].wydluz_okres(d);
+
+							//Gdy podana data mniejsza od koncowej
 							if (!udane)
 							{
 								cout << "Podano nieprawidlowa date!" << endl;
@@ -243,6 +265,8 @@ int main()
 							else
 							{
 								wypozyczenia[indeks].set_termin_platnosci(d);
+
+								//Liczenie ceny
 								int cena = 0;
 								int miesiac, dzien;
 								miesiac = wypozyczenia[indeks].get_data_do().get_miesiac() - wypozyczenia[indeks].get_data_od().get_miesiac();
@@ -306,8 +330,12 @@ int main()
 				string p;
 				cout << "Podaj swoj pesel: ";
 				cin >> p;
+
+				//Pêtla wypisuj¹ca liste wypozyczeñ klienta
 				for (int i = 0; i < wypozyczenia[0].get_liczba_wypozyczen(); i++)
 				{
+
+					//Gdy wypozyczenie nale¿y do klienta
 					if (wypozyczenia[i].get_pesel() == p)
 					{
 						cout << endl;
@@ -368,6 +396,8 @@ int main()
 		string login, haslo;
 		int wybor2;
 		Wlasciciel w;
+
+		//Logowanie w³aœciciela
 		do 
 		{
 					cout << "Podaj login: ";
@@ -379,6 +409,8 @@ int main()
 						cout << "Zalogowano!" << endl;
 						Sleep(2000);
 						system("cls");
+
+						//Menu w³aœciciela
 						for (;;)
 						{
 							int wybor1;
@@ -439,6 +471,7 @@ int main()
 							zmienna = 1;
 						system("cls");
 					}
-		} while (zmienna = 1);
+		} while (zmienna == 1);
 	}
 }
+//Koniec programu

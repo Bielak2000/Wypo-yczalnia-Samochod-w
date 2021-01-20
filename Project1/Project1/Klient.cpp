@@ -9,8 +9,8 @@ using namespace std;
 
 int Klient::liczba_klientow = 0;
 
-Klient::Klient(string Im, string Naz, string Pes, string Addr, string Numer):
-	Osoba(Im, Naz, Pes, Addr, Numer) {
+Klient::Klient(string im, string naz, string pes, string addr, string numer):
+	Osoba(im, naz, pes, addr, numer) {
 	liczba_klientow++;
 }
 
@@ -22,16 +22,16 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 	int godzina1, dzien1, miesiac1, rok1, godzina2, dzien2, miesiac2, rok2, wybor, wybor1;
 	int i = 0;
 	cout << "Podaj imie: ";
-	cin >> Imie;
+	cin >> imie;
 	cout << "Podaj nazwisko: ";
-	cin >> Nazwisko;
+	cin >> nazwisko;
 	cout << "Podaj pesel: ";
-	cin >> Pesel;
+	cin >> pesel;
 	cout << "Podaj adres: ";
-	getline(cin, Adres);
-	getline(cin, Adres);
+	getline(cin, adres);
+	getline(cin, adres);
 	cout << "Podaj telefon kontaktowy: ";
-	cin >> Numer_telefonu;
+	cin >> numer_telefonu;
 	do {
 		cout << endl << "-----------------------------------------------------" << endl;
 		this->wyswietl_oferte(pojazdy);
@@ -218,7 +218,7 @@ bool Klient::wypozycz(Pojazd* pojazdy)
 
 	Data d1(dzien1, miesiac1, rok1, godzina1);
 	Data d2(dzien2, miesiac2, rok2, godzina2);
-	Wypozyczenie w(d1, d2, nr_rej, Pesel, cena);
+	Wypozyczenie w(d1, d2, nr_rej, pesel, cena);
 
 	cout << "Wypozyczono pojazd!" << endl;
 	Sleep(2000);
@@ -387,12 +387,12 @@ Klient* Klient::wczytaj_z_pliku(int& n)
 		{
 			getline(plik, linia);
 			istringstream iss(linia);
-			iss >> klienci[i].Imie;
-			iss >> klienci[i].Nazwisko;
-			iss >> klienci[i].Pesel;
-			iss >> klienci[i].Numer_telefonu;
+			iss >> klienci[i].imie;
+			iss >> klienci[i].nazwisko;
+			iss >> klienci[i].pesel;
+			iss >> klienci[i].numer_telefonu;
 			getline(plik, linia);
-			klienci[i].Adres = linia;
+			klienci[i].adres = linia;
 		}
 	}
 	else
@@ -409,7 +409,7 @@ void Klient::aktualizuj_plik(Klient* klienci)
 	int jest = -1;	//indeks dla klienta dla ktorego wywolana jest metoda
 
 	for (int i = 0; i < klienci[i].get_liczba_klientow(); i++)
-		if (klienci[i].get_pesel() == this->Pesel)
+		if (klienci[i].get_pesel() == this->pesel)
 		{
 			jest = i;	//jesli klient jest juz w pliku to zapisujemy jego indeks w "jest"
 			break;
@@ -423,11 +423,11 @@ void Klient::aktualizuj_plik(Klient* klienci)
 		plik.open("Klienci.txt", ios::out | ios::app);
 		if (klienci[0].get_liczba_klientow() != 0)
 			plik << "\n";
-		plik << this->Imie << " ";
-		plik << this->Nazwisko << " ";
-		plik << this->Pesel << " ";
-		plik << this->Numer_telefonu << "\n";
-		plik << this->Adres;
+		plik << this->imie << " ";
+		plik << this->nazwisko << " ";
+		plik << this->pesel << " ";
+		plik << this->numer_telefonu << "\n";
+		plik << this->adres;
 		plik.close();
 	}
 	else
@@ -439,21 +439,21 @@ void Klient::aktualizuj_plik(Klient* klienci)
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby klienta nie zapisac 2x
 			if (!(i == 1 && jest == 0))
 			if (i != 0) plik << "\n";
-			plik << klienci[i].Imie << " ";
-			plik << klienci[i].Nazwisko << " ";
-			plik << klienci[i].Pesel << " ";
-			plik << klienci[i].Numer_telefonu << "\n";
-			plik << klienci[i].Adres << " ";
+			plik << klienci[i].imie << " ";
+			plik << klienci[i].nazwisko << " ";
+			plik << klienci[i].pesel << " ";
+			plik << klienci[i].numer_telefonu << "\n";
+			plik << klienci[i].adres << " ";
 		}
 
 		//na koncu dopisujemy nowego klienta z aktualnymi danymi
 		if (klienci[0].get_liczba_klientow() != 1)
 			plik << "\n";
-		plik << this->Imie << " ";
-		plik << this->Nazwisko << " ";
-		plik << this->Pesel << " ";
-		plik << this->Numer_telefonu << "\n";
-		plik << this->Adres << " ";
+		plik << this->imie << " ";
+		plik << this->nazwisko << " ";
+		plik << this->pesel << " ";
+		plik << this->numer_telefonu << "\n";
+		plik << this->adres << " ";
 
 		plik.close();
 	}
