@@ -143,7 +143,9 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 	{
 		ofstream plik;	//edytowanie pliku z dopisywaniem
 		plik.open("Pojazdy.txt", ios::out|ios::app);
-		plik << "\n" << this->Numer_rejestracyjny << " ";
+		if (pojazdy[0].get_liczba_pojazdow() != 0)
+			plik << "\n";
+		plik << this->Numer_rejestracyjny << " ";
 		plik << this->Rodzaj << " ";
 		plik << this->Marka << " ";
 		plik << this->Model << " ";
@@ -174,7 +176,9 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 		}
 
 		//na koncu dopisujemy nowy pojazd z aktualnymi danymi
-		plik << "\n" << this->Numer_rejestracyjny << " ";
+		if (pojazdy[0].get_liczba_pojazdow() != 1)
+			plik << "\n";
+		plik << this->Numer_rejestracyjny << " ";
 		plik << this->Rodzaj << " ";
 		plik << this->Marka << " ";
 		plik << this->Model << " ";

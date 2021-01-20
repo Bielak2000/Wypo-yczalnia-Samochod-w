@@ -76,12 +76,11 @@ int main()
 			}
 			else if (wybor1 == 4)
 			{
-				
 				k.wyswietl_oferte(pojazdy);
 			}
 			else if (wybor1 == 5)
 			{
-
+				k.dokonaj_platnosci(wypozyczenia);
 			}
 			else if (wybor1 == 6)
 			{
