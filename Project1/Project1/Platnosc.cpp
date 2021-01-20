@@ -48,5 +48,11 @@ bool Platnosc::get_potwierdzenie()
 
 void Platnosc::set_kwota(int cena)
 {
-	Platnosc::Kwota = cena;
+	this->Kwota = cena;
+}
+
+
+void Platnosc::set_sposob_platnosci(string sposob)
+{
+	Platnosc::Sposob_platnosci = sposob;
 }

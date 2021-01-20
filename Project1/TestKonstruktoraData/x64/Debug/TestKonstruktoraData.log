@@ -1,4 +1,4 @@
-﻿  pch.cpp
-  TestKonstruktoraData.cpp
-     Trwa tworzenie biblioteki D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestKonstruktoraData.lib i obiektu D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestKonstruktoraData.exp
-  TestKonstruktoraData.vcxproj -> D:\AProjekty\Wypozyczalnia-Samochodow\Project1\x64\Debug\TestKonstruktoraData.dll
+﻿  TestKonstruktoraData.cpp
+  LINK : nie znaleziono elementu D:\GitHub\Project1\x64\Debug\TestKonstruktoraData.dll ani nie został on skompilowany podczas ostatniego konsolidowania przyrostowego; zostanie wykonana pełna konsolidacja
+     Trwa tworzenie biblioteki D:\GitHub\Project1\x64\Debug\TestKonstruktoraData.lib i obiektu D:\GitHub\Project1\x64\Debug\TestKonstruktoraData.exp
+  TestKonstruktoraData.vcxproj -> D:\GitHub\Project1\x64\Debug\TestKonstruktoraData.dll

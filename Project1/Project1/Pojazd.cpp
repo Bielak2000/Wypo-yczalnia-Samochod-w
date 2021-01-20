@@ -91,7 +91,6 @@ Pojazd* Pojazd::wczytaj_z_pliku(int& n)
 	Pojazd* pojazdy = NULL;
 	if (plik.good())
 	{
-		cout << "Udalo sie otworzyc plik!" << endl;
 		int liczba_pojazdow = 0;
 		while (getline(plik, linia))
 		{
@@ -118,6 +117,10 @@ Pojazd* Pojazd::wczytaj_z_pliku(int& n)
 			iss >> pojazdy[i].Dostepny;
 		}
 	}
+	else
+	{
+		return nullptr;
+	}
 	plik.close();
 	return pojazdy;
 }
@@ -140,7 +143,9 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 	{
 		ofstream plik;	//edytowanie pliku z dopisywaniem
 		plik.open("Pojazdy.txt", ios::out|ios::app);
-		plik << "\n" << this->Numer_rejestracyjny << " ";
+		if (pojazdy[0].get_liczba_pojazdow() != 0)
+			plik << "\n";
+		plik << this->Numer_rejestracyjny << " ";
 		plik << this->Rodzaj << " ";
 		plik << this->Marka << " ";
 		plik << this->Model << " ";
@@ -158,7 +163,8 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 		for (int i = 0; i < pojazdy[i].get_liczba_pojazdow(); i++)
 		{
 			if (i == jest) continue;	//pomijane okrazenie w petli zeby pojazdu nie zapisac 2x
-			plik << "\n" << pojazdy[i].Numer_rejestracyjny << " ";
+			if (i != 0) plik << "\n";
+			plik << pojazdy[i].Numer_rejestracyjny << " ";
 			plik << pojazdy[i].Rodzaj << " ";
 			plik << pojazdy[i].Marka << " ";
 			plik << pojazdy[i].Model << " ";
@@ -170,7 +176,9 @@ void Pojazd::aktualizuj_plik(Pojazd* pojazdy)
 		}
 
 		//na koncu dopisujemy nowy pojazd z aktualnymi danymi
-		plik << "\n" << this->Numer_rejestracyjny << " ";
+		if (pojazdy[0].get_liczba_pojazdow() != 1)
+			plik << "\n";
+		plik << this->Numer_rejestracyjny << " ";
 		plik << this->Rodzaj << " ";
 		plik << this->Marka << " ";
 		plik << this->Model << " ";
