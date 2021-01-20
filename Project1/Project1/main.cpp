@@ -52,7 +52,8 @@ int main()
 			cout << "3.Zwroc pojazd." << endl;
 			cout << "4.Wyswietl oferte." << endl;
 			cout << "5.Dokonaj platnosci." << endl;
-			cout << "6.Wyjdz." << endl;
+			cout << "6.Pokaz swoje wypozyczenia." << endl;
+			cout << "7.Wyjdz." << endl;
 			cin >> wybor1;
 			system("cls");
 			Klient k;
@@ -84,6 +85,55 @@ int main()
 			}
 			else if (wybor1 == 6)
 			{
+				string p;
+				cout << "Podaj swoj pesel: ";
+				cin >> p;
+				for (int i = 0; i < wypozyczenia[0].get_liczba_wypozyczen(); i++)
+				{
+					if (wypozyczenia[i].get_pesel() == p)
+					{
+						cout << endl;
+						cout << "Data rozpoczecia: ";
+						cout << wypozyczenia[i].get_data_od().get_godzina() << ":" << "00 ";
+						cout << wypozyczenia[i].get_data_od().get_dzien() << ".";
+						cout << wypozyczenia[i].get_data_od().get_miesiac() << ".";
+						cout << wypozyczenia[i].get_data_od().get_rok() << ".";
+						cout << endl;
+
+						cout << "Data zakonczenia: ";
+						cout << wypozyczenia[i].get_data_do().get_godzina() << ":" << "00 ";
+						cout << wypozyczenia[i].get_data_do().get_dzien() << ".";
+						cout << wypozyczenia[i].get_data_do().get_miesiac() << ".";
+						cout << wypozyczenia[i].get_data_do().get_rok() << ".";
+						cout << endl;
+
+						cout << "Numer rejestracyjny: " << wypozyczenia[i].get_numer_rejestracyjny() << endl;
+						cout << "Status: ";
+						if (wypozyczenia[i].get_zakonczone() == 0)
+							cout << "Niezakonczone" << endl;
+						else
+							cout << "Zakonczone" << endl;
+						cout << "Metoda platnosci: " << wypozyczenia[i].get_rachunek().get_sposob_platnosci() << endl;
+						cout << "Kwota do zaplaty: " << wypozyczenia[i].get_rachunek().get_kwota() << endl;
+						cout << "Status platnosci: ";
+						if (wypozyczenia[i].get_rachunek().get_potwierdzenie())
+							cout << "Zaplacone" << endl;
+						else
+							cout << "Niezaplacone" << endl;
+
+						cout << "Termin platnosci: ";
+						cout << wypozyczenia[i].get_termin_platnosci().get_godzina() << ":" << "00 ";
+						cout << wypozyczenia[i].get_termin_platnosci().get_dzien() << ".";
+						cout << wypozyczenia[i].get_termin_platnosci().get_miesiac() << ".";
+						cout << wypozyczenia[i].get_termin_platnosci().get_rok() << ".";
+						cout << endl;
+
+						cout << endl;
+					}
+				}
+			}
+			else if (wybor1 == 7)
+			{
 				return 0;
 			}
 			else
@@ -104,7 +154,8 @@ int main()
 			cout << "1.Dodaj pojazd." << endl;
 			cout << "2.Usun pojazd." << endl;
 			cout << "3.Zmien cennik." << endl;
-			cout << "4.Wyjdz." << endl;
+			cout << "4.Pokaz posiadane pojazdy." << endl;
+			cout << "5.Wyjdz." << endl;
 			cin >> wybor1;
 			system("cls");
 			if (wybor1 == 1)
@@ -126,6 +177,14 @@ int main()
 				w.zmien_cene(numer_rejestracyjny, pojazdy);
 			}
 			else if (wybor1 == 4)
+			{
+				for (int i = 0; i < pojazdy[0].get_liczba_pojazdow(); i++)
+				{
+					pojazdy[i].wyswietl_dane();
+					cout << endl << endl;
+				}
+			}
+			else if (wybor1 == 5)
 			{
 				return 0;
 			}
