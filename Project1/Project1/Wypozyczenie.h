@@ -71,7 +71,7 @@ public:
 
 	void set_zakonczone(bool zakon);
 
-	int get_liczba_wypozyczen();
+	static int get_liczba_wypozyczen();
 
 	void aktualizuj_plik(Wypozyczenie * wypozyczenia);
 };
