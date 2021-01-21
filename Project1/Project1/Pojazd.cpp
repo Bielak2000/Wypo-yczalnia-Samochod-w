@@ -177,47 +177,38 @@ string Pojazd::get_numer_rejestracyjny()
 {
 	return Pojazd::numer_rejestracyjny;
 }
-
 string Pojazd::get_rodzaj()
 {
 	return Pojazd::rodzaj;
 }
-
 string Pojazd::get_marka()
 {
 	return Pojazd::marka;
 }
-
 string Pojazd::get_model()
 {
 	return Pojazd::model;
 }
-
 int Pojazd::get_rok() 
 {
 	return Pojazd::rok;
 }
-
 string Pojazd::get_silnik()
 {
 	return Pojazd::silnik;
 }
-
 string Pojazd::get_przebieg()
 {
 	return Pojazd::przebieg;
 }
-
 bool Pojazd::get_dostepnosc()
 {
 	return Pojazd::dostepny;
 }
-
 int Pojazd::get_liczba_pojazdow()
 {
 	return Pojazd::liczba_pojazdow;
 }
-
 int Pojazd::get_cena_za_godzine()
 {
 	return Pojazd::cena_za_godzine;

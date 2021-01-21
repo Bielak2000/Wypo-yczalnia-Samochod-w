@@ -24,7 +24,7 @@ private:
 	static int liczba_wypozyczen;
 
 public:
-	Wypozyczenie(Data d1=0, Data d2=0, string nr_rej="0", string pes="0", int cena=0); //konstruktor domyslny
+	Wypozyczenie(Data data1=0, Data data2=0, string nr_rej="0", string pes="0", int cena=0); //konstruktor domyslny
 
 	void zaplac(Wypozyczenie* tab_w);	//ustalanie sposobu platnosci i zaplacenie lub ewentualne odroczenie
 

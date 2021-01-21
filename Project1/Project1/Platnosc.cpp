@@ -15,13 +15,10 @@ void Platnosc::set_potwierdzenie(bool potw)
 {
 	potwierdzenie = potw;
 }
-
 void Platnosc::set_kwota(int cena)
 {
 	this->kwota = cena;
 }
-
-
 void Platnosc::set_sposob_platnosci(string sposob)
 {
 	Platnosc::sposob_platnosci = sposob;
@@ -32,15 +29,11 @@ string Platnosc::get_sposob_platnosci()
 {
 	return Platnosc::sposob_platnosci;
 }
-
 int Platnosc::get_kwota()
 {
 	return Platnosc::kwota;
 }
-
 bool Platnosc::get_potwierdzenie()
 {
 	return Platnosc::potwierdzenie;
 }
-
-

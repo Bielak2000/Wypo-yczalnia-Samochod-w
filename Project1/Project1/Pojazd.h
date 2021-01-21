@@ -40,23 +40,14 @@ public:
 
 	//gettery
 	string get_numer_rejestracyjny();
-
 	string get_rodzaj();
-
 	string get_marka();
-
 	string get_model();
-
 	int get_rok();
-
 	string get_silnik();
-
 	string get_przebieg();
-
 	bool get_dostepnosc();
-
 	int get_cena_za_godzine();
-
 	int get_liczba_pojazdow();
 
 	void set_dostepny(bool dostep);//setter do zmien dostepnosc

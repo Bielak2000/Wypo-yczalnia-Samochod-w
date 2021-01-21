@@ -121,7 +121,6 @@ string Wlasciciel::get_login()
 {
 	return Wlasciciel::login;
 }
-
 string Wlasciciel::get_haslo()
 {
 	return Wlasciciel::haslo;
