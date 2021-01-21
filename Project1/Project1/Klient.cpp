@@ -281,7 +281,7 @@ void Klient::wyswietl_oferte(Pojazd* tablica_pojazdow)
 //wychodzi z funkcji, jesli tak spawdza sie uszkodzenia i w razie czego podaje wartosc uszkodzen i dopsiuje do kwoty za wypozyczenie, podaje sie tez aktualny przebieg i dopisuje 
 //do pojazdu, zmienia sie jego dostpenosc na dostepny i aktualizuje plik z pojazdami, po tym zmienia sie pole zakonczone na 1 w wypozyczeniu i aktualizuje
 //plik z wypozyczeniami.
-void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
+void Klient::zwroc_pojazd(Wypozyczenie * tablica_wypozyczen, Pojazd * tablica_pojazdow)
 {
 	string pesell, nr_rejj;
 	int sprawdzacz = 0;
@@ -289,9 +289,9 @@ void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 	cin >> pesell;
 	cout << "Podaj numer rejestracyjny: ";
 	cin >> nr_rejj;
-	for (int i = 0; i < tablica_w[0].get_liczba_wypozyczen(); i++)
+	for (int i = 0; i < tablica_wypozyczen[0].get_liczba_wypozyczen(); i++)
 	{
-		if (tablica_w[i].get_pesel() == pesell && tablica_w[i].get_numer_rejestracyjny() == nr_rejj && tablica_w[i].get_rachunek().get_potwierdzenie() == 0)
+		if (tablica_wypozyczen[i].get_pesel() == pesell && tablica_wypozyczen[i].get_numer_rejestracyjny() == nr_rejj && tablica_wypozyczen[i].get_rachunek().get_potwierdzenie() == 0)
 		{
 			sprawdzacz = 1;
 			int wybor;
@@ -308,8 +308,8 @@ void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 					cout << "Podaj wartosc uszkodzen pojazdu: ";
 					int uszkodzenia;
 					cin >> uszkodzenia;
-					uszkodzenia += tablica_w[i].get_rachunek().get_kwota();
-					tablica_w[i].get_rachunek1()->set_kwota( uszkodzenia );
+					uszkodzenia += tablica_wypozyczen[i].get_rachunek().get_kwota();
+					tablica_wypozyczen[i].get_rachunek1()->set_kwota( uszkodzenia );
 				}
 			} while (wybor != 1 && wybor != 2);
 
@@ -328,13 +328,13 @@ void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 				}
 			}
 
-			tablica_w[i].set_zakonczone(true);
+			tablica_wypozyczen[i].set_zakonczone(true);
 
 			cout << "Pojazd zostal zwrocony!" << endl;
 			Sleep(2000);
 			system("cls");
 
-			tablica_w[i].aktualizuj_plik(tablica_w);
+			tablica_wypozyczen[i].aktualizuj_plik(tablica_wypozyczen);
 			break;
 		}
 
@@ -348,7 +348,7 @@ void Klient::zwroc_pojazd(Wypozyczenie * tablica_w, Pojazd * tablica_pojazdow)
 
 //funkcja wyszukuje dane wypozyczenie za ktore chce zaplacic uzytkownik po przez wyszukanie jego po peselu i nr rejestracyjnym pojazdu;
 //korzysta z funkcji zaplac w wypozyczeniu i na koniec aktualizuje plik, a jesli nie znaleziono takiego wypozyczenia to wyswietla komunikat i wychodzi z funkcji;
-void Klient::dokonaj_platnosci(Wypozyczenie* tablica_w)
+void Klient::dokonaj_platnosci(Wypozyczenie* tablica_wypozyczen)
 {
 	string pessel, nr_reej;
 	cout << "Podaj pesel: ";
@@ -357,12 +357,12 @@ void Klient::dokonaj_platnosci(Wypozyczenie* tablica_w)
 	cin >> nr_reej;
 	bool sprawdzacz = 0;
 
-	for (int i = 0; i < tablica_w[0].get_liczba_wypozyczen(); i++)
+	for (int i = 0; i < tablica_wypozyczen[0].get_liczba_wypozyczen(); i++)
 	{
-		if (tablica_w[i].get_numer_rejestracyjny() == nr_reej && tablica_w[i].get_pesel() == pessel)
+		if (tablica_wypozyczen[i].get_numer_rejestracyjny() == nr_reej && tablica_wypozyczen[i].get_pesel() == pessel)
 		{
-			tablica_w[i].zaplac(tablica_w);
-			tablica_w[i].aktualizuj_plik(tablica_w);
+			tablica_wypozyczen[i].zaplac(tablica_wypozyczen);
+			tablica_wypozyczen[i].aktualizuj_plik(tablica_wypozyczen);
 			sprawdzacz = 1;
 			break;
 		}
