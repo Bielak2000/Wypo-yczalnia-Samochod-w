@@ -7,7 +7,6 @@ using namespace std;
 
 class Osoba
 {
-
 protected:
 	string imie;
 	string nazwisko;

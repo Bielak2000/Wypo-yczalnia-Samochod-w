@@ -32,8 +32,6 @@ public:
 
 	void zmien_cene_pojazdu(int cena);	//metoda sluzaca do zmiany ceny pojazdu
 
-	//void wypozycz();
-
 	void zmien_dostepnosc();//metoda sluzaca do zmiany dostepnosci na przecwina
 
 	static Pojazd* wczytaj_z_pliku(int& n);		//wczytywanie z pliku pojazdow do tablicy
