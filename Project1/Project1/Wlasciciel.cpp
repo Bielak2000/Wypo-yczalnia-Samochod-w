@@ -42,6 +42,7 @@ void Wlasciciel::dodaj_pojazd()
 			Rok << " " << Silnik << " " << Przebieg << " " << Cena_za_godzine << " 1";
 		cout << "Dodano pojazd!" << endl;
 		Sleep(2000);
+		system("cls");
 	}
 	else
 	{
@@ -63,6 +64,7 @@ void Wlasciciel::zmien_cene(string nr_rej, Pojazd* pojazdy)
 			pojazdy[i].aktualizuj_plik(pojazdy);
 			cout << "Cena zostala zmieniona!" << endl;
 			Sleep(2000);
+			system("cls");
 			break;
 		}
 	}
@@ -106,6 +108,7 @@ void Wlasciciel::usun_pojazd(string nr_rej, Pojazd* pojazdy)
 			}
 			cout << "Usunieto pojazd!" << endl;
 			Sleep(2000);
+			system("cls");
 		}
 		else
 		{

@@ -14,7 +14,6 @@ using namespace std;
 
 int main()	//Funkcja g³ówna
 {
-
 	//Przepisanie informacji z plików do tablic
 	int ilosc_pojazdow;
 	Pojazd* pojazdy = Pojazd::wczytaj_z_pliku(ilosc_pojazdow);
@@ -320,6 +319,7 @@ int main()	//Funkcja g³ówna
 			else if (wybor1 == 4)
 			{
 				klient.wyswietl_oferte(pojazdy);
+				cout << endl;
 			}
 			else if (wybor1 == 5)
 			{
